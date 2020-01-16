@@ -12,15 +12,15 @@ document.querySelectorAll('p').forEach(element => {
     const idx = element.dataset.id;
     stats.paragraphs[idx] = 0;
     element.querySelectorAll('a').forEach(element => {
-        const a = element.getAttribute('href');
-        stats.links[a] = 0;
-        element.addEventListener('click', e => {
-            stats.links[a]++;
-        })
+        stats.links[element.getAttribute('href')] = 0;
     });
     element.addEventListener('click', e => {
         e.preventDefault();
+        const target = e.target;
         stats.paragraphs[idx]++;
+        if(target.matches('a')){
+            stats.links[target.getAttribute('href')]++
+        }
     })
 });
 
