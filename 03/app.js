@@ -5,10 +5,8 @@ const changeTxt = function()
 {
     this.innerText = "clicked";
     console.log('clicked')
-    btnList.forEach(function(el)
-    {
-        el.removeEventListener('click', changeTxt)
-    })
+    this.removeEventListener('click', changeTxt)
+
 }
 
 btnList.forEach(function(el)
