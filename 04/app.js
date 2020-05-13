@@ -1,42 +1,56 @@
-const div = document.querySelectorAll('div')
+const div = document.querySelectorAll('div');
 console.log(div)
 const classCreate = function()
 {
-    this.classList.add('clicked')
+   // this.classList.add('clicked');
 }
 div.forEach(function(el)
 {
-    el.addEventListener('click', classCreate)
+    el.addEventListener('click', classCreate);
 })
 
-const body = document.querySelectorAll('body, div')
-console.log(body)
+const body = document.querySelector('body');
+console.log(body);
 
 const classDelete = function(e)
 {
     if(e.target === e.currentTarget)
     {
-        //console.log(e.tagName, div)
-        console.log(this.tagName)
-        if(this.tagName === 'BODY')
-        {//e.stopImmediatePropagation()
-            //console.log('as')
-            console.log(div)
-            const d = function()
-            {
-                this.classList.remove('clicked')
-            }
-div.forEach(function(o)
-            {
-o.addEventListener('click', d)
-            })
-        }
-        
-    }
-    
+        //console.log(this.tagName);
+        console.log(div);
+        div.forEach(function(el){
+            el.classList.remove('clicked');
+        })
+    }  
 }
 
-body.forEach(function(el)
-{
-    el.addEventListener('click', classDelete)
-})
+    body.addEventListener('click', classDelete);
+
+    const time = document.querySelectorAll('[data-time]');
+    console.log(time);
+
+    time.forEach(function(el)
+    {
+        const data = parseInt(el.dataset.time);
+        console.log(data);
+        const useTimeout = function(e)
+        {
+            const checkData= function()
+                {
+                    if(parseInt(e.target.dataset.time)=== data)
+                    {
+                    e.target.classList.add('clicked');
+                    //console.log(parseInt(e.target.dataset.time))
+                    }
+
+                }
+            setTimeout(checkData, data); 
+        }
+        div.forEach(function(el)
+        {
+            el.addEventListener('click', useTimeout);
+        })
+    })
+
+
+    
