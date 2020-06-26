@@ -15,7 +15,13 @@ divEl.forEach(e => {
 // TASK 4.01 **
 // ************
 
+if (el.target.classList.contains('clicked')) {
+  const bodyEl = document.querySelector('body');
+  bodyEl.addEventListener('click', el => {
+    el.target.classList.remove('clicked')
+  });
 
+}
 // ************
 // TASK 4.01 **
 // ************
