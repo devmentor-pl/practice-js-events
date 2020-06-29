@@ -8,6 +8,51 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const pElements = document.querySelectorAll('p');
+
+const handleClick = function(e) {
+  e.preventDefault();
+
+  const id = this.dataset.id;
+
+console.log(id);
+  const lin = this.getAttribute('href');
+
+  // update count in object stats
+  if (e.target.tagName === 'P') {
+    stats.paragraphs[id]++;
+    // add to paragraphs
+
+  // if link
+  }
+  else if (e.target.tagName === 'A') {
+
+    console.log('link clicked');
+    stats.links[lin] = 0;
+    console.log(lin);
+    const link = this.target;
+    stats.links[lin];
+  }
+};
+
+pElements.forEach(function(item) {
+  //addEventListener
+  item.addEventListener('click', handleClick);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
@@ -29,7 +74,7 @@ const renderStats = function(data, element) {
         html += '<ul>';
 
         for(let key in data[elementType]) {
-            
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';
@@ -50,4 +95,3 @@ document.addEventListener('click', function(e) {
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent(statsElement, 'render'));
-

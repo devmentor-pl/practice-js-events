@@ -6,7 +6,7 @@
 
 Twoim zadaniem jest zbudowanie prostego systemu zliczającego klinięcia w linki na stronie. W obecnym rozwiązaniu przeglądarka ma nie przeładowywać strony tylko zliczać klinięcia w konkretny link tj. `.link` (identyfikowany po atrybucie `href`) oraz sumować kliknięcia w paragraf tj. `.text` (identyfikowany po `dataset`).
 
-Zadanie wykonaj w taki sposób, aby nasłuchiwanie było ustawione tylko na elementy `<p/>`. Po każdym kliknięciu należy zaktualizować sturkturę danych. Początkowo ona wygląda następująco.
+Zadanie wykonaj w taki sposób, aby nasłuchiwanie było ustawione tylko na elementy `<p/>`. Po każdym kliknięciu należy zaktualizować strukturę danych. Początkowo ona wygląda następująco.
 
 ```
 const stats = {
@@ -23,7 +23,7 @@ Gdzie `p1: 0` oznacza zero kliknięć w paragraf o atrybucie `data-id` ustawiony
 
 Zanim przystąpisz do zadania zapoznaj się z kodem w pliku app.js.
 Jest tam już napisana cześć kodu, która renderuje dane przechowywane w zmiennej `stats`.
-Twoim zadaniem jest tylko napisanie cześciu odpowiedzialnej za zliczanie klików.
+Twoim zadaniem jest tylko napisanie części odpowiedzialnej za zliczanie klików.
 
 &nbsp;
 
