@@ -10,7 +10,7 @@
 
 Utwórz nasłuchiwanie na elementy `<div/>` na zdarzenie `click`. W momencie kliknięcia na dany element (użyj `this` lub `e.currentTarget`) ma zostać dodana do niego nowa klasa `clicked`.
 
-## #04.02
+## #04.02$$
 
 Nasłuchuj również element `<body/>` na kliknięcie. W momencie kiedy kliknięcie następuję tylko i wyłącznie na `body` to należy usunać klasy `clicked` z każdego elementu `<div/>`;
 
