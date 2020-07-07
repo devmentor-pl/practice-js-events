@@ -21,11 +21,8 @@ const body = document.querySelector('body');
 console.log(body)
 
 
-
-
 const time = document.querySelectorAll('[data-time]');
 console.log(time);
-
 
 
 const deleteClass = function (e) {
