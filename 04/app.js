@@ -15,8 +15,18 @@ divElement.forEach(function (item) {
 
 //*//
 
+
+
 const body = document.querySelector('body');
 console.log(body)
+
+
+
+
+const time = document.querySelectorAll('[data-time]');
+console.log(time);
+
+
 
 const deleteClass = function (e) {
     // console.log(this.tagName)
@@ -30,20 +40,5 @@ const deleteClass = function (e) {
 
 }
 
+// body.addEventListener('click', setTimeout(deleteClass, 2000))
 body.addEventListener('click', deleteClass)
-
-
-
-/**/
-
-const time = document.querySelectorAll('[data-time]');
-console.log(time);
-
-
-divElement.forEach(function (element) {
-
-    const dataTime = element.dataset.time;
-    console.log(dataTime)
-
-
-})
