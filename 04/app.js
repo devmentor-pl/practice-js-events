@@ -19,10 +19,18 @@ divElement.forEach(function (item) {
 
 const body = document.querySelector('body');
 console.log(body)
-
-
 const time = document.querySelectorAll('[data-time]');
 console.log(time);
+
+
+time.forEach(function (el) {
+    const timeItem = parseInt(el.dataset.time);
+    console.log(timeItem)
+})
+
+
+
+
 
 
 const deleteClass = function (e) {
