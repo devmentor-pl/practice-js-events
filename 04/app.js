@@ -10,7 +10,7 @@ const addClass = function () {
 
 divElement.forEach(function (item) {
     item.addEventListener('click', addClass)
-})
+});
 
 
 //*//
@@ -18,8 +18,7 @@ divElement.forEach(function (item) {
 
 
 const body = document.querySelector('body');
-console.log(body)
-const time = document.querySelectorAll('[data-time]');
+console.log(body) const time = document.querySelectorAll('[data-time]');
 console.log(time);
 
 

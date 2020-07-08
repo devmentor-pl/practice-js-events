@@ -11,9 +11,6 @@ const stats = {
 
 
 
-const allLinks = document.querySelectorAll('.link');
-console.log(allLinks)
-
 const allP = document.querySelectorAll('p');
 console.log(allP)
 
@@ -27,10 +24,11 @@ const calculateClick = function (e) {
     const id = this.dataset.id;
 
 
-    if (e.target.tagName === 'p') {
+    if (e.target.tagName === 'P') {
         // count++;
         // console.log(count)
-        stats.paragraphs[p1]++;
+        stats.paragraphs[id]++;
+        stats++;
 
     }
 
