@@ -14,7 +14,6 @@ const stats = {
 const allP = document.querySelectorAll('p');
 console.log(allP)
 
-// let count = 0;
 
 const calculateClick = function (e) {
 
@@ -25,12 +24,8 @@ const calculateClick = function (e) {
 
 
     if (e.target.tagName === 'P') {
-        // count++;
-        // console.log(count)
         stats.paragraphs[id]++;
-        stats++;
-
-    }
+    }else if()
 
 }
 

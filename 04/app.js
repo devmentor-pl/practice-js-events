@@ -2,15 +2,37 @@ const divElement = document.querySelectorAll('div');
 console.log(divElement)
 
 
-const addClass = function () {
+// const addClass = function () {
 
-    this.classList.add('clicked');
+//     this.classList.add('clicked');
 
+// }
+
+
+
+// setTimeout(function addClass(e) {
+//     if (e.target === e.currentTarget) {
+//         e.currentTarget.classList.add('clicked');
+//     }
+
+// }, 5000)
+
+
+
+
+function addClass(e) {
+    if (e.target === e.currentTarget) {
+        e.currentTarget.classList.add('clicked');
+    }
 }
+setTimeout(addClass, 10000)
 
-divElement.forEach(function (item) {
-    item.addEventListener('click', addClass)
+
+divElement.forEach(function (e) {
+    e.addEventListener('click', addClass)
 });
+
+
 
 
 //*//
@@ -18,16 +40,18 @@ divElement.forEach(function (item) {
 
 
 const body = document.querySelector('body');
-console.log(body) const time = document.querySelectorAll('[data-time]');
-console.log(time);
+console.log(body)
 
 
-time.forEach(function (el) {
-    const timeItem = parseInt(el.dataset.time);
-    console.log(timeItem)
-})
+
+// const time = document.querySelectorAll('[data-time]');
+// console.log(time);
 
 
+// time.forEach(function (el) {
+//     const timeItem = parseInt(el.dataset.time);
+//     console.log(timeItem)
+// })
 
 
 
