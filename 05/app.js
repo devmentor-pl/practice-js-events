@@ -19,23 +19,45 @@ const calculateClick = function (e) {
 
 
     e.preventDefault();
-
     const id = this.dataset.id;
-    const a = e.target.getAttribute('href');
 
 
     if (e.target.tagName === 'P') {
-        stats.paragraphs[id]++;
-    } else if (typeof stats.paragraphs[id] === 'undefined') {
-        stats.paragraphs[id] = 1;
-    } else if (e.target.tagName === 'A') {
-        stats.links[a]++;
-    } else if (typeof stats.links[a] === 'undefined') {
-        stats.links[id] = 1;
 
+        if (typeof stats.paragraphs[id] === 'undefined') {
+            stats.paragraphs[id] = 1;
+        }
+        stats.paragraphs[id]++;
+    }
+
+    const a = e.target.getAttribute('href');
+
+    if (e.target.tagName === 'A') {
+
+        if (typeof stats.links[a] === 'undefined') {
+            stats.links[a] = 1;
+        }
+        stats.links[a]++;
     }
 }
 
+
+
+
+
+
+// if (e.target.tagName === 'P') {
+
+//     if (typeof stats.paragraphs[id] === 'undefined') {
+//         stats.paragraphs[id]++;
+
+//     } else if (e.target.tagName === 'A') {
+//         if (typeof stats.links[a] === 'undefined') {
+//             stats.links[a] = 0;
+//         }
+
+//     }
+// }
 
 
 
