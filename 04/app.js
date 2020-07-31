@@ -4,20 +4,20 @@ const body = document.querySelector('body');
 console.log(allDivs);
 console.log(body);
 
-function addClass() {};
+function addClass(el) {
+    el.classList.add('clicked');
+};
 
 function timeOut(time) {
-    setTimeout(addClass, time)
+    setTimeout(function() {
+        addClass(el)
+    }, time);
 };
 
 allDivs.forEach(function(item) {
     console.log(item.dataset.time);
     item.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const self = e.currentTarget;
-        setTimeout(function() {
-            self.classList.add('clicked');
-        }, item.dataset.time);
+        timeOut(e.currentTarget, e.currentTarget.dataset.time);
     });
     body.addEventListener('click', function(e) {
         e.stopPropagation();
