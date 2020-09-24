@@ -15,7 +15,7 @@ function onLoadedCont() {
     setTimeout(() => {
       this.classList.add('clicked');
     }, this.dataset.time)
-    e.stopPropagation()
+    // e.stopPropagation() // zadanie nie precyzuje, czy po kliknięciu na najbardziej zagnieżdżony div, chcemy zakolorować wszystkie prostokąty, czy jednak każdy z osobna. Jeśli to drugie, to należałoby odkomentować e.stopPropagation()
   }
 
   function removeClass() {
