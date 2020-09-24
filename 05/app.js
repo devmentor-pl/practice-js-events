@@ -15,18 +15,18 @@ function countClick(e) {
     const hrefAttr = e.target.getAttribute('href');
     const dataAttr = e.target.getAttribute('data-id');
 
-    if (Object.keys(stats.paragraphs).includes(dataAttr)) {
-        stats.paragraphs[dataAttr] += 1;
-    }
-    else if (Object.keys(stats.links).includes(hrefAttr)) {
-        stats.links[hrefAttr] += 1;
-    } else {
-        if (e.target.tagName.includes('A')) {
-            const newLink = hrefAttr;
-            stats.links[newLink] = + 1;
+    if (e.target.tagName.includes('A')) {
+        if (typeof stats.links[hrefAttr] === 'undefined') {
+            stats.links[hrefAttr] = 1;
         } else {
-            const newP = dataAttr;
-            stats.links[newP] = + 1; // do konsultacji ;)
+            stats.links[hrefAttr] += 1;
+        }
+    }
+    if (e.target.tagName.includes('P')) {
+        if (typeof stats.paragraphs[dataAttr] === 'undefined') {
+            stats.paragraphs[dataAttr] = 1;
+        } else {
+            stats.paragraphs[dataAttr] += 1;
         }
     }
 }
