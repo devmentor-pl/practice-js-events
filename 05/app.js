@@ -12,10 +12,9 @@ const pList = document.querySelectorAll('[data-id]');
 
 function countClick(e) {
     e.preventDefault();
-    const hrefAttr = e.target.getAttribute('href');
-    const dataAttr = e.target.getAttribute('data-id');
-
+    
     if (e.target.tagName.includes('A')) {
+        const hrefAttr = e.target.getAttribute('href');
         if (typeof stats.links[hrefAttr] === 'undefined') {
             stats.links[hrefAttr] = 1;
         } else {
@@ -23,6 +22,7 @@ function countClick(e) {
         }
     }
     if (e.target.tagName.includes('P')) {
+        const dataAttr = e.target.getAttribute('data-id');
         if (typeof stats.paragraphs[dataAttr] === 'undefined') {
             stats.paragraphs[dataAttr] = 1;
         } else {
