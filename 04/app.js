@@ -5,21 +5,18 @@ function onLoadedCont() {
     element.addEventListener('click', addClass)
   });
 
-  // setTimeout(() => {
-  //   this.classList.add('clicked');
-  //   this.stopPropagation()
-  // }, 300)
-
-  function addClass(e) {
+  function addClass() {
     setTimeout(() => {
       this.classList.add('clicked');
     }, this.dataset.time)
   }
 
-  function removeClass() {
-    divList.forEach(element => {
+  function removeClass(e) {
+    if (e.target === document.body) {
+      divList.forEach(element => {
       element.classList.remove('clicked')
     });
+    }
   }
 
   document.body.addEventListener('click', removeClass)
