@@ -4,6 +4,7 @@ const body = document.querySelector('body');
 const addClass = function(){
   
     const self = this;
+    
     setTimeout(function(){
         self.classList.add('clicked');
     }, self.dataset.time)
