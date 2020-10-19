@@ -2,7 +2,12 @@ const divList = document.querySelectorAll('div');
 const body = document.querySelector('body');
 
 const addClass = function(){
-    this.classList.add('clicked');
+  
+    const self = this;
+    setTimeout(function(){
+        self.classList.add('clicked');
+    }, self.dataset.time)
+  
 }
 
 const removeClass = function(e){

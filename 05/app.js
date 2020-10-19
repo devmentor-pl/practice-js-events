@@ -9,6 +9,11 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElements = document.querySelectorAll('p[data-id]')
+const aElements = document.querySelectorAll('a[href]');
+
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
