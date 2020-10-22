@@ -9,46 +9,39 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const pElements = document.querySelectorAll('p[data-id]')
-const aElements = document.querySelectorAll('a[href]');
+const pElements = document.querySelectorAll('p')
 
-const countP = function (e) {
+const counter = function (e) {
     if (e.target.tagName === 'P') {
 
-        const pId = e.currentTarget.dataset.id;
+        const pId = e.target.dataset.id;
 
-        if (stats.paragraphs[pId] === undefined) {
+        if (typeof (stats.paragraphs[pId]) === 'undefined') {
             stats.paragraphs[pId] = 0;
         }
 
         stats.paragraphs[pId]++;
-    }
-}
 
-const countA = function (e) {
+    } else if (e.target.tagName === 'A') {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    if (e.target.tagName === 'A') {
+        const aId = e.target.getAttribute('href');
 
-        const aId = e.currentTarget.getAttribute('href');
-
-        if (stats.links[aId] === undefined) {
+        if (typeof (stats.links[aId]) === 'undefined') {
             stats.links[aId] = 0;
         }
 
         stats.links[aId]++;
     }
-
 }
 
+
 pElements.forEach(function (p) {
-    p.addEventListener('click', countP);
+    p.addEventListener('click', counter);
 })
 
-aElements.forEach(function (a) {
-    a.addEventListener('click', countA);
-})
+
 
 
 
