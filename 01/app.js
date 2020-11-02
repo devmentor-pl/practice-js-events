@@ -3,4 +3,4 @@ const func = function () {
     console.log("clicked");
 }
 
-btn.addEventListener("click", func)
+btn.addEventListener("click", func);
