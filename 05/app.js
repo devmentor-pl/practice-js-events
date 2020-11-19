@@ -11,7 +11,7 @@ const stats = {
 const paragraphs = document.querySelectorAll("p");
 for (let i = 0; i < paragraphs.length; i++) {
 paragraphs[i].addEventListener("click", function (e) {
-        if (e.target.dataset.id === "p1") {
+        /*if (e.target.dataset.id === "p1") {
             stats.paragraphs.p1 = stats.paragraphs.p1 + 1;
         }
         if (e.target.dataset.id === "p2") {
@@ -29,10 +29,18 @@ paragraphs[i].addEventListener("click", function (e) {
             
             stats.paragraphs.p3 = stats.paragraphs.p3 + 1;
             
+        } */
+        const key = e.target.dataset.id;// np p1
+        
+        if (key) {
+            if (!stats.paragraphs[key]) {
+                stats.paragraphs[key] = 0;
+            }
+            stats.paragraphs[key] = stats.paragraphs[key] + 1;
         }
 }
 )}
-const els = document.querySelectorAll("a[href='/dolor.html']");
+/*const els = document.querySelectorAll("a[href='/dolor.html']");
 els.forEach(function (element) {
     element.onclick = function(e) {
         console.log(e.target, e.currentTarget);
@@ -64,7 +72,20 @@ consectetur.onclick = function(e) {
     stats.links['/consectetur.html'] = stats.links['/consectetur.html'] + 1;
     consectetur.href = "#";
 
-}
+} */
+const aElements = document.querySelectorAll("a");
+aElements.forEach(function (element) {
+    const hrefs = element.href;
+    element.onclick = function(e) {
+        if(!stats.links[hrefs]) {
+            stats.links[hrefs] = 0;
+        }
+        console.log(e.target, e.currentTarget);
+        stats.links[hrefs] = stats.links[hrefs] + 1;
+        element.href = "#";
+
+    }
+})
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');// wyszukanie elementu o klasie stat
