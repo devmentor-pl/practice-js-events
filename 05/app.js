@@ -9,12 +9,49 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const init = function() {
+    console.log("Cześć Ewa :D");
+    const pElements = document.querySelectorAll('.text');
+    pElements.forEach(function(item){
+        item.addEventListener('click', handelClick);
+    });
+};
+
+function handelClick(event) {       //?
+    // console.log(event);
+    // console.log(event.currentTarget);
+    //infO paragraph has been clicked
+    const pEl = event.currentTarget;
+    if(pEl === event.target) {
+        let paragraphId = pEl.dataset.id;
+        if(stats.paragraphs[paragraphId] === undefined) {
+            stats.paragraphs[paragraphId] = 0;
+        };
+        stats.paragraphs[paragraphId]++;
+        console.log(paragraphId, stats.paragraphs[paragraphId]);
+        // console.log(paragraphClicked);
+        // console.log(pEl.dataset.id);
+    } else {    //infO link has been clicked
+        event.preventDefault();
+        const aEl = event.target;
+        let linkHref = aEl.getAttribute('href');
+        if(stats.links[linkHref] === undefined) {
+            stats.links[linkHref] = 0;
+        };
+        stats.links[linkHref]++;
+        console.log(linkHref, stats.links[linkHref])
+    };
+    
+
+};
+
+document.addEventListener('DOMContentLoaded', init);
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
 const fireCustomEvent = function(element, name) {
-    console.log(element, '=>', name);
+    // console.log(element, '=>', name);
 
     const event = new CustomEvent(name, {
         bubbles: true,
