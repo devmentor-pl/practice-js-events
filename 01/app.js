@@ -1,4 +1,4 @@
-const init = function(btn) {
+const init = function() {
     console.log("DOM został wczytany");
 
 };
