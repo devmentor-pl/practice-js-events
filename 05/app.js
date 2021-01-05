@@ -9,27 +9,102 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElList = document.querySelectorAll('p');
+
+
+// Zliczanie paragrafów
+
+const counterParagraphs = function (e) {
+
+    if (this.dataset.id === 'p1') {
+        stats.paragraphs.p1 += 1;
+    }
+
+    if (this.dataset.id === 'p2') {
+        if (stats.paragraphs.p2 === undefined) {
+            stats.paragraphs.p2 = 0;
+            stats.paragraphs.p2 += 1;
+        } else {
+            stats.paragraphs.p2 += 1;
+        }
+    }
+
+    if (this.dataset.id === 'p3') {
+        if (stats.paragraphs.p3 === undefined) {
+            stats.paragraphs.p3 = 0;
+            stats.paragraphs.p3 += 1;
+        } else {
+            stats.paragraphs.p3 += 1;
+        }
+    }
+
+
+    // Zliczanie linków
+    const aElementsList = document.querySelectorAll('a');
+
+    for (let i = 0; i < aElementsList.length; i++) {
+        if (!aElementsList[i].hasAttribute('target')) {
+            aElementsList[i].setAttribute('target', '_blank');
+        }
+    }
+
+    const tagName = e.target.tagName;
+    if (tagName === 'A') {
+        const linkText = e.target.innerText;
+        if (linkText === 'dolor') {
+            stats.links["/dolor.html"] += 1;
+
+        } else if (linkText === 'adipisicing elit') {
+
+            if (stats.links["/adipisicing-elite.html"] === undefined) {
+                stats.links["/adipisicing-elite.html"] = 0;
+                stats.links["/adipisicing-elite.html"] += 1;
+            } else {
+                stats.links["/adipisicing-elite.html"] += 1;
+            }
+
+        } else if (linkText === 'consectetur') {
+
+            if (stats.links["/consectetur.html"] === undefined) {
+                stats.links["/consectetur.html"] = 0;
+                stats.links["/consectetur.html"] += 1;
+            } else {
+                stats.links["/consectetur.html"] += 1;
+            }
+        }
+    }
+}
+
+
+pElList.forEach(function (pEl) {
+    pEl.addEventListener('click', counterParagraphs);
+});
+
+
+
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
-const fireCustomEvent = function(element, name) {
+const fireCustomEvent = function (element, name) {
     console.log(element, '=>', name);
 
     const event = new CustomEvent(name, {
         bubbles: true,
     });
 
-    element.dispatchEvent( event );
+    element.dispatchEvent(event);
 }
 
-const renderStats = function(data, element) {
+const renderStats = function (data, element) {
     let html = '';
-    for(let elementType in data) {
+    for (let elementType in data) {
         html += '<ul>';
 
-        for(let key in data[elementType]) {
-            
+        for (let key in data[elementType]) {
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';
@@ -42,9 +117,9 @@ const renderStats = function(data, element) {
 }
 
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const tagName = e.target.tagName;
-    if(tagName.includes('P') || tagName.includes('A')) {
+    if (tagName.includes('P') || tagName.includes('A')) {
         fireCustomEvent(statsElement, 'render');
     }
 });
