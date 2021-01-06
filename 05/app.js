@@ -16,27 +16,42 @@ const pElList = document.querySelectorAll('p');
 
 const counterParagraphs = function (e) {
 
-    if (this.dataset.id === 'p1') {
-        stats.paragraphs.p1 += 1;
+
+    // działa, zrobione ale mało automatycznie - nie sprawdzać !!!
+    /*
+        if (this.dataset.id === 'p1') {
+            stats.paragraphs.p1 += 1;
+        }
+    
+        if (this.dataset.id === 'p2') {
+            if (stats.paragraphs.p2 === undefined) {
+                stats.paragraphs.p2 = 0;
+                stats.paragraphs.p2 += 1;
+            } else {
+                stats.paragraphs.p2 += 1;
+            }
+        }
+    
+        if (this.dataset.id === 'p3') {
+            if (stats.paragraphs.p3 === undefined) {
+                stats.paragraphs.p3 = 0;
+                stats.paragraphs.p3 += 1;
+            } else {
+                stats.paragraphs.p3 += 1;
+            }
+        }
+    */
+
+    // działa, zrobione bardziej automatycznie
+
+    if (stats.paragraphs[this.dataset.id] >= 0) {
+        stats.paragraphs[this.dataset.id] += 1;
+    } else {
+        stats.paragraphs[this.dataset.id] = 0;
+        stats.paragraphs[this.dataset.id] += 1;
     }
 
-    if (this.dataset.id === 'p2') {
-        if (stats.paragraphs.p2 === undefined) {
-            stats.paragraphs.p2 = 0;
-            stats.paragraphs.p2 += 1;
-        } else {
-            stats.paragraphs.p2 += 1;
-        }
-    }
 
-    if (this.dataset.id === 'p3') {
-        if (stats.paragraphs.p3 === undefined) {
-            stats.paragraphs.p3 = 0;
-            stats.paragraphs.p3 += 1;
-        } else {
-            stats.paragraphs.p3 += 1;
-        }
-    }
 
 
     // Zliczanie linków
@@ -48,40 +63,53 @@ const counterParagraphs = function (e) {
         }
     }
 
-    const tagName = e.target.tagName;
-    if (tagName === 'A') {
-        const linkText = e.target.innerText;
-        if (linkText === 'dolor') {
-            stats.links["/dolor.html"] += 1;
-
-        } else if (linkText === 'adipisicing elit') {
-
-            if (stats.links["/adipisicing-elite.html"] === undefined) {
-                stats.links["/adipisicing-elite.html"] = 0;
-                stats.links["/adipisicing-elite.html"] += 1;
-            } else {
-                stats.links["/adipisicing-elite.html"] += 1;
-            }
-
-        } else if (linkText === 'consectetur') {
-
-            if (stats.links["/consectetur.html"] === undefined) {
-                stats.links["/consectetur.html"] = 0;
-                stats.links["/consectetur.html"] += 1;
-            } else {
-                stats.links["/consectetur.html"] += 1;
+    // działa, zrobione ale mało automatycznie - nie sprawdzać !!!
+    /*
+        const tagName = e.target.tagName;
+        if (tagName === 'A') {
+            const linkText = e.target.innerText;
+            if (linkText === 'dolor') {
+                stats.links["/dolor.html"] += 1;
+    
+            } else if (linkText === 'adipisicing elit') {
+    
+                if (stats.links["/adipisicing-elite.html"] === undefined) {
+                    stats.links["/adipisicing-elite.html"] = 0;
+                    stats.links["/adipisicing-elite.html"] += 1;
+                } else {
+                    stats.links["/adipisicing-elite.html"] += 1;
+                }
+    
+            } else if (linkText === 'consectetur') {
+    
+                if (stats.links["/consectetur.html"] === undefined) {
+                    stats.links["/consectetur.html"] = 0;
+                    stats.links["/consectetur.html"] += 1;
+                } else {
+                    stats.links["/consectetur.html"] += 1;
+                }
             }
         }
+    */
+
+    // działa, zrobione bardziej automatycznie
+
+    const tagName = e.target.tagName;
+    if (tagName === 'A') {
+
+        if (stats.links[e.target.getAttribute('href')] >= 0) {
+            stats.links[e.target.getAttribute('href')] += 1;
+        } else {
+            stats.links[e.target.getAttribute('href')] = 0;
+            stats.links[e.target.getAttribute('href')] += 1;
+        }
+
     }
 }
-
 
 pElList.forEach(function (pEl) {
     pEl.addEventListener('click', counterParagraphs);
 });
-
-
-
 
 
 

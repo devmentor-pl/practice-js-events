@@ -1,8 +1,10 @@
 const btnsList = document.querySelectorAll('button');
 
 const changeText = function () {
-    this.innerText = 'clicked';
-    console.log(this.innerText);
+    if (this.innerText !== 'clicked') {
+        this.innerText = 'clicked';
+        console.log(this.innerText);
+    }
 }
 
 btnsList.forEach(function (btnEl) {
