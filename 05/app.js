@@ -42,16 +42,25 @@ const counterParagraphs = function (e) {
         }
     */
 
-    // działa, zrobione bardziej automatycznie
+    // działa, zrobione bardziej automatycznie - już sprawdzone !!!
+    /*
+        if (stats.paragraphs[this.dataset.id] >= 0) {
+            stats.paragraphs[this.dataset.id] += 1;
+        } else {
+            stats.paragraphs[this.dataset.id] = 0;
+            stats.paragraphs[this.dataset.id] += 1;
+        }
+    */
 
-    if (stats.paragraphs[this.dataset.id] >= 0) {
-        stats.paragraphs[this.dataset.id] += 1;
-    } else {
-        stats.paragraphs[this.dataset.id] = 0;
-        stats.paragraphs[this.dataset.id] += 1;
+
+
+    // działa, zrobione bardziej automatycznie - lepiej, znacznie lepiej !!!
+
+    const id = this.dataset.id;
+    if (typeof stats.paragraphs[id] === 'undefined') {
+        stats.paragraphs[id] = 0;
     }
-
-
+    stats.paragraphs[id]++;
 
 
     // Zliczanie linków
@@ -92,18 +101,32 @@ const counterParagraphs = function (e) {
         }
     */
 
-    // działa, zrobione bardziej automatycznie
+    // działa, zrobione bardziej automatycznie - już sprawdzone !!!
+    /*
+        const tagName = e.target.tagName;
+        if (tagName === 'A') {
+    
+            if (stats.links[e.target.getAttribute('href')] >= 0) {
+                stats.links[e.target.getAttribute('href')] += 1;
+            } else {
+                stats.links[e.target.getAttribute('href')] = 0;
+                stats.links[e.target.getAttribute('href')] += 1;
+            }
+    
+        }
+    */
+
+
+
+    // działa, zrobione bardziej automatycznie - lepiej, znacznie lepiej !!!
 
     const tagName = e.target.tagName;
     if (tagName === 'A') {
-
-        if (stats.links[e.target.getAttribute('href')] >= 0) {
-            stats.links[e.target.getAttribute('href')] += 1;
-        } else {
-            stats.links[e.target.getAttribute('href')] = 0;
-            stats.links[e.target.getAttribute('href')] += 1;
+        const href = e.target.getAttribute('href');
+        if (typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
         }
-
+        stats.links[href]++;
     }
 }
 

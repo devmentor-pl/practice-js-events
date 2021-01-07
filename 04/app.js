@@ -4,15 +4,13 @@ const bodyEl = document.querySelector('body');
 
 
 const addClassToElement = function (e) {
-
+    e.stopPropagation();
     if (e.toElement.className === 'child') {
-        e.stopPropagation();
         divsList.forEach(function (divEl) {
             setTimeout(function () { divEl.classList.add('clicked'); }, divEl.dataset.time);
         });
     } else {
         this.classList.add('clicked');
-        e.stopPropagation();
     }
 }
 
