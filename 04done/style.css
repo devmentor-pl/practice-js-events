@@ -1,0 +1,40 @@
+:root {
+    --color-grandparent: red;
+    --color-parent: blue;
+    --color-child: green;
+}
+
+body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    padding: 50px;
+    border: 3px solid black;
+}
+
+.grandparent {
+    border-color: var(--color-grandparent);
+}
+
+.grandparent.clicked {
+    background-color: var(--color-grandparent);
+}
+
+.parent {
+    border-color: var(--color-parent);
+}
+
+.parent.clicked {
+    background-color: var(--color-parent);
+}
+
+.child {
+    border-color: var(--color-child);
+}
+
+.child.clicked {
+    background-color: var(--color-child);
+}
