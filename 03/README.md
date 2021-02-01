@@ -1,4 +1,4 @@
-# Ćwiczenie 03
+ # Ćwiczenie 03
 
 > :loudspeaker: Jeśli chciałbyś więcej tego typu zadań to zapraszam do :moneybag: [wsparcia mojego konta](https://github.com/sponsors/devmentor-pl)!
 
