@@ -8,17 +8,20 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-document.querySelectorAll('[data-id]').forEach((p) => {
-	if (p.getAttribute('data-id') === 'p1') {
-		p.addEventListener('click', () => (stats.paragraphs.p1 = stats.paragraphs.p1 + 1));
-	}
-});
-document.querySelectorAll('[href]').forEach((p) => {
-	if (p.getAttribute('href') === '/dolor.html') {
-		p.addEventListener('click', () => (stats.links['/dolor.html'] = stats.links['/dolor.html'] + 1));
-	}
-});
-// console.log(xxx);
+
+const setScore = (dataset, pattern, scorePath1, scorePath2) => {
+	document.querySelectorAll(`[ ${dataset} ]`).forEach((p) => {
+		if (p.getAttribute(dataset) === pattern) {
+			p.addEventListener('click', (e) => {
+				e.preventDefault();
+				stats[scorePath1][scorePath2]++;
+			});
+		}
+	});
+};
+
+setScore('data-id', 'p1', 'paragraphs', 'p1');
+setScore('href', '/dolor.html', 'links', '/dolor.html');
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -51,7 +54,6 @@ const renderStats = function(data, element) {
 };
 
 document.addEventListener('click', function(e) {
-	e.preventDefault();
 	const tagName = e.target.tagName;
 	if (tagName.includes('P') || tagName.includes('A')) {
 		fireCustomEvent(statsElement, 'render');
