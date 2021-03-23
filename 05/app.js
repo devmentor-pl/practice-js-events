@@ -9,19 +9,19 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const setScore = (dataset, pattern, scorePath1, scorePath2) => {
+const setScore = (dataset, pattern, scorePath) => {
 	document.querySelectorAll(`[ ${dataset} ]`).forEach((p) => {
 		if (p.getAttribute(dataset) === pattern) {
 			p.addEventListener('click', (e) => {
 				e.preventDefault();
-				stats[scorePath1][scorePath2]++;
+				stats[scorePath][pattern]++;
 			});
 		}
 	});
 };
 
-setScore('data-id', 'p1', 'paragraphs', 'p1');
-setScore('href', '/dolor.html', 'links', '/dolor.html');
+setScore('data-id', 'p1', 'paragraphs');
+setScore('href', '/dolor.html', 'links');
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
