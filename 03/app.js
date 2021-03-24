@@ -1,8 +1,7 @@
 document.querySelectorAll('button').forEach((element) => {
-    element.addEventListener('click', (e) => {
+    element.addEventListener('click', () => {
         element.textContent = 'clicked';
         console.log('clicked');
-        e.target.disabled = true;
-    })
+    },{ once: true})
 })
 
