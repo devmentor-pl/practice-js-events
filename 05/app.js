@@ -9,6 +9,18 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const paragraphs = document.querySelectorAll('.text');
+
+paragraphs.forEach(element => {
+    element.addEventListener('click', function(e){
+        e.preventDefault(); 
+        if(e.target.dataset.id === 'p1') {
+            stats.paragraphs.p1++;
+        }   else if(e.target.getAttribute('href') === '/dolor.html'){
+            stats.links["/dolor.html"]++; 
+        }
+    }); 
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
