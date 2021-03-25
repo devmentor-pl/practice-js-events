@@ -14,9 +14,12 @@ pList.forEach(par => {
     par.addEventListener('click', (e) => {
         e.preventDefault();
 
+        console.log(e.target)
+        console.log(e.target.pathname)
+
         if (e.target.tagName === 'A') {
 
-            stats.links[e.target.href] = !stats.links[e.target.href] ? stats.links[e.target.href] = 1 : stats.links[e.target.href] = stats.links[e.target.href] + 1;
+            stats.links[e.target.pathname] = !stats.links[e.target.pathname] ? stats.links[e.target.pathname] = 1 : stats.links[e.target.pathname] = stats.links[e.target.pathname] + 1;
 
             stats.paragraphs[e.target.parentElement.dataset.id] = !stats.paragraphs[e.target.parentElement.dataset.id] ? stats.paragraphs[e.target.parentElement.dataset.id] = 1 : stats.paragraphs[e.target.parentElement.dataset.id] + 1; 
         }
