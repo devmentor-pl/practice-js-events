@@ -8,8 +8,7 @@ boxes.forEach(box => {
 })
 
 document.querySelector('body').addEventListener('click', (e) => {
-    console.log(e.target.tagName)
-    if (e.target.tagName === "BODY") {
+    if (e.target === e.currentTarget) {
         boxes.forEach(box => box.classList.remove('clicked'))
     }
 })
