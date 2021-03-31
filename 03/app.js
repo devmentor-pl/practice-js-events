@@ -5,7 +5,8 @@ btnList.forEach(btn => {
 });
 
 function changeBtnText(e) {
-    e.target.textContent = 'clicked';
+    const btn = e.target;
+    btn.textContent = 'clicked';
     console.log('clicked')
-    e.target.removeEventListener('click', changeBtnText)
+    btn.removeEventListener('click', changeBtnText)
 }
