@@ -9,7 +9,6 @@ const stats = {
 
 /* tutaj umieść swój kod */
 const dataIdCollection = [...document.querySelectorAll('[data-id]')]
-const a = document.querySelector('a')
 function countingClick(e) {
     e.preventDefault()
     if (e.target.dataset.id) {
