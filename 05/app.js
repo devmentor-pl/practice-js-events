@@ -8,7 +8,41 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const pEl = document.querySelectorAll(".text");
 
+const counter = function (e) {
+    
+
+    if(e.target.tagName === "P") {
+        
+        const paraId = e.target.dataset.id
+
+        if(typeof stats.paragraphs[paraId] === "undefined") {
+            stats.paragraphs[paraId] = 1;
+        } else {
+            stats.paragraphs[paraId]++;
+        }
+
+
+    } else if (e.target.tagName === "A") {
+
+        e.preventDefault()
+        const lnikId = e.target.getAttribute("href");
+
+        if(typeof stats.links[lnikId] === "undefined") {
+            stats.links[lnikId] = 1;
+        }else {
+            stats.links[lnikId]++;
+        };
+    };
+
+}
+
+if(pEl) {
+    pEl.forEach(function(element){
+        element.addEventListener("click", counter);
+    })
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
