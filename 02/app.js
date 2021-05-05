@@ -3,8 +3,8 @@ const init = function() {
     const divElement = document.querySelector("div");
 
     if(divElement) {
-    divElement.addEventListener("mouseenter", onDiv);
-    divElement.addEventListener("mouseleave", offDiv);
+        divElement.addEventListener("mouseenter", onDiv);
+        divElement.addEventListener("mouseleave", offDiv);
     };
 };
 

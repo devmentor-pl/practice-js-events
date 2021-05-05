@@ -1,20 +1,22 @@
 const divEl = document.querySelectorAll("div");
 const bodyEl = document.querySelector("body");
 
-const addClass = function () {
+const addClass = function (e) {
     
     const this1 = this
-
+        
     setTimeout(function () {
         this1.classList.add("clicked");
     }, this1.dataset.time);
 };
 
-const removeClass = function () {
+const removeClass = function (e) {
     
-    divEl.forEach(function(element){
-        element.classList.remove("clicked")
-    });
+    if(e.target === e.currentTarget) {
+        divEl.forEach(function(element){
+            element.classList.remove("clicked")
+        });
+    }
 };
 
 if(divEl && bodyEl) {
