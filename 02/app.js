@@ -1,5 +1,6 @@
 
 const mouse = function () {
+
     const divElement = document.querySelector('div');
 
     if (divElement) {
