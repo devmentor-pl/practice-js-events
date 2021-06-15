@@ -24,6 +24,7 @@ divList.forEach(function (e) {
 
 //4.02
 //Nasłuchuj również element <body/> na kliknięcie. W momencie kiedy kliknięcie następuję tylko i wyłącznie na body to należy usunać klasy clicked z każdego elementu <div/>;
+
 bodyElement.addEventListener('click', function () {
     divList.forEach(function (element) {
         element.classList.remove('.clicked');
