@@ -1,10 +1,10 @@
 
-const init = function () {
-    const content = document.querySelector('div');
+const mouse = function () {
+    const divElement = document.querySelector('div');
 
-if (content) {
-    content.addEventListener('mousemove', mouseMove);
-    content.addEventListener('mouseleave', mouseLeave);    
+    if (divElement) {
+        divElement.addEventListener('mousemove', mouseMove);
+        divElement.addEventListener('mouseleave', mouseLeave);
     }
 }
 
@@ -17,6 +17,6 @@ const mouseLeave = function () {
     console.log('mouse leave');
 
 }
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', mouse);
 
 
