@@ -1,6 +1,5 @@
 const button = document.querySelectorAll('button');
 
-
 button.forEach(function (el) {
     el.addEventListener('click', changeText);
 });
