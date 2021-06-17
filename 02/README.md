@@ -1,18 +1,32 @@
-
-
-> :star: *Jeśli będziesz mieć problem z rozwiązaniem tego zadania, poproś o pomoc na odpowiednim kanale na Slacku, tj. `s1e06-js-events` (dotyczy [mentee](https://devmentor.pl/mentoring-javascript/) oraz posiadaczy [kursu JavaScript](https://devmentor.pl/p/javascript-for-beginners/)) lub na [dedykowanej grupie fb](https://www.facebook.com/groups/155234921740033). Pamiętaj, aby treść Twojego wpisu spełniała [odpowiednie kryteria](https://devmentor.pl/jak-prosic-o-pomoc/).*
-
-&nbsp;
-
-# `#02` JavaScript: Zdarzenia
+Treść zadania:
 
 Ustaw nasłuchiwanie na elemencie `<div/>` w przypadku kiedy kursor myszy porusza się nad tym elementem (wielokrotnie) oraz kiedy kursor opuszcza obszar tego elementu.
 
 W obu przypadkach wyświetl w przeglądarce stosowny komunikat.
 
 
-&nbsp;
 
-> :arrow_left: [*poprzednie zadanie*](./../01) | [*następne zadanie*](./../03) :arrow_right:
+Rozwiązanie:
 
-> :no_entry: *Jeśli nie posiadasz materiałów do tego zadania, znajdziesz je na stronie [devmentor.pl](https://devmentor.pl/p/js-basics/)*
+1.Tworzę wyrażenie funkcyjne aboveOrBeyond,
+
+2. W ciele funckcji:
+   a) wyszukuję element div,
+
+   b) na wyszukanym elemencie dodaję event mousemove:
+
+   - 'mousemove' -> wyzwalany za każdym razem, gdy skaźnik myszki jest przesuwany nad elementem div(porządana przez Nas wielokrotność),
+
+   - 'mouseenter' -> zdarzenie wyzwalane jest tylko wtedy, gdy wskaźnik myszy najedzie na element div,
+
+   - 'mouseover' -> zdarzenie wyzwalane jest tylko wtedy, gdy wskaźnik myszy najedzie na element div, oraz na jego dzieci.
+
+
+   c) na wyszukanym elemencie dodaję event 'mouseleave':
+
+   - 'mouseleave' -> zdarzenie wykonywane jest gdy wskaźnik myszy opuszcza obszar wskazanego elementu,
+
+   - 'mouseout' ->  zdarzenie wykonywane jest, gdy wskaźnik myszy opuszcza obszar wskazanego elementu, ale również jego dzieci.
+
+
+3. Plik JS został podpięty w head, dlatego dodaję linijkę kodu z metodą 'DOMContentLoaded'.

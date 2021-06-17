@@ -1,18 +1,19 @@
-
-
-> :star: *Jeśli będziesz mieć problem z rozwiązaniem tego zadania, poproś o pomoc na odpowiednim kanale na Slacku, tj. `s1e06-js-events` (dotyczy [mentee](https://devmentor.pl/mentoring-javascript/) oraz posiadaczy [kursu JavaScript](https://devmentor.pl/p/javascript-for-beginners/)) lub na [dedykowanej grupie fb](https://www.facebook.com/groups/155234921740033). Pamiętaj, aby treść Twojego wpisu spełniała [odpowiednie kryteria](https://devmentor.pl/jak-prosic-o-pomoc/).*
-
-&nbsp;
-
-# `#01` JavaScript: Zdarzenia
+Treść zadania:
 
 Wyszukaj element `<button/>` i ustaw na nim nasłuchiwanie w momencie klinięcia.
-
 Kiedy nastąpi kliknięcie w konsoli powinien się pojawić napis `clicked`.
 
 
-&nbsp;
+Rozwiązanie 1(szybsze/prostsze):
 
-> :arrow_left: ~~*poprzednie zadanie*~~ | [*następne zadanie*](./../02) :arrow_right:
+Pobieram button, i dodaje do Niego event 'click', po wywołaniu którego wywoływana jest funkcja anonimowa.
 
-> :no_entry: *Jeśli nie posiadasz materiałów do tego zadania, znajdziesz je na stronie [devmentor.pl](https://devmentor.pl/p/js-basics/)*
+
+
+Rozwiązanie 2(bardziej eleganckie):
+
+-Pobieram wszystkie buttony i przypisuję je do zmiennej
+
+-tworzę wyrażenie funkcyjne, które będzie przekazywane przy evencie,
+
+-na btn(NodeList) wykonuję pętlę forEach, w której dla każdego elementu(buttona), dodaję nasłuchiwanie na event 'click' oraz przekazuję wyrażenie funkcyjne.

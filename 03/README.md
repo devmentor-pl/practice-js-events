@@ -1,11 +1,4 @@
-
-
-> :star: *Jeśli będziesz mieć problem z rozwiązaniem tego zadania, poproś o pomoc na odpowiednim kanale na Slacku, tj. `s1e06-js-events` (dotyczy [mentee](https://devmentor.pl/mentoring-javascript/) oraz posiadaczy [kursu JavaScript](https://devmentor.pl/p/javascript-for-beginners/)) lub na [dedykowanej grupie fb](https://www.facebook.com/groups/155234921740033). Pamiętaj, aby treść Twojego wpisu spełniała [odpowiednie kryteria](https://devmentor.pl/jak-prosic-o-pomoc/).*
-
-&nbsp;
-
-# `#03` JavaScript: Zdarzenia
-
+Treść zadania:
 
 Ustaw na każdym elemencie `<button />` nasłuchiwanie dla zdarzenia `click` w taki sposób, aby do każdego nasłuchiwania był przypisany ten sam callback (funkcja wywoływana po zdarzeniu).
 
@@ -14,8 +7,14 @@ Wykonaj zadanie w taki sposób, że na każdym z przycisków, callback ma być w
 W momencie wywołania zdarzenia na danym elemencie, tekst znajdujący się wew. niego ma zostać zmieniony na `clicked` oraz ten sam tekst ma się pojawić w konsoli.
 
 
-&nbsp;
+Rozwiązanie:
 
-> :arrow_left: [*poprzednie zadanie*](./../02) | [*następne zadanie*](./../04) :arrow_right:
+1. Wyszkuję wszystkie 'button' i przypisuję do zmiennej.
 
-> :no_entry: *Jeśli nie posiadasz materiałów do tego zadania, znajdziesz je na stronie [devmentor.pl](https://devmentor.pl/p/js-basics/)*
+2. Tworze wyrażenie funkcyjne 'changeText':
+
+    a) z racji tego, że callback docelowo ma wykonać się raz na danym elemencie tworzę wraunek if, który sprawdzi czy zdarzenie już nie wystąpiło,
+
+    b)this -> w tym przypadku określa co zostało kliknięte, podpinam do tego właściwość textContent.
+
+3. Na zmiennej zawierającej wyszukane elementy(NodeList) używam metody forEach, w której wskazuję co ma się stać z każdym elementem tzn: dodaję nasłuchiwanie na event 'click', oraz przekazuję callback, który ma być wywołany.
