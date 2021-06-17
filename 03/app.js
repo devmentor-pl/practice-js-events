@@ -8,7 +8,6 @@ const changeText = function() {
     }
 }
 
-
 btnList.forEach( function(el) {
     el.addEventListener('click' , changeText);
 } )
