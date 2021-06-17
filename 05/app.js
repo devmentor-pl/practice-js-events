@@ -10,6 +10,44 @@ const stats = {
 /* tutaj umieść swój kod */
 
 
+const pList = document.querySelectorAll('p');
+
+const counter = function(e) {
+    e.preventDefault();
+
+    if(e.target.tagName.toLowerCase() === "p") {
+        const id = e.target.dataset.id;
+
+        if(typeof stats.paragraphs[id] === 'undefined') {
+            stats.paragraphs[id] = 0;
+        }
+        stats.paragraphs[id]++;
+    }
+
+    else {
+        const href = e.target.getAttribute('href');
+
+        if(typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
+        }
+        stats.links[href]++;
+    }
+}
+
+
+
+pList.forEach( function(el) {
+    el.addEventListener('click' , counter)
+} )
+
+
+
+
+
+
+
+
+
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
@@ -29,7 +67,7 @@ const renderStats = function(data, element) {
         html += '<ul>';
 
         for(let key in data[elementType]) {
-            
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';
