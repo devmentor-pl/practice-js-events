@@ -6,14 +6,17 @@ divList.forEach(function (item) {
 document.body.addEventListener('click', removeClass);
 
 function addClass(e) {
-    this.classList.add('clicked');
-    if (this.tagName === 'DIV') {
-        e.stopPropagation();
-    }
+    let time = this.dataset.time;
+    const thisDiv = this;
+    setTimeout(function () {
+        thisDiv.classList.add('clicked')
+    }, time);
 }
 
-function removeClass() {
-    divList.forEach(function (item) {
-        item.classList.remove('clicked')
-    })
+function removeClass(e) {
+    if (e.target === e.currentTarget) {
+        divList.forEach(function (item) {
+            item.classList.remove('clicked')
+        })
+    }
 }
