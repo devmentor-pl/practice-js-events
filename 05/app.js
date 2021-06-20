@@ -24,34 +24,34 @@ console.log(pList);
 
 const clickCounter = function (e) {
     e.preventDefault();
-    const id = e.target.dataset.id;
-    if (typeof stats.paragraphs[id] === 'undefined') {
-        stats.paragraphs[id] = 0;
+
+    if (e.target.tagName === 'P') {
+        const id = e.target.dataset.id;
+
+        if (typeof stats.paragraphs[id] === 'undefined') {
+            stats.paragraphs[id] = 0;
+        }
+        ++stats.paragraphs[id];
+
     }
-    ++stats.paragraphs[id];
 
+    else {
 
-    pList.forEach(function (el) {
-        el.addEventListener('click', clickCounter);
-    });
-
+        const href = e.target.getAttribute('href');
+        console.log('href');
+        if (typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
+        }
+        ++stats.links[href];
+    }
 }
 
-const linkList = document.querySelectorAll('a');
-
-const getHref = function (e) {
-    e.preventDefault();
-    const href = e.target.getAttribute('href');
-    console.log('href');
-    if (typeof stats.links[href] === 'undefined') {
-        stats.links[href] = 0;
-    }
-    ++stats.links[href];
-}
-
-linkList.forEach(function (e) {
-    e.addEventListener('click', getHref);
+pList.forEach(function (e) {
+    e.addEventListener('click', clickCounter);
 });
+/*Zadania działa częściowo. Gdy kliknę w <p> to nic się nie dzieje - pewnie dlatego, że nie ma eventu click.
+Druga sprawa jest taka, że zadanie miałoby tak wykonane, że zdarzenie klik może być podpięte tylko pod paragraf (a nie również pod <a>). Tutaj należałoby to sprawdzić wew. eventu - na jakim elemencie jest on wywołany przez e.target.*/
+
 
 
 

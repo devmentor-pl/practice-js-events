@@ -27,7 +27,7 @@ divList.forEach(function (e) {
 
 bodyElement.addEventListener('click', function () {
     divList.forEach(function (element) {
-        element.classList.remove('.clicked');
+        element.classList.remove('clicked');
     })
 })
 
