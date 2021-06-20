@@ -34,13 +34,12 @@ function countClick(e) {
 
 function countClickOnLinks(e) {
     e.preventDefault();
-    let counterLinks = stats.paragraphs[`${this.getAttribute('href')}`];
-    if (!stats.paragraphs[`${this.getAttribute('href')}`]) {
+    let counterLinks = stats.links[`${this.getAttribute('href')}`];
+    if (!stats.links[`${this.getAttribute('href')}`]) {
         counterLinks = 0;
     }
     counterLinks++;
-    stats.paragraphs[`${this.getAttribute('href')}`] = counterLinks;
-
+    stats.links[`${this.getAttribute('href')}`] = counterLinks;
 }
 
 
