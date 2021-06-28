@@ -11,12 +11,13 @@ const body = document.querySelector("body");
 };*/
 
 const addClassClicked = function (e) {
-  if (e.target === e.currentTarget) {
-    setTimeout(function () {
-      e.target.classList.add("clicked");
-      //console.log(e.target);
-    }, e.target.getAttribute("data-time"));
-  }
+  const curr = e.currentTarget;
+  //if (e.target === e.currentTarget) {
+  setTimeout(function () {
+    curr.classList.add("clicked");
+    //console.log(e.target);
+  }, curr.getAttribute("data-time"));
+  //}
 };
 
 divList.forEach(function (div) {
