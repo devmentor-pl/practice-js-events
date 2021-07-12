@@ -8,6 +8,27 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const paragraphAll = document.querySelectorAll('[data-id]');
+const p1 = document.querySelector('[data-id=p1]');
+
+function sumClickHandler (e) {
+    e.preventDefault();
+    let clickedItem = e.currentTarget;
+    // zliczanie klików dla p1
+    if(clickedItem === p1) {
+        stats.paragraphs.p1++
+    }
+    // zliczanie klików dla wszystkich a z href="/dolor.html"
+    if(e.target.getAttribute('href') === '/dolor.html') {
+        stats.links["/dolor.html"]++;
+    }
+}
+
+
+
+paragraphAll.forEach(item => {
+    item.addEventListener('click', sumClickHandler);
+})
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
