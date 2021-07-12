@@ -3,10 +3,9 @@ const divList = document.querySelectorAll('[data-time]');
 
 function addClass (e) {
   const element = e.currentTarget
-  e.stopPropagation();
+  // e.stopPropagation();
   setTimeout(function () {
     element.classList.add('clicked');
-    
   }, element.dataset.time)
   
 }
