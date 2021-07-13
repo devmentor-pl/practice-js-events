@@ -12,12 +12,17 @@ function addClass (e) {
 
 
 
-function removeClass () {
-  divList.forEach(item => {
-    if(item.classList.contains('clicked')) {
-      item.classList.remove('clicked');
-    }
-  })
+function removeClass (e) {
+  if(e.target.tagName === 'DIV') {
+    e.stopImmediatePropagation()
+  } else {
+    divList.forEach(function (item) {
+      if(item.classList.contains('clicked')) {
+        item.classList.remove('clicked');
+      }
+    })
+  }
+  
 }
 
 
