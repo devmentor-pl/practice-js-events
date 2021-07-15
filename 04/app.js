@@ -7,7 +7,6 @@ function addClass (e) {
   setTimeout(function () {
     element.classList.add('clicked');
   }, element.dataset.time)
-  
 }
 
 
@@ -22,7 +21,6 @@ function removeClass (e) {
       }
     })
   }
-  
 }
 
 

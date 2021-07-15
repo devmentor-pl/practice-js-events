@@ -9,18 +9,30 @@ const stats = {
 
 /* tutaj umieść swój kod */
 const paragraphAll = document.querySelectorAll('[data-id]');
-const p1 = document.querySelector('[data-id=p1]');
+const linksAll = document.querySelectorAll('.link');
+
+paragraphAll.forEach(item => {
+    stats.paragraphs[item.dataset.id] = 0;
+})
+
+linksAll.forEach(item => {
+  let attr = item.getAttribute('href');
+  stats.links[`${attr}`] = 0;
+})
 
 function sumClickHandler (e) {
     e.preventDefault();
+    
     let clickedItem = e.currentTarget;
-    // zliczanie klików dla p1
-    if(clickedItem === p1) {
-        stats.paragraphs.p1++
+    let objKey = clickedItem.dataset.id;
+    if(clickedItem) {
+        stats.paragraphs[objKey]++
     }
-    // zliczanie klików dla wszystkich a z href="/dolor.html"
-    if(e.target.getAttribute('href') === '/dolor.html') {
-        stats.links["/dolor.html"]++;
+
+    for (let keyName in stats.links) {
+        if(e.target.getAttribute('href') === keyName) {
+        stats.links[`${keyName}`]++;
+        }
     }
 }
 
