@@ -1,17 +1,17 @@
 const divsList = document.querySelectorAll('div');
-const bodyEl = document.querySelector('body');
 
-const addClass = function() {
+const addClass = function(e) {
+    console.log(e);
     this.classList.add('clicked');
+    console.log(e.currentTarget.tagName)
 }
 
 divsList.forEach(function(el) {
     el.addEventListener('click', addClass);
 });
 
-bodyEl.addEventListener('click', function(e) {
-    console.log(this.tagName);
-    if(this.tagName === 'BODY') {
+document.body.addEventListener('click', function(e) {
+    if(e.target.tagName === 'BODY') {
         divsList.forEach(function(el) {
             el.classList.remove('clicked');
         })
