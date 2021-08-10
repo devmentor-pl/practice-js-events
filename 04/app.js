@@ -1,13 +1,10 @@
 const divsList = document.querySelectorAll('div');
 
-const addClass = function(e) {
-    console.log(e);
-    this.classList.add('clicked');
-    console.log(e.currentTarget.tagName)
-}
 
 divsList.forEach(function(el) {
-    el.addEventListener('click', addClass);
+    el.addEventListener('click', () => setTimeout(function() {
+        el.classList.add('clicked');
+    }, el.dataset.time));
 });
 
 document.body.addEventListener('click', function(e) {
@@ -16,4 +13,4 @@ document.body.addEventListener('click', function(e) {
             el.classList.remove('clicked');
         })
     }
-})
+});
