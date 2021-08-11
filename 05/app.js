@@ -8,7 +8,15 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
+const pList = document.querySelectorAll('p');
+pList.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        if(e.target.tagName === "A" && e.target.href.includes('/dolor.html')) {
+            stats.links['/dolor.html'] += 1;
+        }
+    })
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
