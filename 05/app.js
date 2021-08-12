@@ -13,9 +13,9 @@ pList.forEach(function(item) {
     item.addEventListener('click', function(e) {
         e.preventDefault();
         if(e.target.tagName === "A" && e.target.href.includes('/dolor.html')) {
-            stats.links['/dolor.html'] += 1;
-        } else if(e.target.closest("p")) {
-            console.log(stats.paragraphs[`${e.target.dataset.id}`]);
+            stats.links[e.target.getAttribute('href')] += 1;
+        } else if(e.target.tagName === "P") {
+            stats.paragraphs[e.target.dataset.id] += 1;
         }
     })
 })
