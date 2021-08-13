@@ -14,8 +14,15 @@ pList.forEach(function(item) {
         e.preventDefault();
         if(e.target.tagName === "A" && e.target.href.includes('/dolor.html')) {
             stats.links[e.target.getAttribute('href')] += 1;
+            console.log(stats);
         } else if(e.target.tagName === "P") {
-            stats.paragraphs[e.target.dataset.id] += 1;
+            const key = e.target.dataset.id;
+            if(typeof stats.paragraphs[key] !== "undefined") {
+                stats.paragraphs[key] += 1;
+            } 
+            else if(typeof stats.paragraphs[key] === "undefined") {
+                stats.paragraphs[key] = {key: 0};
+            }
         }
     })
 })
