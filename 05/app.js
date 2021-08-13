@@ -21,7 +21,8 @@ pList.forEach(function(item) {
                 stats.paragraphs[key] += 1;
             } 
             else if(typeof stats.paragraphs[key] === "undefined") {
-                stats.paragraphs[key] = {key: 0};
+                stats.paragraphs[key] = 0;
+                console.log(stats);
             }
         }
     })
