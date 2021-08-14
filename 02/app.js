@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('wskaźnik myszy opuścił element');
     }
 
-    divEl.addEventListener('mouseover', mouseOverElement);
-    divEl.addEventListener('mouseleave', mouseLeavesElement);
+    if(divEl) {
+        divEl.addEventListener('mouseover', mouseOverElement);
+        divEl.addEventListener('mouseleave', mouseLeavesElement);
+    }
 })
 
 
