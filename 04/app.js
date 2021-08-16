@@ -7,15 +7,9 @@ const removeClass = function (arr, className) {
 }
 
 const addClassName = function (e) {
-    if (e.target.className !== 'child') {
+    setTimeout(() => {
         this.classList.add('clicked');
-        e.stopPropagation();
-    } else {
-        removeClass(divsList, 'clicked');
-        setTimeout(() => {
-            this.classList.add('clicked');
-        }, this.dataset.time);
-    }
+    }, this.dataset.time);
 }
 
 const removeClassBodyClick = function (e) {
