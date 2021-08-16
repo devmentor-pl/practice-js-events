@@ -8,7 +8,25 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
+const pList = document.querySelectorAll('p');
+pList.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        if(e.target.tagName === "A" && e.target.href.includes('/dolor.html')) {
+            stats.links[e.target.getAttribute('href')] += 1;
+            console.log(stats);
+        } else if(e.target.tagName === "P") {
+            const key = e.target.dataset.id;
+            if(typeof stats.paragraphs[key] !== "undefined") {
+                stats.paragraphs[key] += 1;
+            } 
+            else if(typeof stats.paragraphs[key] === "undefined") {
+                stats.paragraphs[key] = 1;
+                console.log(stats);
+            }
+        }
+    })
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
