@@ -18,7 +18,7 @@ const body = document.body;
 console.log(body);
 
 body.addEventListener("click", function (e) {
-  if (e.target == document.body) {
+  if (e.target === document.body) {
     divsList.forEach(function (el) {
       el.classList.remove("clicked");
     });

@@ -12,9 +12,9 @@ const stats = {
 const paragraphs = document.querySelectorAll("p");
 paragraphs.forEach(function (el) {
   el.addEventListener("click", function (e) {
-    tag = e.target.tagName;
-    id = e.target.dataset.id;
-    href = e.target.getAttribute("href");
+    let tag = e.target.tagName;
+    let id = e.target.dataset.id;
+    let href = e.target.getAttribute("href");
     if (tag == "P") {
       incrementParagraph(id);
     } else if (tag == "A") {

@@ -4,4 +4,6 @@ function btnClick() {
   console.log("clicked");
 }
 
-button.addEventListener("click", btnClick);
+if (button !== null) {
+  button.addEventListener("click", btnClick);
+}

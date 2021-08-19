@@ -1,7 +1,9 @@
 function init() {
   const div = document.querySelector("div");
-  div.addEventListener("mousemove", mouseMove);
-  div.addEventListener("mouseleave", mouseLeave);
+  if (div !== null) {
+    div.addEventListener("mousemove", mouseMove);
+    div.addEventListener("mouseleave", mouseLeave);
+  }
 }
 
 function mouseMove() {
