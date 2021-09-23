@@ -9,26 +9,21 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-let counterText = 0;
 const paragraphsArr = document.querySelectorAll('.text');
 paragraphsArr.forEach((el) => {
-	// console.log(el);
-	el.addEventListener('click', () => {
-		counterText++;
-		stats.paragraphs['p1'] = counterText;
+	stats.paragraphs[el.getAttribute('data-id')] = 0;
+	el.addEventListener('click', (e) => {
+		stats.paragraphs[el.getAttribute('data-id')] += 1;
 	});
 });
 
-let counterLinks = 0;
 const linksArr = document.querySelectorAll('a[href].link');
 linksArr.forEach((el) => {
-	if (el.getAttribute('href') == Object.keys(stats.links)) {
-		el.addEventListener('click', (e) => {
-			e.preventDefault();
-			counterLinks++;
-			stats.links['/dolor.html'] = counterLinks;
-		});
-	}
+	stats.links[el.getAttribute('href')] = 0;
+	el.addEventListener('click', (e) => {
+		e.preventDefault();
+		stats.links[el.getAttribute('href')] += 1;
+	});
 });
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
