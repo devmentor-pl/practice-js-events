@@ -1,9 +1,13 @@
 const btnsArr = document.querySelectorAll('button');
-const changeText = function (e) {
-	this.innerText = 'clicked';
-	console.log('clicked');
-};
 
 btnsArr.forEach((el) => {
-	el.addEventListener('click', changeText, { once: true });
+	el.addEventListener(
+		'click',
+		function clickFunction() {
+			this.innerText = 'clicked';
+			console.log('clicked');
+			el.removeEventListener('click', clickFunction, false);
+		},
+		false
+	);
 });
