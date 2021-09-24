@@ -13,7 +13,11 @@ const paragraphsArr = document.querySelectorAll('.text');
 paragraphsArr.forEach((el) => {
 	stats.paragraphs[el.getAttribute('data-id')] = 0;
 	el.addEventListener('click', (e) => {
-		stats.paragraphs[el.getAttribute('data-id')] += 1;
+		if (el.getAttribute('data-id')) {
+			stats.paragraphs[el.getAttribute('data-id')] += 1;
+		} else {
+			console.log('Provided attribute does not exist.');
+		}
 	});
 });
 
@@ -22,7 +26,11 @@ linksArr.forEach((el) => {
 	stats.links[el.getAttribute('href')] = 0;
 	el.addEventListener('click', (e) => {
 		e.preventDefault();
-		stats.links[el.getAttribute('href')] += 1;
+		if (el.getAttribute('href')) {
+			stats.links[el.getAttribute('href')] += 1;
+		} else {
+			console.log('Provided attribute does not exist.');
+		}
 	});
 });
 
