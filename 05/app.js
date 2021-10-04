@@ -14,15 +14,22 @@ const stats = {
 const linkElement = document.querySelectorAll('.link');
 const paragraphElement = document.querySelectorAll('.text');
 let numberP1 = 1;
-let clickParagaphCounter = 1;
+let linkCounter = 1;
 let counter = 1;
 
-const clickCounter = function(){
+const clickCounter = function(el){
 
-    if (this.dataset.id === 'p1'){
-        stats.paragraphs.p1 = numberP1++;
+    el.preventDefault();
+    // console.log(stats.paragraphs[this.dataset.id]);
+    console.log(this.dataset.id);
+
+    if (stats.paragraphs[this.dataset.id] !== 'undefined'){
+        stats.links["/dolor.html"] = counter++;
+        if(this.dataset.id === 'p1') {
+            stats.paragraphs.p1 = numberP1++;
+        }
     }
-    console.log('Paragraf naciśnięty: ' + clickParagaphCounter++);
+    // console.log('Paragraf naciśnięty: ' + clickParagaphCounter++);
 }
 
 // console.log(stats.paragraphs.p1);
@@ -30,33 +37,16 @@ const clickCounter = function(){
 
 
 for (let i=0; i<linkElement.length; i++){
-
-    let number = 1;
-
-    if (linkElement[i].href !== null) {
-        let attribute = linkElement[i].getAttribute('href');
         
-        linkElement[i].addEventListener('click', function(el) {
-            
-            if(attribute === '/dolor.html') {
-                el.preventDefault();
-                
-                // console.log(counter);
-                // counter++;
-                stats.links["/dolor.html"] = counter++;
-            }
-            else {
-                el.preventDefault();
-                console.log('Atrybut: ' + attribute + ' naciśnięty po raz ' + number++);
-            }
-        });
-    }
-}                            
-
+    linkElement[i].addEventListener('click', function(el) {
+        el.preventDefault();
+        console.log('Link naciśnięty ' + linkCounter++ + ' raz');
+    });
+}
 paragraphElement.forEach(function(item){
 
     if(item.dataset !==null) {
-        item.addEventListener('click', clickCounter, true);
+        item.addEventListener('click', clickCounter);
     }
 });
 

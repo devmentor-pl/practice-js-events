@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const divElements = document.querySelectorAll('div');
     const body = document.querySelector('body');
-    const addClickClass = function(el){
+    const addClickClass = function(){
         
         let element = this;
         let dataValue = this.dataset.time

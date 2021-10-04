@@ -13,10 +13,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
     }
 
-    if(btns) {
-        btns.forEach(function(item){
-            item.addEventListener('click', clickEvent);
-        })
-    }
+    btns.forEach(function(item){
+        item.addEventListener('click', clickEvent);
+    });
 
 })

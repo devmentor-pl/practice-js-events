@@ -7,19 +7,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
         let xPosition = el.clientX;
         let yPosition = el.clientY;
-        // if (xPosition && yPosition > 0) {
-            p.innerText= ' Pozycja kursora to: względem okna przeglądarki: X: ' + xPosition + ' i Y: ' + yPosition;
-        // }
-        // else {
-        //     console.log('d');
-        // }
+
+        p.innerText= ' Pozycja kursora to względem okna przeglądarki: X: ' + xPosition + ' i Y: ' + yPosition;
     }
 
-    const mouseLeave = function(el) {
+    const mouseLeave = function() {
         p.innerText=' Mysz opuściła pole';
     }
 
-    if(divElement){
+    
+
+    if(divElement && p){
         divElement.addEventListener('mousemove', mouseMove);
         divElement.addEventListener('mouseleave', mouseLeave);
     }
