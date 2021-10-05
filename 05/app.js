@@ -33,19 +33,18 @@ const pElement = document.querySelectorAll('p');
                 stats.paragraphs[id]++;
                 
             }
-
+ 
             else {
 
                 const href = ev.target.getAttribute('href');
+
                 if (typeof stats.links[href] === 'undefined'){
                     console.log('aund');
                     stats.links[href]= 0;
                 }
-                stats.links[href]++;
-                    
+                stats.links[href]++;         
             }
-            // console.log(ev.target.tagName);
-        })
+        });
     });
 
 
