@@ -9,46 +9,87 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-//na spotkanku mam kilka pytań odośnie tego zadania :). Podejrzewam ze i tak do poprawy :<
 
-const linkElement = document.querySelectorAll('.link');
-const paragraphElement = document.querySelectorAll('.text');
-let numberP1 = 1;
-let linkCounter = 1;
-let counter = 1;
+const pElement = document.querySelectorAll('p');
 
-const clickCounter = function(el){
+    pElement.forEach(el =>{
+        console.log(el);
+        el.addEventListener('click', function(ev){
 
-    el.preventDefault();
-    // console.log(stats.paragraphs[this.dataset.id]);
-    console.log(this.dataset.id);
+            ev.preventDefault();
 
-    if (stats.paragraphs[this.dataset.id] !== 'undefined'){
-        stats.links["/dolor.html"] = counter++;
-        if(this.dataset.id === 'p1') {
-            stats.paragraphs.p1 = numberP1++;
-        }
-    }
+           
+            if (ev.target.tagName === 'P') {
+
+                const id = ev.target.dataset.id;
+                console.log('p');
+                console.log(id);
+
+                if(typeof stats.paragraphs[id] === 'undefined') {
+                    console.log('hm');
+                    stats.paragraphs[id] =0;
+                }
+
+                stats.paragraphs[id]++;
+                
+            }
+
+            else {
+
+                const href = ev.target.getAttribute('href');
+                if (typeof stats.links[href] === 'undefined'){
+                    console.log('aund');
+                    stats.links[href]= 0;
+                }
+                stats.links[href]++;
+                    
+            }
+            // console.log(ev.target.tagName);
+        })
+    });
+
+
+
+
+
+// const linkElement = document.querySelectorAll('.link');
+// const paragraphElement = document.querySelectorAll('.text');
+// let numberP1 = 1;
+// let linkCounter = 1;
+// let counter = 1;
+
+// const clickCounter = function(el){
+
+//     el.preventDefault();
+//     // console.log(stats.paragraphs[this.dataset.id]);
+//     console.log(this.dataset.id);
+
+//     if (stats.paragraphs[this.dataset.id] !== 'undefined'){
+//         stats.links["/dolor.html"] = counter++;
+//         if(this.dataset.id === 'p1') {
+//             stats.paragraphs.p1 = numberP1++;
+//         }
+//     }
     // console.log('Paragraf naciśnięty: ' + clickParagaphCounter++);
-}
+// }
 
 // console.log(stats.paragraphs.p1);
 // console.log(stats.links["/dolor.html"]);
 
 
-for (let i=0; i<linkElement.length; i++){
+// for (let i=0; i<linkElement.length; i++){
         
-    linkElement[i].addEventListener('click', function(el) {
-        el.preventDefault();
-        console.log('Link naciśnięty ' + linkCounter++ + ' raz');
-    });
-}
-paragraphElement.forEach(function(item){
+//     linkElement[i].addEventListener('click', function(el) {
+//         el.preventDefault();
+//         console.log('Link naciśnięty ' + linkCounter++ + ' raz');
+//     });
+// }
+// paragraphElement.forEach(function(item){
 
-    if(item.dataset !==null) {
-        item.addEventListener('click', clickCounter);
-    }
-});
+//     if(item.dataset !==null) {
+//         item.addEventListener('click', clickCounter);
+//     }
+// });
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
