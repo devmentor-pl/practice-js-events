@@ -8,8 +8,17 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const dataIdCollection = [...document.querySelectorAll('[data-id]')]
+function countingClick(e) {
+    e.preventDefault()
+    if (e.target.dataset.id) {
+stats.paragraphs.p1++;
+    } else if (e.target.innerHTML === 'dolor') {
+      stats.links['/dolor.html']++;
+    }
+}
 
-
+dataIdCollection.forEach(id => id.addEventListener('click', countingClick))
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
