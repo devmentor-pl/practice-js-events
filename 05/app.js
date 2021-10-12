@@ -8,6 +8,21 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const pList = document.querySelectorAll('p');
+
+pList.forEach(par => {
+    par.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        if (e.target.tagName === 'A') {
+            stats.links[e.target.pathname] = !stats.links[e.target.pathname] ? stats.links[e.target.pathname] = 1 : stats.links[e.target.pathname] = stats.links[e.target.pathname] + 1;
+
+            stats.paragraphs[e.target.parentElement.dataset.id] = !stats.paragraphs[e.target.parentElement.dataset.id] ? stats.paragraphs[e.target.parentElement.dataset.id] = 1 : stats.paragraphs[e.target.parentElement.dataset.id] + 1; 
+        } else {
+            stats.paragraphs[e.target.dataset.id] = !stats.paragraphs[e.target.dataset.id] ? stats.paragraphs[e.target.dataset.id] = 1 : stats.paragraphs[e.target.dataset.id] + 1;
+        }
+    })
+})
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
@@ -49,5 +64,5 @@ document.addEventListener('click', function(e) {
     }
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
-document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
+document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render')); 
 
