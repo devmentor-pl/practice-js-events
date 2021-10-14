@@ -36,7 +36,6 @@ pList.forEach(function(item){
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
-
 const statsElement = document.querySelector('.stats');
 const fireCustomEvent = function(element, name) {
     console.log(element, '=>', name);

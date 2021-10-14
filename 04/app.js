@@ -11,7 +11,6 @@ function addClass(e){
     }, self.dataset.time)
 }  
 
-
 const body = document.querySelector('body');
 
 const removeClass = function(e){

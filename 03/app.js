@@ -3,7 +3,6 @@ const afterClick = function(){
     this.innerText = 'clicked';
     console.log('clicked');
     this.removeEventListener('click', afterClick);
-
 }
 
 if(buttons){

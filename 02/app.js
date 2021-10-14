@@ -11,6 +11,6 @@ const init = function(){
 if(div) {
     div.addEventListener('mouseover', moveOver)
     div.addEventListener('mouseleave', onLeave)
-}
-}
+}}
+
 document.addEventListener('DOMContentLoaded', init)
