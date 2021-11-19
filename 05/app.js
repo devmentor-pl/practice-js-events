@@ -16,11 +16,14 @@ let valueLink = 0;
 
 const clickCounter = function (e) {
   e.preventDefault();
-  if (this.getAttribute("data-id") === "p1") {
+  if (e.target.tagName === "P" && e.target.getAttribute("data-id") === "p1") {
     stats["paragraphs"]["p1"] = value;
     value++;
   }
-  if (aElement.getAttribute("href") === "/dolor.html") {
+  if (
+    e.target.tagName === "A" &&
+    e.target.getAttribute("href") === "/dolor.html"
+  ) {
     stats["links"]["/dolor.html"] = valueLink;
     valueLink++;
   }

@@ -5,7 +5,7 @@ const oneClickEvent = function () {
   counter++;
   this.innerText = "clicked";
   console.log("clicked");
-  if ((counter = 1)) {
+  if (counter === 1) {
     this.removeEventListener("click", oneClickEvent);
   }
 };
