@@ -11,26 +11,40 @@ const stats = {
 
 const pElements = document.querySelectorAll("p");
 const aElement = document.querySelector("a");
-let value = 0;
-let valueLink = 0;
 
 const clickCounter = function (e) {
   e.preventDefault();
-  if (e.target.tagName === "P" && e.target.getAttribute("data-id") === "p1") {
-    stats["paragraphs"]["p1"] = value;
-    value++;
+  const attr = e.target.getAttribute("data-id");
+  const linkHref = e.target.getAttribute("href");
+
+  if (typeof stats.paragraphs[attr] == "null") {
+    console.log("null");
+  }
+  if (typeof stats.links[linkHref] === "null") {
+    stats.links[linkHref] = "";
+  }
+  if (
+    e.target.tagName === "P" &&
+    typeof stats.paragraphs[attr] === "undefined"
+  ) {
+    stats.paragraphs[attr] = 1;
   }
   if (
     e.target.tagName === "A" &&
-    e.target.getAttribute("href") === "/dolor.html"
+    typeof stats.links[linkHref] === "undefined"
   ) {
-    stats["links"]["/dolor.html"] = valueLink;
-    valueLink++;
+    stats.links[linkHref] = 1;
+  }
+  if (typeof stats.paragraphs[attr] !== "undefined") {
+    stats.paragraphs[attr]++;
+  }
+  if (typeof stats.links[linkHref] !== "undefined") {
+    stats.links[linkHref]++;
   }
 };
 
 pElements.forEach(function (item) {
-  item.addEventListener("click", clickCounter, false);
+  item.addEventListener("click", clickCounter, true);
 });
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
