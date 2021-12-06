@@ -1,6 +1,6 @@
 const btn = document.querySelector('button');
-function showText(){
+const showText = function(){
     console.log('button was clicked');
 }
 
-btn && btn.addEventListener('click',showText);
+btn && btn.addEventListener('click', showText);
