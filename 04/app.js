@@ -1,9 +1,9 @@
 const divlist = document.querySelectorAll('div');
 const bodyE = document.querySelector('body');
 
-
-function addClass(){
-    this.classList.add('clicked');
+function addClass(temp){
+    console.log(temp);
+    temp.classList.add('clicked');
 }
 
 const removeClassFromDiv = function(e){
@@ -15,7 +15,12 @@ const removeClassFromDiv = function(e){
 }
 
 divlist.forEach(function(element){
-    element.addEventListener('click', addClass);
+    const timeList = element.dataset.time;
+    element.addEventListener('click',function(){
+        const temp = this;
+        setTimeout(addClass,timeList,temp);
+    });
 })
 
 bodyE.addEventListener('click', removeClassFromDiv);
+
