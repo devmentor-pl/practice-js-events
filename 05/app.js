@@ -9,6 +9,36 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pList = document.querySelectorAll('p');
+const aList = document.querySelectorAll('a');
+let counter=0;
+
+
+function updateDisplay(counter) {
+    stats.paragraphs.p1 = counter;
+}
+
+pList.forEach(function(element){
+    element.addEventListener('click', function(e){
+        if(e.target.dataset.id === "p1"){
+            counter ++;
+            updateDisplay(counter);
+        }
+    })
+})
+
+const linkStop = function(e){
+    e.preventDefault();
+    const getHref = this.getAttribute('href');
+    if(getHref === '/dolor.html'){
+        counter ++;
+        stats.links['/dolor.html'] = counter;
+    }
+}
+
+aList.forEach(function(element){
+    element.addEventListener('click',linkStop);
+    })
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -29,7 +59,7 @@ const renderStats = function(data, element) {
         html += '<ul>';
 
         for(let key in data[elementType]) {
-            
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';
