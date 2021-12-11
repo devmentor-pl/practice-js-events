@@ -14,7 +14,7 @@ const aList = document.querySelectorAll('a');
 let counter=0;
 
 
-function updateDisplay(counter) {
+function updateDisplay(counter) { //wydaje mi sie ze to mozna zrobić lepiej, próbowałam z dodatkową f-cja do zmiany danych w obiekcie ale nietety, moze mi podpowiesz gdzie robie blad
     stats.paragraphs.p1 = counter;
 }
 
