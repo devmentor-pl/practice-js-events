@@ -11,28 +11,29 @@ const stats = {
 
 const pList = document.querySelectorAll('p');
 const aList = document.querySelectorAll('a');
-let counter=0;
-
-
-function updateDisplay(counter) { //wydaje mi sie ze to mozna zrobić lepiej, próbowałam z dodatkową f-cja do zmiany danych w obiekcie ale nietety, moze mi podpowiesz gdzie robie blad
-    stats.paragraphs.p1 = counter;
-}
 
 pList.forEach(function(element){
     element.addEventListener('click', function(e){
-        if(e.target.dataset.id === "p1"){
-            counter ++;
-            updateDisplay(counter);
+        if(e.target.tagName === 'P'){
+            const id = e.target.dataset.id;
+            // console.log(id);
+            if(!stats.paragraphs[id]){
+                stats.paragraphs[id] = 0;
+            }
+            stats.paragraphs[id]++;
         }
     })
 })
 
 const linkStop = function(e){
     e.preventDefault();
-    const getHref = this.getAttribute('href');
-    if(getHref === '/dolor.html'){
-        counter ++;
-        stats.links['/dolor.html'] = counter;
+    if(e.target.tagName === 'A'){
+        const getHref = this.getAttribute('href');
+        // console.log(getHref);
+        if(!stats.links[getHref]){
+            stats.links[getHref] = 0;
+        }
+        stats.links[getHref]++;
     }
 }
 
