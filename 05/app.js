@@ -9,19 +9,41 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const Listp = document.querySelectorAll("p");
+const Listlink = document.querySelectorAll("[href = '/dolor.html']");
+
+const countLinks = function(e) {
+    e.preventDefault();
+    stats.links["/dolor.html"]+=1;
+}
+    
+const countClicks = function(e) {
+    e.preventDefault();
+    if(e.target === e.currentTarget) {
+        stats.paragraphs.p1+=1;
+        }
+}
+
+Listp.forEach(function(p) {
+    p.addEventListener('click', countClicks)
+});
+
+Listlink.forEach(function(link) {
+    link.addEventListener('click', countLinks);
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
 const fireCustomEvent = function(element, name) {
     console.log(element, '=>', name);
-
     const event = new CustomEvent(name, {
         bubbles: true,
     });
 
     element.dispatchEvent( event );
 }
+
 
 const renderStats = function(data, element) {
     let html = '';
@@ -40,6 +62,7 @@ const renderStats = function(data, element) {
 
     element.innerHTML = html;
 }
+
 
 
 document.addEventListener('click', function(e) {
