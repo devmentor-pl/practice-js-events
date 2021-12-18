@@ -16,30 +16,20 @@ pList.forEach(function(element){
     element.addEventListener('click', function(e){
         if(e.target.tagName === 'P'){
             const id = e.target.dataset.id;
-            // console.log(id);
             if(!stats.paragraphs[id]){
                 stats.paragraphs[id] = 0;
             }
             stats.paragraphs[id]++;
-        }
+        } else if(e.target.tagName === 'A') {
+            e.preventDefault();
+            const getHref = e.target.getAttribute('href');
+            if(!stats.links[getHref]){
+                stats.links[getHref] = 0;
+           }
+           stats.links[getHref]++;
+       }
     })
 })
-
-const linkStop = function(e){
-    e.preventDefault();
-    if(e.target.tagName === 'A'){
-        const getHref = this.getAttribute('href');
-        // console.log(getHref);
-        if(!stats.links[getHref]){
-            stats.links[getHref] = 0;
-        }
-        stats.links[getHref]++;
-    }
-}
-
-aList.forEach(function(element){
-    element.addEventListener('click',linkStop);
-    })
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
