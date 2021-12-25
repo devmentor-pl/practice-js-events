@@ -9,28 +9,33 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const ListItems = document.querySelectorAll('p, a');
 const Listp = document.querySelectorAll("p");
-const Listlink = document.querySelectorAll("[href = '/dolor.html']");
+// const Listlink = document.querySelectorAll("a");
 
-const countLinks = function(e) {
-    e.preventDefault();
-    stats.links["/dolor.html"]+=1;
-}
-    
+
 const countClicks = function(e) {
-    e.preventDefault();
-    if(e.target === e.currentTarget) {
-        stats.paragraphs.p1+=1;
+    e.preventDefault()
+    const getName = e.target.tagName;
+    if(getName === 'A') {
+        const index = e.target.getAttribute('href');
+            if (typeof stats.links[index] === 'undefined') {
+            stats.links[index] = 0;    
+    }
+            stats.links[index]+=1
+    }
+    if(getName === 'P'){
+        const index = e.target.getAttribute('data-id');
+            if (typeof stats.paragraphs[index] === 'undefined') {
+            stats.paragraphs[index] = 0;    
         }
-}
+            stats.paragraphs[index]+=1}
+    }
 
 Listp.forEach(function(p) {
     p.addEventListener('click', countClicks)
 });
 
-Listlink.forEach(function(link) {
-    link.addEventListener('click', countLinks);
-});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 

@@ -21,7 +21,7 @@ divList.forEach( function(div) {
 });
 
 if(body) {
-body.addEventListener('click', removeClass);
+    body.addEventListener('click', removeClass);
 }
 
 
