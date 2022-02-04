@@ -72,7 +72,6 @@ const renderStats = function(data, element) {
 
 document.addEventListener('click', function(e) {
     const tagName = e.target.tagName;
-    
     if(tagName.includes('P') || tagName.includes('A')) {
         fireCustomEvent(statsElement, 'render');
     }
