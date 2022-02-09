@@ -14,23 +14,19 @@ const counter = function(e) {
     e.preventDefault();
     const link = e.target.getAttribute("href");
     const id = e.target.dataset.id;
-
-    if(link === "/dolor.html") {
-        stats.links['/dolor.html'] ++; 
-    } else if (link === "/consectetur.html"){
-        if(stats.links['/consectetur.html']) {
-            stats.links['/consectetur.html'] ++;
+    
+    if(id) {
+        if(stats.paragraphs[id] !== undefined) {
+            stats.paragraphs[id]++;
         } else {
-            stats.links['/consectetur.html'] = 1;
-        }
-    } else if (link === "/adipisicing-elite.html"){
-        if(stats.links['/adipisicing-elite.html']) {
-            stats.links['/adipisicing-elite.html'] ++;
+            stats.paragraphs[id] = 0;
+        } 
+    } else if (link) {
+        if(stats.links[link] !== undefined) {
+            stats.links[link]++;
         } else {
-            stats.links['/adipisicing-elite.html'] = 1;
-        }
-    } else if (id) {
-        stats.paragraphs.p1 ++;
+            stats.links[link] = 0;
+        } 
     }
 }
 
@@ -78,4 +74,3 @@ document.addEventListener('click', function(e) {
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
-

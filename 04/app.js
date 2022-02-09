@@ -4,11 +4,11 @@ const bodyElement = document.querySelector('body');
 const addClass = function() {
     const thisLink = this;
     const atr = parseInt(this.dataset.time);
-    const ft = function(){
+    const assignClass = function(){
         thisLink.classList.add('clicked')
     }
 
-    setTimeout(ft, atr);
+    setTimeout(assignClass, atr);
 }
 
 divElementsList.forEach(function(element) {
