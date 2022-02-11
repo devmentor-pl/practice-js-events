@@ -16,16 +16,16 @@ const counter = function(e) {
     const id = e.target.dataset.id;
     
     if(id) {
-        if(stats.paragraphs[id] !== undefined) {
-            stats.paragraphs[id]++;
+        if(typeof stats.paragraphs[id] === 'undefined') {
+            stats.paragraphs[id] = 1;
         } else {
-            stats.paragraphs[id] = 0;
+            stats.paragraphs[id]++;
         } 
     } else if (link) {
-        if(stats.links[link] !== undefined) {
-            stats.links[link]++;
+        if(typeof stats.links[link] === 'undefined') {
+            stats.links[link] = 1;
         } else {
-            stats.links[link] = 0;
+            stats.links[link]++;
         } 
     }
 }
