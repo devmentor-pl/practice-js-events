@@ -9,6 +9,27 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const paragraphsList = document.querySelectorAll('p');
+
+function updateClicks(obj, key) {
+    if(typeof obj[key] === 'undefined') {
+        obj[key] = 1  
+    } else { obj[key]++
+        }
+}
+const getClicks = function (e) {
+    const currEl = e.target;
+    if (currEl.getAttribute('href')) {
+       e.preventDefault()
+       updateClicks(stats.links, currEl.getAttribute('href'))
+       updateClicks(stats.paragraphs, this.dataset.id)
+    } else if (currEl.dataset.id) {
+       updateClicks(stats.paragraphs, currEl.dataset.id)
+    }
+}
+
+paragraphsList.forEach(p => p.addEventListener('click', getClicks))
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -50,4 +71,3 @@ document.addEventListener('click', function(e) {
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
-
