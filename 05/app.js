@@ -17,7 +17,7 @@ function updateClicks(obj, key) {
     } else { obj[key]++
         }
 }
-const getClicks = function (e) {
+const counterClick = function (e) {
     const currEl = e.target;
     if (currEl.getAttribute('href')) {
        e.preventDefault()
@@ -28,7 +28,7 @@ const getClicks = function (e) {
     }
 }
 
-paragraphsList.forEach(p => p.addEventListener('click', getClicks))
+paragraphsList.forEach(p => p.addEventListener('click', counterClick))
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
