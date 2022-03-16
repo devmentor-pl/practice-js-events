@@ -9,6 +9,62 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pList = document.querySelectorAll('p');
+
+const isInStats = function(data, key){
+
+    if (typeof data[key] === 'undefined'){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+const increaseQty = function(data, key){
+    
+    data[key]++;
+}
+
+const newItemToStats = function(data, key){
+
+    data[key]=1;
+    
+}
+
+const  updateStats = function (data,key){
+    
+    if (isInStats(data,key)) {
+        increaseQty(data, key);
+    }
+    else{        
+        newItemToStats(data,key);
+    }
+}
+
+const getHref = function(strHref){
+    
+    const indx = strHref.lastIndexOf('/');
+
+    return strHref.substr(indx,strHref.length);
+}
+
+const pClickEvent = function(data, e){
+        
+    updateStats(data.paragraphs,e.currentTarget.dataset.id);   
+
+    if (e.target !== e.currentTarget) {              
+        e.preventDefault();              
+        updateStats(data.links, getHref(e.target.href));
+    }        
+}
+
+
+pList.forEach(function(p){    
+    p.addEventListener('click', pClickEvent.bind(null,stats))  // tutaj też może troche na siłę "bind" ale chciałem poćwiczyć 
+});
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -48,6 +104,6 @@ document.addEventListener('click', function(e) {
         fireCustomEvent(statsElement, 'render');
     }
 });
+
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
-
