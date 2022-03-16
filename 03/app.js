@@ -4,11 +4,7 @@ console.log(btnsList);
 const handleClick = function() {   
     this.innerText = 'clicked';
     console.log('clicked');
-    btnsList.forEach(function(item){
-        if(item.innerText === 'clicked'){
-            item.removeEventListener('click', handleClick);       
-        }
-    });
+    this.removeEventListener('click', handleClick);       
 }
 
 btnsList.forEach(function(item){
