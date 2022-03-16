@@ -7,14 +7,12 @@ const addClass = function(e) {
 
     setTimeout(function() {            
             item.classList.add('clicked');
-        }
-            ,Number(item.dataset.time))
-    
-
+            }
+            ,Number(item.dataset.time))    
 }
 
 const removeClasses = function(list, name, e){    
-
+    
     if (e.target===e.currentTarget){
         list.forEach(function(el){el.classList.remove(name)});
     }
@@ -25,5 +23,5 @@ divList.forEach(function(element){
     element.addEventListener('click',addClass);
 })
 
-body.addEventListener('click',removeClasses.bind(this,divList,'clicked')); tutaj może trochę na siłę "bind" ale chciałem poćwiczyć 
+body.addEventListener('click',removeClasses.bind(this,divList,'clicked')); //tutaj może trochę na siłę "bind" ale chciałem poćwiczyć 
 
