@@ -6,15 +6,16 @@ const addClass = function(e) {
     const item = e.currentTarget;
 
     setTimeout(function() {            
-            item.classList.add('clicked');
-            }
-            ,Number(item.dataset.time))    
+                    item.classList.add('clicked');
+                }, Number(item.dataset.time)
+    )
 }
 
 const removeClasses = function(list, name, e){    
     
-    if (e.target===e.currentTarget){
-        list.forEach(function(el){el.classList.remove(name)});
+    if (e.target === e.currentTarget){
+        list.forEach(function(el){
+            el.classList.remove(name)});
     }
 }
 

@@ -1,25 +1,26 @@
 
 
-const eventMouseOut = function(){
-   
-    const text = 'Mouse has left div';
-    this.innerText=text;
-    console.log(text);
-}
+document.addEventListener('DOMContentLoaded',initApp);
 
-const getMousePos = function(e){
-    const text = `Mouse position x = ${e.pageX}, y = ${e.pageY}`
-    this.innerText=text;
-    console.log(text);
-}
-
-
-const initApp = function(){
+function initApp(){
     
     const el = document.querySelector('div');
 
-    el.addEventListener('mouseout', eventMouseOut);
-    el.addEventListener('mousemove', getMousePos);
+    if (el){
+        el.addEventListener('mouseout', eventMouseOut);
+        el.addEventListener('mousemove', getMousePos);
+    }
 }
 
-document.addEventListener('DOMContentLoaded',initApp);
+function eventMouseOut(e){
+   
+    const text = 'Mouse has left div';
+    this.innerText = text;
+    console.log(text);
+}
+
+function getMousePos(e){
+    const text = `Mouse position x = ${e.pageX}, y = ${e.pageY}`
+    this.innerText = text;
+    console.log(text);
+}

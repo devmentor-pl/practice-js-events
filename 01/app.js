@@ -4,5 +4,6 @@ const btnClick = function(){
     console.log('clicked');
 }
 
-
-btn.addEventListener('click',btnClick);
+if (btn) {
+     btn.addEventListener('click',btnClick);
+}

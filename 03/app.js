@@ -2,10 +2,10 @@ const buttonList = document.querySelectorAll('button');
 
 const clickButton = function(){
     
-    const text='clicked'
-    this.textContent=text;
+    const text = 'clicked'
+    this.textContent = text;
     console.log(text);
-    this.removeEventListener('click',clickButton);
+    this.removeEventListener('click', clickButton);
 
 }
 

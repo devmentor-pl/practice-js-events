@@ -42,28 +42,19 @@ const  updateStats = function (data,key){
     }
 }
 
-const getHref = function(strHref){
-    
-    const indx = strHref.lastIndexOf('/');
-
-    return strHref.substr(indx,strHref.length);
-}
-
 const pClickEvent = function(data, e){
         
     updateStats(data.paragraphs,e.currentTarget.dataset.id);   
 
     if (e.target !== e.currentTarget) {              
         e.preventDefault();              
-        updateStats(data.links, getHref(e.target.href));
+        updateStats(data.links, e.target.getAttribute('href'));
     }        
 }
-
 
 pList.forEach(function(p){    
     p.addEventListener('click', pClickEvent.bind(null,stats))  // tutaj też może troche na siłę "bind" ale chciałem poćwiczyć 
 });
-
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
@@ -96,7 +87,6 @@ const renderStats = function(data, element) {
 
     element.innerHTML = html;
 }
-
 
 document.addEventListener('click', function(e) {
     const tagName = e.target.tagName;
