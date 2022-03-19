@@ -9,13 +9,10 @@ const stats = {
 
 /* tutaj umieść swój kod */
 const pList = document.querySelectorAll('p');
-const linksList = document.querySelectorAll('.link');
-const textList = document.querySelectorAll('.text');
 
 const clickCounter = function(e) {
     const className = e.target.className;
     e.preventDefault();
-    console.log(className);
     if(className === 'text'){
         if(typeof stats.paragraphs[e.target.dataset.id] === 'undefined'){
             stats.paragraphs[e.target.dataset.id] = 1;
