@@ -8,6 +8,37 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const aList = document.querySelectorAll('a')
+const stopLink = function(e){
+    e.preventDefault();
+}
+aList.forEach(function(item){
+    item.addEventListener('click', stopLink)
+})
+
+const pList = document.querySelectorAll('p')
+
+const count = function(e){
+    if(e.target.tagName === 'P'){
+        let dataId = e.target.dataset.id;
+        if(typeof stats.paragraphs[dataId] === 'undefined'){
+            stats.paragraphs[dataId] = 0
+        }
+        stats.paragraphs[dataId]++;
+
+    } else if (e.target.tagName === 'A'){
+        let href = e.target.getAttribute('href');
+        if(typeof stats.links[href] === 'undefined'){
+            stats.links[href] = 0;
+        }
+
+        stats.links[href]++
+    }}
+
+pList.forEach(function(item){
+    item.addEventListener('click', count)
+})
+
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
