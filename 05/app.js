@@ -14,9 +14,9 @@ const countClick = function (e) {
     e.preventDefault();
     let id = this.dataset.id;
     let href = e.target.pathname;
-    paragraphs[id] === undefined ? paragraphs[id] = 1 : paragraphs[id]++;
+    typeof paragraphs[id] === 'undefined' ? paragraphs[id] = 1 : paragraphs[id]++;
     if (e.target.classList.contains('link')) {
-        links[href] === undefined ? links[href] = 1 : links[href]++;
+        typeof links[href] === 'undefined' ? links[href] = 1 : links[href]++;
     };
 };
 
