@@ -1,3 +1,5 @@
+console.log('ZAD 5')
+
 const stats = {
     paragraphs: {
         'p1': 0,
