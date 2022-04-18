@@ -5,7 +5,7 @@
     // add clicked class to div after click
     const addClickedClass = function (e) {
         setTimeout(() => {
-            e.target.classList.add('clicked')
+            this.classList.add('clicked')
         }, Number(this.getAttribute('data-time')))
     }
 
