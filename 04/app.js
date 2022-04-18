@@ -7,36 +7,44 @@ const grandparent = document.querySelector('.grandparent')
 if(child) {
     child.addEventListener('click', function(event) {
         console.log('child')
-        // console.log(this)
-        // console.log(e)
-        // console.log(e.currentTarget)
-        // console.log(e.target)
         event.stopPropagation()
-        this.classList.add('clicked')
+        const time = this.dataset.time
+        console.log(time)
+        const setColor = function() {
+            this.classList.add('clicked')
+        } 
+        const binded = setColor.bind(this)
+        setTimeout(binded, time)
     })
 }
 
 if(parent) {
     parent.addEventListener('click', function(event) {
         console.log('parent')
-        // console.log(this)
-        // console.log(e)
-        // console.log(e.currentTarget)
-        // console.log(e.target)
         event.stopPropagation()
-        event.target.classList.add('clicked')
+        const time = this.dataset.time
+        console.log(time)
+        const setColor = function() {
+            event.target.classList.add('clicked')
+        } 
+        const binded = setColor.bind(this)
+        setTimeout(binded, time)
+        
     })
 }
 
 if(grandparent) {
     grandparent.addEventListener('click', function(event) {
         console.log('grandparent')
-        // console.log(this)
-        // console.log(e)
-        // console.log(e.currentTarget)
-        // console.log(e.target)
         event.stopPropagation()
-        event.currentTarget.classList.add('clicked')
+        const time = this.dataset.time
+        console.log(time)
+        const setColor = function() {
+            event.target.classList.add('clicked')
+        } 
+        const binded = setColor.bind(this)
+        setTimeout(binded, time)
+        
     })
 }
 
