@@ -4,68 +4,53 @@ const child = document.querySelector('.child')
 const parent = document.querySelector('.parent')
 const grandparent = document.querySelector('.grandparent')
 
+const addColor = function(event) {
+    console.log('click ' + this.className)
+    event.stopPropagation()
+    const time = this.dataset.time
+    console.log('wait...' + time)
+    const setColor = function(div) {
+        console.log('add backgroundColor to ' + div.className)
+        div.classList.add('clicked')
+    } 
+    setTimeout(function() {
+        setColor(event.target)
+    }, time)
+    if(this.className === 'child') {
+        console.log('CLICK child and change color for each DIV')
+
+        const parent = this.parentElement
+        const parentTime = parent.dataset.time 
+        console.log(parent.className + ' ' + parentTime)
+        setTimeout(function() {
+            setColor(parent)
+        }, parentTime)
+
+        const grandparent = parent.parentElement
+        const grandparentTime = grandparent.dataset.time 
+        console.log(grandparent.className + ' ' + grandparentTime)
+        setTimeout(function() {
+            setColor(grandparent)
+        }, grandparentTime)
+    }
+}
 if(child) {
-    child.addEventListener('click', function(event) {
-        console.log('child')
-        event.stopPropagation()
-        const time = this.dataset.time
-        console.log(time)
-        const setColor = function() {
-            this.classList.add('clicked')
-        } 
-        const binded = setColor.bind(this)
-        setTimeout(binded, time)
-    })
+    child.addEventListener('click', addColor)
 }
 
 if(parent) {
-    parent.addEventListener('click', function(event) {
-        console.log('parent')
-        event.stopPropagation()
-        const time = this.dataset.time
-        console.log(time)
-        const setColor = function() {
-            event.target.classList.add('clicked')
-        } 
-        const binded = setColor.bind(this)
-        setTimeout(binded, time)
-        
-    })
+    parent.addEventListener('click', addColor)
 }
 
 if(grandparent) {
-    grandparent.addEventListener('click', function(event) {
-        console.log('grandparent')
-        event.stopPropagation()
-        const time = this.dataset.time
-        console.log(time)
-        const setColor = function() {
-            event.target.classList.add('clicked')
-        } 
-        const binded = setColor.bind(this)
-        setTimeout(binded, time)
-        
-    })
+    grandparent.addEventListener('click', addColor)
 }
 
 const body = document.body
 body.addEventListener('click', function(event) {
-    // console.log('click body')
-    // event.stopPropagation()
     child.classList.remove('clicked')
     parent.classList.remove('clicked')
     grandparent.classList.remove('clicked')
-})
-
-
-window.addEventListener('click', function() {
-    console.log('window')
-})
-document.addEventListener('click', function() {
-    console.log('document')
-})
-document.body.addEventListener('click', function() {
-    console.log('body')
 })
 
 
