@@ -12,6 +12,40 @@ const stats = {
 /* tutaj umieść swój kod */
 
 
+// A
+// -------------
+const links = document.querySelectorAll('.link')
+console.log(links)
+
+let countLink = 0
+const clickLink = function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log(this.tagName)
+    countLink++
+    console.log('count A', countLink)
+}
+
+links.forEach(link => {
+    link.addEventListener('click', clickLink)
+})
+
+// P
+// ---------------
+const paragraphs = document.querySelectorAll('.text')
+console.log(paragraphs)
+
+let countP = 0
+const clickP = function(e) {
+    e.preventDefault()
+    countP++
+    console.log('count P', countP)
+}
+
+paragraphs.forEach(p => {
+    p.addEventListener('click', clickP)
+})
+
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
