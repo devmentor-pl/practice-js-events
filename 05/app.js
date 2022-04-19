@@ -12,7 +12,7 @@ const stats = {
 /* tutaj umieść swój kod */
 
 
-// P 
+// P listen
 // ---------------
 const paragraphs = document.querySelectorAll('.text')
 console.log(paragraphs)
@@ -24,30 +24,49 @@ let countP = 0
 let countA = 0
 const clickP = function(e) {
     e.preventDefault()
-    // countP++
-
-    console.log(this.tagName)
     if(this === e.target) {
         countP++
+        const dataP = e.target.dataset.id
+        console.log(dataP)
+        statsAdd('paragraphs', dataP)
     }
     console.log(this === e.target)
-    console.log(e)
     console.log(e.target)
     links.forEach(link => {
         if(link === e.target) {
-            console.log('find')
             countA++
+            // const hrefA = link.href
+            const hrefA = link.getAttribute('href')
+            console.log(hrefA)
+            statsAdd('links', hrefA)
         }
     })
     console.log('count P', countP)
     console.log('count A', countA)
+
+    // statsAdd('paragraphs')
 }
 
 paragraphs.forEach(p => {
     p.addEventListener('click', clickP, false)
 })
 
-
+const statsAdd = function(element, subElement) {
+    console.log('stats')
+    for(let key in stats) {
+        console.log(key, stats[key])
+        if(element === key) {
+            console.log(stats[key])
+            // stats[key]['p1'] += 1
+            console.log(stats[key][subElement])
+            if(stats[key][subElement] === undefined) {
+                stats[key][subElement] = 1
+            } else {
+                stats[key][subElement] += 1
+            }
+        }
+    }
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
