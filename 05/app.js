@@ -9,23 +9,54 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const allParagraphs = document.querySelectorAll('p.text')
+// /*First solution */
 
-const clickCounter = function (e) {
-    e.preventDefault()
+// const allParagraphs = document.querySelectorAll('p.text')
 
-    if (this.getAttribute('data-id') === "p1") {
-        stats.paragraphs['p1'] += 1
-    }
+// const clickCounter = function (e) {
+//     e.preventDefault()
 
-    if (e.target.tagName === "A" && e.target.getAttribute('href') === '/dolor.html') {
-        stats.links['/dolor.html'] += 1
-    }
+//     if (this.getAttribute('data-id') === "p1") {
+//         stats.paragraphs['p1'] += 1
+//     }
+
+//     if (e.target.tagName === "A" && e.target.getAttribute('href') === '/dolor.html') {
+//         stats.links['/dolor.html'] += 1
+//     }
+// }
+
+// allParagraphs.forEach(paragraph => paragraph.addEventListener('click', clickCounter))
+
+// /*End of First solution */
+
+
+/*Second solution */
+
+let countClick = function () {
+
+    const allParagraphs = document.querySelectorAll('p')
+    const allLinks = document.querySelectorAll('a.link')
+
+    allParagraphs.forEach(paragraph => paragraph.addEventListener('click', function (e) {
+
+        if (this.getAttribute('data-id') === "p1") {
+            stats.paragraphs['p1'] += 1
+        }
+
+    }))
+
+    allLinks.forEach(link => link.addEventListener('click', function (e) {
+        e.preventDefault()
+
+        if (this.tagName === "A" && e.target.getAttribute('href') === '/dolor.html') {
+            stats.links['/dolor.html'] += 1
+        }
+
+    }))
+
 }
 
-allParagraphs.forEach(paragraph => {
-    paragraph.addEventListener('click', clickCounter)
-})
+/*End of Second solution */
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
