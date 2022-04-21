@@ -32,29 +32,26 @@ const stats = {
 
 /*Second solution */
 
-let countClick = function () {
 
-    const allParagraphs = document.querySelectorAll('p')
-    const allLinks = document.querySelectorAll('a.link')
+const allParagraphs = document.querySelectorAll('p')
+const allLinks = document.querySelectorAll('a.link')
 
-    allParagraphs.forEach(paragraph => paragraph.addEventListener('click', function (e) {
+allParagraphs.forEach(paragraph => paragraph.addEventListener('click', function (e) {
 
-        if (this.getAttribute('data-id') === "p1") {
-            stats.paragraphs['p1'] += 1
-        }
+    if (this.getAttribute('data-id') === "p1") {
+        stats.paragraphs['p1'] += 1
+    }
 
-    }))
+}))
 
-    allLinks.forEach(link => link.addEventListener('click', function (e) {
-        e.preventDefault()
+allLinks.forEach(link => link.addEventListener('click', function (e) {
+    e.preventDefault()
 
-        if (this.tagName === "A" && e.target.getAttribute('href') === '/dolor.html') {
-            stats.links['/dolor.html'] += 1
-        }
+    if (this.tagName === "A" && e.target.getAttribute('href') === '/dolor.html') {
+        stats.links['/dolor.html'] += 1
+    }
 
-    }))
-
-}
+}))
 
 /*End of Second solution */
 
