@@ -1,8 +1,8 @@
 const divs = document.querySelectorAll('div');
 const body = document.querySelector('body');
 
-const addClass = function () {
-    this.classList.add('clicked');
+const addClass = function (element) {
+    element.classList.add('clicked');
 }
 
 const removeClass = function (e) {
@@ -10,6 +10,7 @@ const removeClass = function (e) {
     if (e.target === e.currentTarget) {
 
         divs.forEach(function (div) {
+
             div.classList.remove('clicked');
         });
 
@@ -19,7 +20,11 @@ const removeClass = function (e) {
 
 if (divs.length !== 0) {
     divs.forEach(function (div) {
-        div.addEventListener('click', addClass);
+
+        div.addEventListener('click', function () {
+            setTimeout(addClass, div.dataset.time, this);
+
+        });
     });
 }
 
