@@ -2,7 +2,11 @@ const boxList = document.querySelectorAll('div')
 const body = document.querySelector('body')
 
 const boxClick = function(e) {
-    this.classList.add('clicked')
+    const time = this.dataset.time
+    const item = this
+    setTimeout(function() {
+        item.classList.add('clicked')
+    }, time)
 }
 
 const bodyClick = function(e) {
