@@ -9,6 +9,31 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pList = document.querySelectorAll('p')
+console.log(pList)
+
+const countClick = function(e) {
+    if(e.target.tagName === 'P') {
+        let dataId = e.target.dataset.id
+        if(typeof stats.paragraphs[dataId] === 'undefined') {
+            stats.paragraphs[dataId] = 0
+        }
+        stats.paragraphs[dataId]++
+    } else if(e.target.tagName === 'A') {
+        let href = e.target.getAttribute('href')
+        if(typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0
+        }
+        stats.links[href]++
+    }
+}
+
+pList.forEach(function(item) {
+    item.addEventListener('click', function(e) {
+        e.preventDefault()
+    })
+    item.addEventListener('click', countClick)
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
