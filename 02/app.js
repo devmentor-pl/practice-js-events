@@ -5,6 +5,8 @@ const mouseLeave = () => console.log('mouse leaves the div element');
 
 function init() {
   const divElement = document.querySelector('div');
-  divElement.addEventListener('mousemove', mouseOver);
-  divElement.addEventListener('mouseleave', mouseLeave);
+  if(divElement) {
+    divElement.addEventListener('mousemove', mouseOver);
+    divElement.addEventListener('mouseleave', mouseLeave);
+  }
 }
