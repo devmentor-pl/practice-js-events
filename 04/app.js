@@ -3,7 +3,6 @@ const bodyElement = document.querySelector('body');
 
 const addClassOnClick = function() {
 
-  console.log(this);
   const element = this;
   const timeValue = this.dataset.time;
 

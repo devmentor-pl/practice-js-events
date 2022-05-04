@@ -11,48 +11,53 @@ const stats = {
 
 const pElements = document.querySelectorAll('p');
 
-pElements.forEach(function(element) {
-    element.addEventListener('click', function(event) {
-        event.preventDefault();
-        if(event.target.tagName === "P") {
-            const id = event.target.dataset.id;
-            console.log(id);
-            if(typeof stats.paragraphs[id] === "undefined") {
-                stats.paragraphs[id] = 0;
-            }
-            stats.paragraphs[id]++;
-        } else if(event.target.tagName === "A") {
-            const attr = event.target.getAttribute('href');
-            console.log(attr);
-            if(typeof stats.links[attr] === "undefined") {
-                stats.links[attr] = 0;
-            }
-            stats.links[attr]++;
-        }
-    })
-})
+function attachHandler(element) {
+    element.addEventListener('click', clickHandler);
+}
+
+function elementStatsHandler(stat, attr) {
+    if (!stats[stat][attr]) {
+        stats[stat][attr] = 0;
+    }
+    stats[stat][attr]++;
+}
+
+function clickHandler(event) {
+    event.preventDefault();
+    if (event.target.tagName === "P") {
+        const attr = event.target.dataset.id;
+        elementStatsHandler('paragraphs', attr);
+        return;
+    } 
+    if (event.target.tagName === "A") {
+        const attr = event.target.getAttribute('href')
+        elementStatsHandler('links', attr);
+    }
+}
+
+pElements.forEach(attachHandler);
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
-const fireCustomEvent = function(element, name) {
+const fireCustomEvent = function (element, name) {
     console.log(element, '=>', name);
 
     const event = new CustomEvent(name, {
         bubbles: true,
     });
 
-    element.dispatchEvent( event );
+    element.dispatchEvent(event);
 }
 
-const renderStats = function(data, element) {
+const renderStats = function (data, element) {
     let html = '';
-    for(let elementType in data) {
+    for (let elementType in data) {
         html += '<ul>';
 
-        for(let key in data[elementType]) {
-            
+        for (let key in data[elementType]) {
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';
@@ -65,9 +70,9 @@ const renderStats = function(data, element) {
 }
 
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const tagName = e.target.tagName;
-    if(tagName.includes('P') || tagName.includes('A')) {
+    if (tagName.includes('P') || tagName.includes('A')) {
         fireCustomEvent(statsElement, 'render');
     }
 });
