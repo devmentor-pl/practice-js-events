@@ -22,8 +22,11 @@ function removeClass (e){
 elements.forEach(function(div){
     if(e.target ===e.currentTarget){
         div.classList.remove('clicked')
+       
     }
+
 })
+
 }
 
 elements.forEach(function(div){
