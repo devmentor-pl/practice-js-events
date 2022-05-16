@@ -4,20 +4,18 @@ divElements.forEach(function (item) {
 	item.addEventListener('click', addClass);
 });
 
-function addClass(e) {
-    let time = this.dataset.time;
+function addClass() {
+	let time = this.dataset.time;
 	const thisDiv = this;
 	setTimeout(function () {
-        thisDiv.classList.add('clicked');
+		thisDiv.classList.add('clicked');
 	}, time);
 }
 
-function removeClass(e) {
-    if (e.target === e.currenTarget) {
-        divElements.forEach(function (item) {
-            item.classList.remove('clicked');
+document.body.addEventListener('click', function (e) {
+	if (e.target === e.currentTarget) {
+		divElements.forEach(function (el) {
+			el.classList.remove('clicked');
 		});
 	}
-}
-
-document.body.addEventListener('click', removeClass);
+});
