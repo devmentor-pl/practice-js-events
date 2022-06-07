@@ -2,25 +2,25 @@ const divElements = document.querySelectorAll('div')
 const bodyElement = document.querySelector('body')
 
 
-const addClickedClass = function(e){
-    this.classList.add('clicked')
-    e.stopPropagation()
-}
-
-const removeClickedClass = function(e){
-    divElements.forEach( function(item){
-        item.classList.remove('clicked')
-    })
-}
-
 divElements.forEach( function(item){
     item.addEventListener(
         'click',
-        addClickedClass
-    )
+        function(){
+            const time = this.dataset.time
+            const self = this;
+            setTimeout(function(){
+                self.classList.add('clicked')
+            }, time)
+        })
 })
 
 bodyElement.addEventListener(
     'click',
-    removeClickedClass
+    function(event){
+        if(event.target === event.currentTarget){
+            divElements.forEach(function(item){
+                item.classList.remove('clicked')
+            })
+        }
+    }
 )
