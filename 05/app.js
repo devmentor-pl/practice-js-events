@@ -8,8 +8,21 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const pElement = document.querySelectorAll("p");
+pElement.forEach((e) => {
+	const links = e.children;
+	const linksArr = Array.from(links);
 
-
+	e.addEventListener("click", function () {
+		stats.paragraphs.p1++;
+	});
+	linksArr.forEach((element) => {
+		element.addEventListener("click", function (event) {
+			event.preventDefault();
+			stats.links["/dolor.html"]++;
+		});
+	});
+});
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
