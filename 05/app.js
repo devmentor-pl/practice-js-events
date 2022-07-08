@@ -8,21 +8,34 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-const pElement = document.querySelectorAll("p");
-pElement.forEach((e) => {
-	const links = e.children;
+const pList = document.querySelectorAll("p");
+pList.forEach((el) => {
+	const links = el.children;
 	const linksArr = Array.from(links);
-
-	e.addEventListener("click", function () {
-		stats.paragraphs.p1++;
-	});
-	linksArr.forEach((element) => {
-		element.addEventListener("click", function (event) {
-			event.preventDefault();
-			stats.links["/dolor.html"]++;
+	linksArr.forEach((link) => {
+		link.addEventListener("click", function (e) {
+			const newLink = e.target.getAttribute("href");
+			if (typeof stats.links[newLink] === "undefined") {
+				stats.links[newLink] = 0;
+			}
+			stats.links[newLink]++;
 		});
 	});
+
+	el.addEventListener("click", (e) => {
+		e.preventDefault();
+		const newId = e.target.dataset.id;
+		if (e.target.tagName === "P") {
+			if (typeof stats.paragraphs[newId] === "undefined") {
+				stats.paragraphs[newId] = 0;
+				console.log(stats.paragraphs[newId]);
+			}
+			stats.paragraphs[newId]++;
+		}
+	});
 });
+
+
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');

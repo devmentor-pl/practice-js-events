@@ -6,9 +6,11 @@ const init = function () {
 	function showInfoLeaving() {
 		console.log("mouse moved out of the div");
 	}
-
+if (div !== null) {
 	div.addEventListener("mousemove", showInfoMoving);
 	div.addEventListener("mouseleave", showInfoLeaving);
+}
+
 };
 
 document.addEventListener("DOMContentLoaded", init);
