@@ -15,14 +15,22 @@ if (pList) {
     event.preventDefault();
 
     if (event.target.dataset.id) {
-      if (event.target.dataset.id === "p1") {
-        let counterForP = stats.paragraphs.p1;
-        stats.paragraphs.p1 = ++counterForP;
+      const id = event.target.dataset.id;
+
+      if (typeof event.target.dataset[id] === "undefined") {
+        stats.paragraphs[id] = 0;
       }
+      let counterForP = stats.paragraphs[id];
+      stats.paragraphs[id] = ++counterForP;
     }
     if (event.target.hasAttribute("href")) {
-      let counterForA = stats.links["/dolor.html"];
-      stats.links["/dolor.html"] = ++counterForA;
+      const href = event.target.getAttribute("href");
+      console.log(href);
+      if (typeof stats.links[href] === "undefined") {
+        stats.links[href] = 0;
+      }
+      let counterForA = stats.links[href];
+      stats.links[href] = ++counterForA;
     }
   };
 
