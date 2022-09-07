@@ -9,30 +9,25 @@ const stats = {
 
 /* tutaj umieść swój kod */
 const paragraphs = document.querySelectorAll('p');
-console.log(paragraphs);
 
 const countHandler = function(e){
     e.preventDefault();
+    const keyParagraph = e.target.dataset.id;
+    const keyLink = e.target.getAttribute('href');
 
     if(e.target.className === 'text'){
-        for(const key in stats.paragraphs){
-            if(key === e.target.dataset.id){
-                stats.paragraphs[key]++;
-            }
-            if(!stats.paragraphs[e.target.dataset.id]){
-                stats.paragraphs[e.target.dataset.id] = 1;
-            }
+        if(!stats.paragraphs[keyParagraph]){
+            stats.paragraphs[keyParagraph] = 1;
+        }else{
+            stats.paragraphs[keyParagraph]++;
         }
     }
-    
-    if(e.target.href){
-        for(const key in stats.links){
-            if(key === e.target.getAttribute('href')){
-                stats.links[key]++
-            }
-            if(!stats.links[e.target.getAttribute('href')]){
-                stats.links[e.target.getAttribute('href')] = 1;
-            }
+    if(keyLink){
+        if(!stats.links[keyLink]){
+            stats.links[keyLink] = 1;
+        }
+        if(stats.links[keyLink]){
+            stats.links[keyLink]++
         }
     }
 }

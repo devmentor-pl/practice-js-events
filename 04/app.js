@@ -5,8 +5,8 @@ const clickHandler = function(e){
     const classes = this.classList;
 
     setTimeout(function(){
-        classes.add('clicked')},
-        e.currentTarget.dataset.time);   
+        classes.add('clicked')
+    },e.currentTarget.dataset.time);   
 }
 
 const removeClassHandler = function(e) {
