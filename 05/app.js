@@ -16,19 +16,19 @@ const countHandler = function(e){
     const keyLink = e.target.getAttribute('href');
 
     if(e.target.className === 'text'){
-        if(!stats.paragraphs[keyParagraph]){
-            stats.paragraphs[keyParagraph] = 1;
-        }else{
+        if(stats.paragraphs[keyParagraph]){
             stats.paragraphs[keyParagraph]++;
+        }else{
+            stats.paragraphs[keyParagraph] = 1;
         }
     }
     if(keyLink){
-        if(!stats.links[keyLink]){
-            stats.links[keyLink] = 1;
-        }
         if(stats.links[keyLink]){
             stats.links[keyLink]++
+        }else{
+            stats.links[keyLink] = 1;
         }
+
     }
 }
 paragraphs.forEach(function(p){
