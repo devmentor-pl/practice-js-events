@@ -1,32 +1,30 @@
-const textClicked = function() {
+const btnsElement = document.querySelectorAll('button');
+
+for(let i=0; i < btnsElement.length; i++ ) {
+    console.log(btnsElement[i]);
+};
+
+const clickClick = function() {
+    this.innerText = 'clicked';
     console.log('clicked');
 }
 
-const textClickedSecond = function() {
-    console.log('clicked');
-}
-
-const textClickedThird = function() {
-    console.log('clicked');
-}
+btnsElement.forEach(function(btnsElement){
+    btnsElement.addEventListener('click', clickClick);
+});
 
 
-const btnsElements = document.querySelector('.first');
-if(btnsElements) {
-    btnsElements.addEventListener('click', textClicked );
-}
 
 
-const btnElementSecond = document.querySelector('.second');
-if(btnElementSecond) {
-    btnElementSecond.addEventListener('click', textClickedSecond );
-}
 
 
-const btnElementThird = document.querySelector('.third');
-if(btnElementThird) {
-    btnElementThird.addEventListener('click', textClickedThird );
-}
+
+
+
+
+
+
+
 
 
 
