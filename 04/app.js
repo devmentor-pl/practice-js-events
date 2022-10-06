@@ -22,7 +22,8 @@ const bodyEl = document.querySelector('body');
 
 const setAtr = function() {
    const attr = parseInt(this.dataset.time);
-   setTimeout((this.classList.add('clicked')), attr);
+   /*setTimeout(this.classList.add('clicked'), attr);*/
+   setTimeout(() => this.classList.add('clicked'), attr);
 }
 divEl.forEach(function(el){
     el.addEventListener('click' ,setAtr )
