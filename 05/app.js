@@ -7,7 +7,26 @@ const stats = {
     }
 };
 
+
+//wyszukać wszystkie elementy <p/>
+//zatrzymaj otwieranie linków 
+//sprawdzenie event.target. , event.currentTarget.
+
+
 /* tutaj umieść swój kod */
+
+const pEl = document.querySelectorAll('p');
+console.log(pEl);
+for(let i=0; i < pEl.length; i++){
+    console.log(pEl);
+}
+
+const arrPEl = Array.from(pEl);
+console.log(arrPEl);
+
+
+
+
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
