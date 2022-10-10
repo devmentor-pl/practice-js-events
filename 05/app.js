@@ -21,8 +21,22 @@ for(let i=0; i < pEl.length; i++){
     console.log(pEl);
 }
 
-const arrPEl = Array.from(pEl);
-console.log(arrPEl);
+
+//Zatrzymanie przeładowania strony
+const linkEl = document.querySelectorAll('a');
+
+const getHref = function(e) {
+    e.preventDefault();
+
+const href = this.getAttribute('href');
+    console.log(href);
+}
+
+linkEl.forEach (function(item) {
+    item.addEventListener('click', getHref);
+});
+ 
+
 
 
 
