@@ -23,7 +23,14 @@ for(let i=0; i < pEl.length; i++){
 
 
 //Zatrzymanie przeładowania strony
-const linkEl = document.querySelectorAll('a');
+const linkEl = document.querySelectorAll('p');
+
+linkEl.forEach(function(linkEl) {
+    linkEl.addEventListener('click', function(e){
+        console.log(e.target);
+        //console.log(e.currentTarget);
+    })
+});
 
 const getHref = function(e) {
     e.preventDefault();
@@ -35,6 +42,8 @@ const href = this.getAttribute('href');
 linkEl.forEach (function(item) {
     item.addEventListener('click', getHref);
 });
+
+
  
 
 
