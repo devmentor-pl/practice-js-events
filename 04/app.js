@@ -20,3 +20,4 @@ function removeClassFromDiv(ev) {
 }
 
 document.body.addEventListener('click', removeClassFromDiv);
+
