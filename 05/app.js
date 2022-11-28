@@ -9,6 +9,14 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElements = document.querySelectorAll('p');
+const aElements = document.querySelectorAll('a');
+
+const countClicks = function(e) {
+    e.preventDefault();
+    const attr = e.target.getAttribute('data-id');
+    const href = e.target.getAttribute('href');
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
