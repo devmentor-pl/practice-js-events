@@ -8,13 +8,31 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+let counterP = 1;
+let counterA = 1;
+const temp = function (e) {
+    if(e.target.tagName == 'A') {
+        e.preventDefault();
+        stats['links']['/dolor.html'] = counterA;
+        counterA++;
+    }
+    else if(e.target.tagName == 'P'){
+        stats['paragraphs']['p1'] = counterP;
+        counterP++;
+    }
+    console.log(counterA, counterP);
+}
 
+const p = document.querySelectorAll('p');
+p.forEach(function(item){
+    item.addEventListener('click', temp)
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
 const fireCustomEvent = function(element, name) {
-    console.log(element, '=>', name);
+    //console.log(element, '=>', name);
 
     const event = new CustomEvent(name, {
         bubbles: true,
