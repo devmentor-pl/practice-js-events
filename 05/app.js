@@ -10,23 +10,24 @@ const stats = {
 /* tutaj umieść swój kod */
 const pElementsList = document.querySelectorAll('.text');
 
+const countClicks = function (firstKey, secondKey) {
+	if (typeof stats[firstKey][secondKey] === 'undefined') {
+		stats[firstKey][secondKey] = 0;
+	}
+	stats[firstKey][secondKey]++;
+};
+
 const countLinkClick = function (e) {
 	const href = e.target.getAttribute('href');
-	if (typeof stats['links'][href] === 'undefined') {
-		stats['links'][href] = 0;
-	}
-	stats['links'][href]++;
+	countClicks('links', href);
 };
 
 const countTextClick = function (e) {
 	const id = e.currentTarget.dataset.id;
-	if (typeof stats['paragraphs'][id] === 'undefined') {
-		stats['paragraphs'][id] = 0;
-	}
-	stats['paragraphs'][id]++;
+	countClicks('paragraphs', id);
 };
 
-const countClick = function (e) {
+const main = function (e) {
 	e.preventDefault();
 	if (e.currentTarget.tagName === 'P') {
 		countTextClick(e);
@@ -38,8 +39,9 @@ const countClick = function (e) {
 };
 
 pElementsList.forEach(function (item) {
-	item.addEventListener('click', countClick);
+	item.addEventListener('click', main);
 });
+
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
