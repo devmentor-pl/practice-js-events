@@ -10,11 +10,11 @@ const stats = {
 /* tutaj umieść swój kod */
 const pElementsList = document.querySelectorAll('.text');
 
-const countClicks = function (firstKey, secondKey) {
-	if (typeof stats[firstKey][secondKey] === 'undefined') {
-		stats[firstKey][secondKey] = 0;
+const countClicks = function (elementName, elementId) {
+	if (typeof stats[elementName][elementId] === 'undefined') {
+		stats[elementName][elementId] = 0;
 	}
-	stats[firstKey][secondKey]++;
+	stats[elementName][elementId]++;
 };
 
 const countLinkClick = function (e) {
