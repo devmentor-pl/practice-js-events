@@ -1,10 +1,9 @@
 const btns = document.querySelectorAll('button');
 
 const callback = function(e) {
-    if(this.textContent !== "clicked") {
-        console.log('clicked');
-        this.textContent = "clicked";
-    }
+    console.log('clicked');
+    this.textContent = "clicked"
+    this.removeEventListener('click', callback)
 }
 
 btns.forEach(function(item){
