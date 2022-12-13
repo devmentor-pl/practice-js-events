@@ -1,10 +1,8 @@
-const btns = document.querySelectorAll('button');
+const btns = document.querySelector('button');
 
 const showText = function() {
     console.log('clicked');
 }
 
-btns.forEach(function(item) {
-    item.addEventListener('click', showText);
-})
+btns.addEventListener('click', showText);
 
