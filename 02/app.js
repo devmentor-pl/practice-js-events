@@ -9,8 +9,21 @@ const init = function() {
         console.log("Bye Bye!")
     }
     
-    div.addEventListener('mousemove', move);
-    div.addEventListener('mouseleave', bye);
+    if(doesExist(div))
+    {
+        div.addEventListener('mousemove', move);
+        div.addEventListener('mouseleave', bye);
+    }
+    
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+const doesExist = function(element1) {
+    if(element1 !== null) {
+        return element1;
+    }
+    else {
+        console.log('nie znaleziono elemntu')
+    }
+}
