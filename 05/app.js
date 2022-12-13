@@ -8,19 +8,25 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-let counterP = 1;
-let counterA = 1;
+
 const temp = function (e) {
-    if(e.target.tagName == 'A') {
-        e.preventDefault();
-        stats['links']['/dolor.html'] = counterA;
-        counterA++;
+    const href = e.target.getAttribute('href');
+    const par = e.target.dataset.id;
+
+    if (typeof stats['links'][href] === 'undefined') {
+        stats['links'][href] = 0;
+        
     }
-    else if(e.target.tagName == 'P'){
-        stats['paragraphs']['p1'] = counterP;
-        counterP++;
+    if (typeof stats['paragraphs'][par] === 'undefined') {
+        stats['paragraphs'][par] = 0;
+        
     }
-    console.log(counterA, counterP);
+    stats['links'][href]++;
+    stats['paragraphs'][par]++;
+    
+    e.preventDefault();
+
+   console.log(e.target)
 }
 
 const p = document.querySelectorAll('p');
