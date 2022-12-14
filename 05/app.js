@@ -13,18 +13,31 @@ const temp = function (e) {
     const href = e.target.getAttribute('href');
     const par = e.target.dataset.id;
 
-    if (typeof stats['links'][href] === 'undefined') {
-        stats['links'][href] = 0;
-        
-    }
-    if (typeof stats['paragraphs'][par] === 'undefined') {
-        stats['paragraphs'][par] = 0;
-        
-    }
-    stats['links'][href]++;
-    stats['paragraphs'][par]++;
-    
     e.preventDefault();
+
+    if(e.target.tagName == 'A')
+    {
+        if (typeof stats['links'][href] === 'undefined') {
+            stats['links'][href] = 0;
+        }
+        stats['links'][href]++;
+        return
+    }
+
+    if(e.target.tagName == 'P')
+    {
+        if (typeof stats['paragraphs'][par] === 'undefined') {
+            stats['paragraphs'][par] = 0;
+        }
+        stats['paragraphs'][par]++;
+        return
+    }
+
+    
+ 
+    
+    
+    
 
    console.log(e.target)
 }
