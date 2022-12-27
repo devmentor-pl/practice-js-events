@@ -2,7 +2,12 @@ const divList = document.querySelectorAll('div')
 const body = document.querySelector('body');
 
 function handleClick() {
-    this.classList.add('clicked')
+    const time = this.dataset.time;
+    const delay = this;
+
+    setTimeout(function(){
+    delay.classList.add('clicked')
+    }, time)
 };
 
 divList.forEach(function(element) {
@@ -25,5 +30,3 @@ function subtractionClass(e) {
         })
     }
 };
-            
-            
