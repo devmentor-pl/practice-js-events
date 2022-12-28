@@ -15,7 +15,6 @@ divList.forEach(function(element) {
         'click',
         handleClick
     )
-    
 });
 
 body.addEventListener(
