@@ -9,6 +9,10 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const paragrafList = document.querySelectorAll('p');
+const linksList = document.querySelector('a');
+console.log(linksList)
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
