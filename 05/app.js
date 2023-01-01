@@ -10,6 +10,16 @@ const stats = {
 /* tutaj umieść swój kod */
 const paragraphList = document.querySelectorAll('p');
 
+const countClicks = function (element, obj) {
+    let counter = 0;
+
+    if (!isNaN(obj[element])) {
+        obj[element] = ++obj[element];
+    } else {
+        obj[element] = ++counter;
+    }
+}
+
 paragraphList.forEach(function (paragraph) {
     paragraph.addEventListener('click', function (e) {
         const tagName = e.target.tagName;
@@ -18,24 +28,14 @@ paragraphList.forEach(function (paragraph) {
             e.preventDefault();
             const link = e.target.getAttribute('href');
             const linkObj = stats.links;
-            let counter = 0;
 
-            if (!isNaN(linkObj[link])) {
-                linkObj[link] = ++linkObj[link];
-            } else {
-                linkObj[link] = ++counter;
-            }
+            countClicks(link, linkObj);
+
         } else if (tagName === 'P') {
             const paragraphID = e.target.dataset.id;
             const paragraphObj = stats.paragraphs;
-            let counter = 0;
 
-            if (!isNaN(paragraphObj[paragraphID])) {
-                paragraphObj[paragraphID] = ++paragraphObj[paragraphID];
-            } else {
-                paragraphObj[paragraphID] = ++counter;
-            }
-
+            countClicks(paragraphID, paragraphObj);
         }
     })
 })
