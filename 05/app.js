@@ -11,15 +11,12 @@ const stats = {
 const paragraphList = document.querySelectorAll('p');
 
 const countClicks = function (element, obj) {
-    let counter = 0;
-
     if (!isNaN(obj[element])) {
-        obj[element] = ++obj[element];
+        obj[element] += 1;
     } else {
-        obj[element] = ++counter;
+        obj[element] = 1;
     }
 }
-
 paragraphList.forEach(function (paragraph) {
     paragraph.addEventListener('click', function (e) {
         const tagName = e.target.tagName;
