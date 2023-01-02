@@ -9,10 +9,28 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const paragrafList = document.querySelectorAll('p');
-const linksList = document.querySelector('a');
-console.log(linksList)
+const pList = document.querySelectorAll('p');
+const aList = document.querySelectorAll('a');
 
+pList.forEach(function(item) {
+
+
+    item.addEventListener('click', function(e) {
+
+    })
+    const mainElement = e.target;
+    const tagNameElement = e.target.tagName
+
+    if(tagName === 'P') {
+        const id = el.dataset.id
+
+    }
+    if(tagName === 'A') {
+        
+
+    }
+
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 

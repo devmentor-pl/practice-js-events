@@ -7,10 +7,10 @@ if(button) {
     button.addEventListener('click', simpleClick)
 }
 
-//funkcja anonimowa: 
+
+// lub
 // const button = document.querySelector('button');
-// if(button) {
-//     button.addEventListener('click', function() {
-//         console.log('clicked')
-//     })
+// if(!button) {
+//     return
 // }
+// button.addEventListener('click', simpleClick)

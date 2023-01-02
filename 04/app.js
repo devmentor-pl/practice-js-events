@@ -1,19 +1,34 @@
 const divElements = document.querySelectorAll('div');
 if(divElements) {
     divElements.forEach(function(item) {
-        item.addEventListener('click', newClass )
-    })
+        item.addEventListener('click', addNewClass )
+    });
 }
 
-document.body.addEventListener('click', removeClass)
+document.body.addEventListener('click', removeClickedFromDivs)
 
-function newClass() {
+function addNewClass(e) {
+    //pokazanie rónicy pomiędzy e.target a e.currentTarget
+    // console.log('kliknięto na: ') 
+    // console.log(e.target)
+    // console.log('gdzie jest callback: ')
+    // console.log(e.currentTarget);
+    const divElement = e.currentTarget;
+    const timeout = divElement.dataset.time
 
+    setTimeout(function() {
+        divElements.classList.add('clicked')
+    }, timeout)
+
+    // e.currentTarget.classList.add('clicked') // lub mozna uzyć this -> console.log(this === e.currentTarget)
+    // this.classList.add('clicked')
 }
 
-function removeClass() {
+function removeClickedFromDivs(e) {
+    if(e.target.tagName === 'BODY') {
+        divElements.forEach(function(div) {
+            div.classList.remove('clicked')
+        })
+    }
 
 }
-
-
-
