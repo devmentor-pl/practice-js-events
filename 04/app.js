@@ -1,11 +1,11 @@
+
 const divElements = document.querySelectorAll('div');
 if(divElements) {
     divElements.forEach(function(item) {
-        item.addEventListener('click', addNewClass )
+        item.addEventListener('click', addNewClass);
     });
 }
-
-document.body.addEventListener('click', removeClickedFromDivs)
+document.body.addEventListener('click', removeClickedFromDivs);
 
 function addNewClass(e) {
     //pokazanie rónicy pomiędzy e.target a e.currentTarget
@@ -14,11 +14,11 @@ function addNewClass(e) {
     // console.log('gdzie jest callback: ')
     // console.log(e.currentTarget);
     const divElement = e.currentTarget;
-    const timeout = divElement.dataset.time
-
+    const timeout = e.currentTarget.dataset.time
+    
     setTimeout(function() {
-        divElements.classList.add('clicked')
-    }, timeout)
+        divElement.classList.add('clicked')
+    }, e.currentTarget.dataset.time)
 
     // e.currentTarget.classList.add('clicked') // lub mozna uzyć this -> console.log(this === e.currentTarget)
     // this.classList.add('clicked')
@@ -30,5 +30,4 @@ function removeClickedFromDivs(e) {
             div.classList.remove('clicked')
         })
     }
-
 }

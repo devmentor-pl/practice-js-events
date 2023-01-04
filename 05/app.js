@@ -10,25 +10,23 @@ const stats = {
 /* tutaj umieść swój kod */
 
 const pList = document.querySelectorAll('p');
-const aList = document.querySelectorAll('a');
 
 pList.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            const mainElement = e.target;
+            const tagNameElement = e.target.tagName
 
+            if(tagName === 'P') {
+                const id = mainElement.dataset.id
 
-    item.addEventListener('click', function(e) {
+            }
+            if(tagName === 'A') {
+                const href = mainElement.getAttribute('href');
+                console.log(href)
+            }
 
-    })
-    const mainElement = e.target;
-    const tagNameElement = e.target.tagName
-
-    if(tagName === 'P') {
-        const id = el.dataset.id
-
-    }
-    if(tagName === 'A') {
-        
-
-    }
+    });
+    
 
 })
 
