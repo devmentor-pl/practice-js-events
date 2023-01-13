@@ -9,35 +9,32 @@ const stats = {
 
 /* tutaj umieść swój kod */
 // mozna to rowniez ogarnac za pomoca dwoch funkcji
-function calculateClicks(element, type) {
-    element.addEventListener('click', function (e) {
-        if (type === 'paragraphs' && e.target.tagName === 'P') {
-            const id = element.dataset.id;
 
-            if (stats[type][id]) {
-                stats[type][id]++;
-            } else {
-                stats[type][id] = 1;
-            }
+function addToStats(type, id) {
+    if (stats[type][id]) {
+        stats[type][id]++;
+    } else {
+        stats[type][id] = 1;
+    }
+}
+
+function calculateClicks(element) {
+    element.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+            e.preventDefault();
+            const href = e.target.getAttribute('href');
+            addToStats('links', href);
         }
 
-        if (type === 'links') {
-            e.preventDefault();
-            const href = element.getAttribute('href');
-            if (stats[type][href]) {
-                stats[type][href]++;
-            } else {
-                stats[type][href] = 1;
-            }
+        if (e.target.tagName === 'P') {
+            const id = e.target.dataset.id;
+            addToStats('paragraphs', id);
         }
     });
 }
 
 const pElements = document.querySelectorAll('p');
-pElements.forEach(pEl => calculateClicks(pEl, 'paragraphs'));
-
-const aElements = document.querySelectorAll('a');
-aElements.forEach(aEl => calculateClicks(aEl, 'links'));
+pElements.forEach(pEl => calculateClicks(pEl));
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
