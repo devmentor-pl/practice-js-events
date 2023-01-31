@@ -1,14 +1,18 @@
 const divList = document.querySelectorAll("div");
+const bodyEl = document.querySelector("body");
 
 const clickedDiv = function () {
-	this.classList.add("clicked");
+	const divEl = this;
+	const time = divEl.dataset.time;
+
+	setTimeout(function () {
+		divEl.classList.add("clicked");
+	}, time);
 };
 
 divList.forEach(function (divEl) {
 	divEl.addEventListener("click", clickedDiv);
 });
-
-const bodyEl = document.querySelector("body");
 
 bodyEl.addEventListener("click", function (e) {
 	if (e.target === e.currentTarget) {
