@@ -3,6 +3,7 @@ const bodyEl = document.querySelector("body");
 
 const clickedDiv = function () {
 	const divEl = this;
+	console.log(divEl);
 	const time = divEl.dataset.time;
 
 	setTimeout(function () {
