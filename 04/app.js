@@ -1,24 +1,25 @@
 const divList = document.querySelectorAll("div");
 const bodyEl = document.querySelector("body");
 
-const clickedDiv = function () {
-	const divEl = this;
-	console.log(divEl);
-	const time = divEl.dataset.time;
+const addClickedClass = function () {
+	const el = this;
+	const time = el.dataset.time;
 
 	setTimeout(function () {
-		divEl.classList.add("clicked");
+		el.classList.add("clicked");
 	}, time);
 };
 
-divList.forEach(function (divEl) {
-	divEl.addEventListener("click", clickedDiv);
-});
-
-bodyEl.addEventListener("click", function (e) {
+const removeClickedClass = function (e) {
 	if (e.target === e.currentTarget) {
 		divList.forEach(function (divEl) {
 			divEl.classList.remove("clicked");
 		});
 	}
+};
+
+divList.forEach(function (divEl) {
+	divEl.addEventListener("click", addClickedClass);
 });
+
+bodyEl.addEventListener("click", removeClickedClass);
