@@ -11,7 +11,7 @@ const addClickedClass = function () {
 };
 
 const removeClickedClass = function (e) {
-	if (e.target === e.currentTarget) {
+	if (bodyEl === e.currentTarget) {
 		divList.forEach(function (divEl) {
 			divEl.classList.remove("clicked");
 		});
