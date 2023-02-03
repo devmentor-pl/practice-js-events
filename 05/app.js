@@ -21,7 +21,7 @@ pList.forEach(function (item) {
 			} else {
 				stats.paragraphs[itemId] += 1;
 			}
-		} else if (e.target !== e.currentTarget) {
+		} else {
 			e.preventDefault();
 			let hrefEl = e.target.getAttribute("href");
 
