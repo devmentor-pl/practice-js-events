@@ -8,12 +8,47 @@ const stats = {
 }
 
 /* tutaj umieść swój kod */
+const pList = document.querySelectorAll('p')
+
+pList.forEach(function (item) {
+	item.addEventListener('click', function (e) {
+		e.preventDefault()
+
+		if (e.target.getAttribute('href') === null) {
+			countParagraphs(e)
+		} else if (e.target.getAttribute('href') !== null) {
+			countLinks(e)
+		}
+	})
+})
+
+function countParagraphs(e) {
+	const elId = e.currentTarget.dataset.id
+
+	if (stats.paragraphs[elId] !== undefined) {
+		stats.paragraphs[elId]++
+	} else {
+		stats.paragraphs[elId] = 0
+		stats.paragraphs[elId]++
+	}
+}
+
+function countLinks(e) {
+	const elLink = e.target.getAttribute('href')
+
+	if (stats.links[elLink] !== undefined) {
+		stats.links[elLink]++
+	} else {
+		stats.links[elLink] = 0
+		stats.links[elLink]++
+	}
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats')
 const fireCustomEvent = function (element, name) {
-	console.log(element, '=>', name)
+	// console.log(element, '=>', name)
 
 	const event = new CustomEvent(name, {
 		bubbles: true,
