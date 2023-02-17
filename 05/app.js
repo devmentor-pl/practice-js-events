@@ -14,33 +14,24 @@ pList.forEach(function (item) {
 	item.addEventListener('click', function (e) {
 		e.preventDefault()
 
-		if (e.target.getAttribute('href') === null) {
-			countParagraphs(e)
-		} else if (e.target.getAttribute('href') !== null) {
-			countLinks(e)
+		if (e.target.tagName === 'P') {
+			const elId = e.currentTarget.dataset.id
+			const property = 'paragraphs'
+			countClick(property, elId)
+		} else if (e.target.tagName === 'A') {
+			const elLink = e.target.getAttribute('href')
+			const property = 'links'
+			countClick(property, elLink)
 		}
 	})
 })
 
-function countParagraphs(e) {
-	const elId = e.currentTarget.dataset.id
-
-	if (stats.paragraphs[elId] !== undefined) {
-		stats.paragraphs[elId]++
+function countClick(property, id) {
+	if (stats[property][id] !== undefined) {
+		stats[property][id]++
 	} else {
-		stats.paragraphs[elId] = 0
-		stats.paragraphs[elId]++
-	}
-}
-
-function countLinks(e) {
-	const elLink = e.target.getAttribute('href')
-
-	if (stats.links[elLink] !== undefined) {
-		stats.links[elLink]++
-	} else {
-		stats.links[elLink] = 0
-		stats.links[elLink]++
+		stats[property][id] = 0
+		stats[property][id]++
 	}
 }
 
