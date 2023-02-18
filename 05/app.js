@@ -27,10 +27,9 @@ pList.forEach(function (item) {
 })
 
 function countClick(property, id) {
-	if (stats[property][id] !== undefined) {
-		stats[property][id]++
+	if (typeof stats[property][id] === 'undefined') {
+		stats[property][id] = 1
 	} else {
-		stats[property][id] = 0
 		stats[property][id]++
 	}
 }
