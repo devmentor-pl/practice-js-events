@@ -10,8 +10,10 @@ const cursorLeave = function () {
 
 const init = function () {
   const square = document.querySelector("div");
-  square.addEventListener("mousemove", cursorMove);
-  square.addEventListener("mouseleave", cursorLeave);
+  if (square !== null) {
+    square.addEventListener("mousemove", cursorMove);
+    square.addEventListener("mouseleave", cursorLeave);
+  }
 };
 
 document.addEventListener("DOMContentLoaded", init);

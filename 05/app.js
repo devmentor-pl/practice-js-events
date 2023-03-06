@@ -7,45 +7,38 @@ const stats = {
   },
 };
 
-let value = 0;
-
 /* tutaj umieść swój kod */
 const paragraphList = document.querySelectorAll(".text");
 
-const pCounter = function (e) {
-  //console.log(e.target);
-  pNumber = this.getAttribute("data-id");
-  ++value;
-  stats.paragraphs[pNumber] = value;
-};
+const Counter = function (e) {
+  if (e.target.tagName === "P") {
+    const paragraph = e.target.getAttribute("data-id");
+    if (typeof stats.paragraphs[paragraph] === "undefined") {
+      stats.paragraphs[paragraph] = 0;
+    }
+    stats.paragraphs[paragraph]++;
+  }
 
-
-let linkCount = 0;
-
-const aCounter = function (e) {
-  e.preventDefault();
-  //console.log(e.target);
-  //console.log(e.currentTarget);
-  //console.log(this.firstElementChild);
-  //console.log(e.target.classList.value);
-  if (e.target.classList.value === "link") {
-    a = this.firstElementChild.getAttribute("href");
-    console.log(stats.links[a]);
-    ++linkCount;
-    stats.links[a] = linkCount;
+  if (e.target.tagName === "A") {
+    e.preventDefault();
+    const a = e.target.getAttribute("href");
+    console.log(a);
+    if (typeof stats.links[a] === "undefined") {
+      stats.links[a] = 0;
+    }
+    stats.links[a]++;
   }
 };
 
 paragraphList.forEach(function (p) {
-  p.addEventListener("click", pCounter);
-  p.addEventListener("click", aCounter);
+  p.addEventListener("click", Counter);
 });
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector(".stats");
 const fireCustomEvent = function (element, name) {
-  console.log(element, '=>', name);
+  console.log(element, "=>", name);
 
   const event = new CustomEvent(name, {
     bubbles: true,

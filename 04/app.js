@@ -2,13 +2,17 @@ const divList = document.querySelectorAll("div");
 
 const addClass = function (e) {
   e.currentTarget.classList.add("clicked");
-  console.log(e.currentTarget);
-  console.log(e.target);
+  //console.log(e.currentTarget);
+  //console.log(e.target);
 };
 
 const timeOut = function (e) {
   time = this.getAttribute("data-time");
-  setTimeout(addClass, time);
+  console.log(e.currentTarget);
+  const element = e.currentTarget;
+  setTimeout(function () {
+    element.classList.add("clicked");
+  }, time);
 };
 
 const removeClass = function () {
@@ -18,9 +22,9 @@ const removeClass = function () {
 };
 
 const propagation = function (e) {
-  if (this.tagName === "DIV") {
-    e.stopImmediatePropagation();
-  }
+  //if (this.tagName === "DIV") {
+  //  e.stopImmediatePropagation();
+  // }
   if (this.tagName === "BODY") {
     removeClass();
   }
@@ -28,16 +32,8 @@ const propagation = function (e) {
 
 divList.forEach(function (div) {
   div.addEventListener("click", timeOut);
-  div.addEventListener("click", addClass);
-  div.addEventListener("click", propagation);
-  document.body.addEventListener("click", propagation);
+  //div.addEventListener("click", addClass);
+  //div.addEventListener("click", propagation);
 });
 
-const child = document.querySelector(".child");
-
-child.addEventListener("click", function () {
-  divList.forEach(function (div) {
-    //div.addEventListener("click", timeOut);
-    div.classList.add("clicked");
-  });
-});
+document.body.addEventListener("click", propagation, true);
