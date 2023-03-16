@@ -1,15 +1,16 @@
-const divDisplay = document.querySelector('div');
+document.addEventListener('DOMContentLoaded', init);
 
-if(divDisplay){
-    divDisplay.addEventListener('mouseleave', onLeave);
-    divDisplay.addEventListener('mousemove', onMove);
+function init() {
+    const divDisplay = document.querySelector('div');
+    if(divDisplay){
+        divDisplay.addEventListener('mouseleave', onLeave);
+        divDisplay.addEventListener('mousemove', onMove);
+    }
 }
-
 
 function onLeave() {
     console.log('mouseleave');
 }
-
 function onMove() {
     console.log('mousemove');
 }
