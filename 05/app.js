@@ -9,6 +9,37 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElements = document.querySelectorAll('p')
+
+if(pElements){
+    pElements.forEach(function(pEl){
+        pEl.addEventListener('click',handleBoth)
+    })
+}
+
+function handleBoth(e){
+    const clickEvent = e;
+    if(clickEvent.currentTarget.dataset.id==='p1'){
+        increaseParCount();
+        
+    }
+    handleAnchor(clickEvent);
+}
+
+function increaseParCount () {
+    stats.paragraphs['p1']++;
+}
+
+function handleAnchor(e) {
+    if(e.target.tagName==='A') {
+        e.preventDefault();
+        const address= e.target.getAttribute('href'); 
+        if(address==="/dolor.html") {
+            stats.links["/dolor.html"]++;
+        }
+    }
+}
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
