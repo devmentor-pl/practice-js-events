@@ -19,27 +19,33 @@ if(pElements){
 
 function handleBoth(e){
     const clickEvent = e;
-    if(clickEvent.currentTarget.dataset.id==='p1'){
-        increaseParCount();
-        
+    if(clickEvent.currentTarget.tagName==='P'){
+        handleParagraph(clickEvent.currentTarget);
     }
     handleAnchor(clickEvent);
 }
 
-function increaseParCount () {
-    stats.paragraphs['p1']++;
+function handleParagraph (clickedParagraph) {
+    const idOfClicked = clickedParagraph.dataset.id;
+    checkAndAdd(idOfClicked, 'paragraphs');
 }
 
 function handleAnchor(e) {
-    if(e.target.tagName==='A') {
+    const clickedAnchor = e.target;
+    if(clickedAnchor.tagName==='A') {
         e.preventDefault();
-        const address= e.target.getAttribute('href'); 
-        if(address==="/dolor.html") {
-            stats.links["/dolor.html"]++;
-        }
+        const address= clickedAnchor.getAttribute('href');
+        checkAndAdd(address, 'links');
     }
 }
 
+function checkAndAdd(attribute, subObject) {
+    if(typeof stats[subObject][attribute]!== 'undefined'){
+        stats[subObject][attribute]+=1; 
+    } else {
+        stats[subObject][attribute]=1; 
+    }
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -60,7 +66,7 @@ const renderStats = function(data, element) {
         html += '<ul>';
 
         for(let key in data[elementType]) {
-            
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';

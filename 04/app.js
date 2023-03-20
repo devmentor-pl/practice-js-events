@@ -15,7 +15,7 @@ body.addEventListener('click', removeClasses)
 
 function addClass(e) {
     const currentElement = e.currentTarget;
-    console.log(currentElement.dataset.time); 
+    
     setTimeout(function(){
         console.log(currentElement);
         currentElement.classList.add('clicked');
