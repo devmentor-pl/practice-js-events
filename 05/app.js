@@ -15,6 +15,31 @@ const preventFollowLink = function (e) {
 links.forEach(function (link) {
   link.addEventListener("click", preventFollowLink);
 });
+let dolorCounter = 0;
+const pTags = document.querySelectorAll("p");
+
+const countClicks = function (e) {
+  e.stopImmediatePropagation();
+
+  if (
+    e.target.tagName === "A" &&
+    e.target.getAttribute("href") === "/dolor.html"
+  ) {
+    stats.links["/dolor.html"] = ++dolorCounter;
+    console.log(stats);
+  } else if (e.target.tagName === "P") {
+    const pDataId = e.target.dataset.id;
+    !stats.paragraphs[`${pDataId}`]
+      ? (stats.paragraphs[`${pDataId}`] = 1)
+      : (stats.paragraphs[`${pDataId}`] =
+          Number(stats.paragraphs[`${pDataId}`]) + 1);
+    console.log(stats);
+  }
+};
+
+pTags.forEach(function (pTag) {
+  pTag.addEventListener("click", countClicks);
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
