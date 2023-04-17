@@ -18,16 +18,14 @@ links.forEach(function (link) {
 let dolorCounter = 0;
 const pTags = document.querySelectorAll("p");
 
-const countClicks = function (e) {
-  e.stopImmediatePropagation();
-
+const countClicks = function (countTag, countLinkTag, linkHref, e) {
   if (
-    e.target.tagName === "A" &&
-    e.target.getAttribute("href") === "/dolor.html"
+    e.target.tagName === countLinkTag &&
+    e.target.getAttribute("href") === linkHref
   ) {
-    stats.links["/dolor.html"] = ++dolorCounter;
+    stats.links[linkHref] = ++dolorCounter;
     console.log(stats);
-  } else if (e.target.tagName === "P") {
+  } else if (e.target.tagName === countTag) {
     const pDataId = e.target.dataset.id;
     !stats.paragraphs[`${pDataId}`]
       ? (stats.paragraphs[`${pDataId}`] = 1)
@@ -38,7 +36,10 @@ const countClicks = function (e) {
 };
 
 pTags.forEach(function (pTag) {
-  pTag.addEventListener("click", countClicks);
+  pTag.addEventListener(
+    "click",
+    countClicks.bind(null, "P", "A", "/dolor.html")
+  );
 });
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
