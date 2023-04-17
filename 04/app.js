@@ -1,7 +1,6 @@
 const divs = document.querySelectorAll("div");
 const body = document.querySelector("body");
 const addClass = function (e) {
-  e.stopImmediatePropagation();
   let thisDiv = this;
   const timeout = this.dataset.time;
   setTimeout(function () {
@@ -19,6 +18,3 @@ divs.forEach(function (div) {
   div.addEventListener("click", addClass);
 });
 body.addEventListener("click", removeClasses);
-
-//   console.log(thisDiv.dataset.time);
-//   setTimeout(addClass, thisDiv.dataset.time);
