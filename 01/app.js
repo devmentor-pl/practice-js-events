@@ -1,13 +1,18 @@
-const clickButton = function (){
+const clickButton = function () {
 
     const button = document.querySelector('button')
 
-    button.addEventListener(
-        'click',
-        function(){
-            console.log('clicked')
-        }
-    )
+
+    if (button) {
+
+
+        button.addEventListener(
+            'click',
+            function () {
+                console.log('clicked')
+            }
+        )
+    }
 }
 
 clickButton()
