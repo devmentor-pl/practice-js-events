@@ -9,19 +9,30 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const pList = document.querySelectorAll('.link, .text')
+const pList = document.querySelectorAll('p')
 
 pList.forEach(function (pEl) {
     pEl.addEventListener('click', function (e) {
         e.preventDefault();
-        
-        if (this.tagName === 'P') {
-            ++stats.paragraphs.p1
-        }
 
-        if (this.tagName === 'A') {
-            --stats.paragraphs.p1
-            ++stats.links['/dolor.html']
+        console.log(e.target, e.currentTarget);
+
+        if (e.target.tagName === 'P') {
+
+            const id = e.target.dataset.id
+            if (typeof stats.paragraphs[id] === 'undefined') {
+                stats.paragraphs[id] = 0
+            }
+
+            stats.paragraphs[id]++
+
+        } else if (e.target.tagName === 'A') {
+
+            const href = e.target.getAttribute('href')
+            if (typeof stats.links[href] === 'undefined') {
+                stats.links[href] = 0
+            }
+            stats.links[href]++
         }
 
     }, false)
