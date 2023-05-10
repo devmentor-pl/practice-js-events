@@ -9,18 +9,19 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const pElements = document.querySelectorAll('p, a');
+const pElements = document.querySelectorAll('p');
 pElements.forEach(function(el) {
     el.addEventListener('click', clickCounter);
 });
 
 function clickCounter(e) {
-    if(this.classList.contains('link') && this.getAttribute('href') === "/dolor.html") {
+    if(e.target.classList.contains('text')) {
+        stats.paragraphs.p1 += 1;
+        
+    } else {
         e.preventDefault();
         stats.links['/dolor.html'] += 1;
-    } else {
-        stats.paragraphs.p1 += 1;
-}
+    }
 };
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
