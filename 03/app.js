@@ -1,7 +1,7 @@
 const buttons = document.querySelectorAll('button')
 
-const changeButtonText = function (e) {
-    
+const changeButtonText = function () {
+
     console.log('clicked')
     this.innerText = 'clicked'
 
