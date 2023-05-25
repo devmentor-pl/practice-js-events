@@ -9,10 +9,10 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const links = document.querySelectorAll('.link[href]')
-const paragraphs = document.querySelectorAll('p')
 
-const count = function (key, elements) {
+const pElements = document.querySelectorAll('p.text')
+
+const increaseAmount = function (key, elements) {
     const keys = Object.keys(stats[elements])
 
     if (keys.includes(key)) {
@@ -22,21 +22,22 @@ const count = function (key, elements) {
     }
 }
 
-links.forEach(function (link) {
-    link.addEventListener('click', function (e) {
-        e.preventDefault()
-        const href = link.getAttribute('href')
+const checkClickedElements = function (e) {
+    e.preventDefault()
 
-        count(href, 'links')
-    })
-})
+    if (e.target.tagName === "P") {
+        const id = e.target.dataset.id
+        increaseAmount(id, 'paragraphs')
+    } else if (e.target.tagName === "A") {
+        const href = e.target.getAttribute('href')
+        const id = e.target.parentElement.dataset.id
+        increaseAmount(href, 'links')
+        increaseAmount(id, 'paragraphs')
+    }
+}
 
-paragraphs.forEach(function (p) {
-    p.addEventListener('click', function (e) {
-        const id = p.dataset.id
-
-        count(id, 'paragraphs')
-    })
+pElements.forEach(function (pElement) {
+    pElement.addEventListener('click', checkClickedElements)
 })
 
 
