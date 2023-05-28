@@ -8,7 +8,37 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const pList = document.querySelectorAll("p[data-id]");
 
+pList.forEach(function (p) {
+  p.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const elem = e.target;
+    const tagName = e.target.tagName;
+
+    if (tagName === "P") {
+      const id = elem.dataset.id;
+
+      if (typeof stats.paragraphs[id] === "undefined") {
+        stats.paragraphs[id] = 1;
+      } else {
+        stats.paragraphs[id]++;
+      }
+    }
+
+    if (tagName === "A") {
+      const href = elem.getAttribute("href");
+      console.log(href);
+
+      if (typeof stats.links[href] === "undefined") {
+        stats.links[href] = 1;
+      } else {
+        stats.links[href]++;
+      }
+    }
+  });
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
