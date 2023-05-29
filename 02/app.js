@@ -7,8 +7,11 @@ const init = () => {
     const leaveBox = () => {
         console.log('myszka uciekła z pudełka')
     }
-    box.addEventListener('mousemove', cursorEnter)
-    box.addEventListener('mouseleave', leaveBox)
+    if(box){
+        box.addEventListener('mousemove', cursorEnter)
+        box.addEventListener('mouseleave', leaveBox)
+
+    }
 }
 document.addEventListener('DOMContentLoaded',init)
 // box.addEventListener('mouseleave',leaveBox)
