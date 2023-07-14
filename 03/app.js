@@ -5,9 +5,7 @@ const init = function() {
         btnClicked.innerText = 'clicked';
         console.log(btnClicked, 'clicked');        
        
-        if(btnClicked.innerText = 'clicked') {
-            btnClicked.removeEventListener('click', onClick);
-        }
+        btnClicked.removeEventListener('click', onClick);
     }
 
     btns.forEach(btn => {
