@@ -8,8 +8,9 @@ function scripts() {
 	function mouseLeave() {
 		console.log(`moseleave activated: u left object`);
 	}
-
-	div.addEventListener('mousemove', mouseMove);
-	div.addEventListener('mouseleave', mouseLeave);
+	if (div) {
+		div.addEventListener('mousemove', mouseMove);
+		div.addEventListener('mouseleave', mouseLeave);
+	}
 }
 window.addEventListener('DOMContentLoaded', scripts);
