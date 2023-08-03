@@ -9,31 +9,25 @@ const stats = {
 
 /* tutaj umieść swój kod */
 const pElems = document.querySelectorAll('p');
-const links = document.querySelectorAll('a');
 
 pElems.forEach(pElem => {
 	pElem.addEventListener('click', function (e) {
-		const id = e.target.dataset.id;
-
-		if (stats.paragraphs[id]) {
-			stats.paragraphs[id]++;
-		} else {
-			stats.paragraphs[id] = 1;
+		if (e.target.tagName === 'A') {
+			const href = e.target.getAttribute('href');
+			if (stats.links[href]) {
+				stats.links[href]++;
+			} else {
+				stats.links[href] = 1;
+			}
+			e.preventDefault();
+		} else if (e.target.tagName === 'P') {
+			const id = e.target.dataset.id;
+			if (stats.paragraphs[id]) {
+				stats.paragraphs[id]++;
+			} else {
+				stats.paragraphs[id] = 1;
+			}
 		}
-	});
-});
-
-links.forEach(link => {
-	link.addEventListener('click', function (e) {
-		const href = e.target.getAttribute('href');
-
-		if (stats.links[href]) {
-			stats.links[href]++;
-		} else {
-			stats.links[href] = 1;
-		}
-
-		e.preventDefault();
 	});
 });
 
