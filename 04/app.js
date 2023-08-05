@@ -1,7 +1,7 @@
 const divEl = document.querySelectorAll("div");
 const bodyEl = document.querySelector("body");
 
-const addClass = function (e) {
+const addClass = function () {
   const time = this.dataset.time;
   const div = this;
   setTimeout(function () {
