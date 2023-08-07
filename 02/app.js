@@ -8,6 +8,8 @@ const mouseOverEl = function (e) {
 const mouseLeaveEl = function (e) {
   spanEl.textContent = `The cursor leaves the element : X = ${e.clientX} | Y = ${e.clientY}`;
 };
+if (divEl) {
+  divEl.addEventListener("mousemove", mouseOverEl);
+  divEl.addEventListener("mouseleave", mouseLeaveEl);
+}
 
-divEl.addEventListener("mousemove", mouseOverEl);
-divEl.addEventListener("mouseleave", mouseLeaveEl);

@@ -12,10 +12,23 @@ const stats = {
 function counterClick(e) {
   e.preventDefault();
   if (e.target.tagName === "P") {
-    ++stats.paragraphs.p1;
-  } else {
-    ++stats.links["/dolor.html"];
+    const id = e.target.dataset.id
+    if (typeof stats.paragraphs[id] === 'undefined') {
+      stats.paragraphs[id] = 0;
+    }
+    console.log(stats.paragraphs)
+    ++stats.paragraphs[id];
+  } 
+  if (e.target.tagName === "A") {
+    const href = e.target.getAttribute('href');
+    
+    if (typeof stats.links[href] === 'undefined') {
+      stats.links[href] = 0;
+    }
+    console.log(stats.links)
+    ++stats.links[href]
   }
+  
 }
 const pElements = document.querySelectorAll(".text").forEach(function (item) {
   item.addEventListener("click", counterClick);
