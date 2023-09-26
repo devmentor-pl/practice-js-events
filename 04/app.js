@@ -2,7 +2,13 @@ const divList = document.querySelectorAll('div')
 const body = document.querySelector('body')
 
 const clicked = function (e) {
-    e.currentTarget.classList.add('clicked')
+
+    const self = e.currentTarget
+    const dataTime = self.getAttribute('data-time')
+
+    setTimeout(function () {
+        self.classList.add('clicked')
+    }, dataTime)
 }
 
 const unClicked = function (e) {
