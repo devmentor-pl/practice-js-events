@@ -1,22 +1,20 @@
 const stats = {
-  paragraphs: {
-    p1: 0,
-    p2: 0,
-    p3: 0,
-  },
-  links: {
-    '/dolor.html': 0,
-    '/consectetur.html': 0,
-    '/adipisicing-elite.html': 0,
-  },
+  paragraphs: {},
+  links: {},
 };
 
 /* tutaj umieść swój kod */
 function countLinksClicks(href) {
+  if (!stats.links[href]) {
+    stats.links[href] = 0;
+  }
   stats.links[href]++;
 }
 
 function countParagraphClicks(dataId) {
+  if (!stats.paragraphs[dataId]) {
+    stats.paragraphs[dataId] = 0;
+  }
   stats.paragraphs[dataId]++;
 }
 
