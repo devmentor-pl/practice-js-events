@@ -23,10 +23,8 @@ document.addEventListener('click', function (e) {
   if (target.classList.contains('link')) {
     e.preventDefault();
     countLinksClicks(target.getAttribute('href'));
-    fireCustomEvent(statsElement, 'render');
   } else if (target.dataset.id) {
     countParagraphClicks(target.dataset.id);
-    fireCustomEvent(statsElement, 'render');
   }
 });
 
