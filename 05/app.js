@@ -1,6 +1,8 @@
 const stats = {
     paragraphs: {
         'p1': 0,
+        'p2': 0,
+        'p3': 0,
     },
     links: {
         '/dolor.html': 0,
@@ -8,7 +10,38 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+// runkcja do zliczania kliknięć w linki
+function countLinkClicks(event) {
+    event.preventDefault();
+    const link = event.currentTarget.getAttribute('href');
 
+    if (link && stats.links.hasOwnProperty(link)) {
+        stats.links[link]++;
+        fireCustomEvent(statsElement, 'render');
+    }
+}
+
+// funkcja do zliczania kliknięć w paragrafy
+function countParagraphClicks(event) {
+    const datasetId = event.currentTarget.dataset.id;
+
+    if (datasetId && stats.paragraphs.hasOwnProperty(datasetId)) {
+        stats.paragraphs[datasetId]++;
+        fireCustomEvent(statsElement, 'render');
+    }
+}
+
+// nasłuchiwanie kliknięć w linki o klasie .link
+const links = document.querySelectorAll('.link');
+links.forEach(link => {
+    link.addEventListener('click', countLinkClicks);
+});
+
+// nasłuchiwanie kliknięć w paragrafy o klasie .text
+const paragraphs = document.querySelectorAll('.text');
+paragraphs.forEach(paragraph => {
+    paragraph.addEventListener('click', countParagraphClicks);
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -50,4 +83,3 @@ document.addEventListener('click', function(e) {
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
-
