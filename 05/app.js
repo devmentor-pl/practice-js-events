@@ -1,8 +1,7 @@
 const stats = {
     paragraphs: {
         'p1': 0,
-        'p2': 0,
-        'p3': 0,
+       
     },
     links: {
         '/dolor.html': 0,
