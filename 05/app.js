@@ -9,7 +9,30 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pList = document.querySelectorAll('p');
+const aList = document.querySelectorAll('a');
 
+pList.forEach(element => {
+    element.addEventListener('click', function (event) {
+        event.preventDefault();
+        const id = element.dataset.id;
+        // Sprawdzam czy istnieje klucz (identyfikator paragrafu) w obiekcie stats.links. 
+        //Jesli nie to tworze go i ustawiam wartosc na 0
+        //Jesli istnieje to zwiekszam wartosc o 1
+        stats.paragraphs[id] = (stats.paragraphs[id] || 0) + 1;
+    });
+});
+
+aList.forEach(element => {
+    element.addEventListener('click', function (event) {
+        event.preventDefault();
+        const href = element.getAttribute('href');
+        // Sprawdzam czy istnieje klucz (adres URL linku) w obiekcie stats.links. 
+        //Jesli nie to tworze go i ustawiam wartosc na 0
+        //Jesli istnieje to zwiekszam wartosc o 1
+        stats.links[href] = (stats.links[href] || 0) + 1;
+    });
+});
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
@@ -40,7 +63,6 @@ const renderStats = function(data, element) {
 
     element.innerHTML = html;
 }
-
 
 document.addEventListener('click', function(e) {
     const tagName = e.target.tagName;
