@@ -12,7 +12,7 @@ Stwórz go tak, aby:
 - nie powodować przeładowania strony, tylko zliczać kliknięcia w konkretny link o klasie `.link` (identyfikowany po atrybucie `href`),
 - sumować kliknięcia w paragraf o klasie `.text` (identyfikowany po `dataset`).
 
-Zadanie wykonaj w taki sposób, aby nasłuchiwanie było ustawione tylko na elementy `<p/>`. Po każdym kliknięciu należy zaktualizować strukturę danych. Początkowo wygląda ona następująco:
+Zadanie wykonaj w taki sposób, aby nasłuchiwanie było ustawione tylko na elementy `<p/>`. Po każdym kliknięciu należy zaktualizować strukturę danych. Początkowo wyglądsa ona następująco:
 
 ```
 const stats = {

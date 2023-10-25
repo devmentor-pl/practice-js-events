@@ -12,22 +12,18 @@ const stats = {
 const paragraphsList = document.querySelectorAll('p')
 
 const calculateClicks = function (element) {
-	let number = 0
-
-	element.addEventListener('click', () => {
-		number += 1
-	})
-
 	element.addEventListener('click', function (e) {
 		if (e.target.tagName === 'P') {
-			stats.paragraphs[e.target.dataset.id] = number
-		}
-	})
-
-	element.addEventListener('click', e => {
-		e.preventDefault()
-		if (e.target.tagName === 'A') {
-			stats.links[e.target.getAttribute('href')] = number
+			if (typeof stats.paragraphs[e.target.dataset.id] === 'undefined') {
+				stats.paragraphs[e.target.dataset.id] = 0
+			}
+			stats.paragraphs[e.target.dataset.id] = stats.paragraphs[e.target.dataset.id] + 1
+		} else if (e.target.tagName === 'A') {
+			e.preventDefault()
+			if (typeof stats.links[e.target.getAttribute('href')] === 'undefined') {
+				stats.links[e.target.getAttribute('href')] = 0
+			}
+			stats.links[e.target.getAttribute('href')] = stats.links[e.target.getAttribute('href')] + 1
 		}
 	})
 }
