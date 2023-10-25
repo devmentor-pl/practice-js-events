@@ -1,13 +1,13 @@
 body {
-    margin: 0;
-    padding-right: 50%;
+	margin: 0;
+	padding-right: 50%;
 }
 
 .stats {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100vh;
-    background: #ccc;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 50%;
+	height: 100vh;
+	background: #ccc;
 }
