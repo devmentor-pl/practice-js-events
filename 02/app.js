@@ -9,18 +9,18 @@ const handleMouseleave = function () {
 
 
 
-const init = function(){
+const init = function () {
     const div = document.querySelector('div');
 
 
 
-if (div) {
+    if (div) {
 
-    
-    div.addEventListener('mousemove', handleMousemove);
-    div.addEventListener('mouseleave', handleMouseleave);
 
-}
+        div.addEventListener('mousemove', handleMousemove);
+        div.addEventListener('mouseleave', handleMouseleave);
+
+    }
 }
 
 

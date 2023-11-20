@@ -4,8 +4,12 @@ const arr = [...div]
 const addClass = function () {
     this.setAttribute('class', "clicked");
 
-    const timeOut = this.dataset.time ;
-    setTimeOut(addClass, timeOut)
+    const self = this;
+    const timeOut = this.dataset.time;
+    setTimeout(function () {
+        self.setAttribute('class', "clicked");
+    }, timeOut)
+
 }
 
 

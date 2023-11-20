@@ -8,7 +8,8 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
+const linkList = document.querySelectorAll('[href]')
+console.log(linkList);
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
