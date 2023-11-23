@@ -8,10 +8,28 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-const linkList = document.querySelectorAll('[href]')
+const linkList = document.querySelectorAll('p ')
 console.log(linkList);
 linkList.forEach(function (item) {
-    item.addEventListener('click') //tu wiem,ze potrzebuje funkcji, nie jestem tylko pewien czy ona juz nie istnieje w kodzie
+    item.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const element = e.target.tagName;
+        if (element === 'A') {
+            const href = e.target.getAttribute('href')
+            if( typeof stats.links[href] === 'undefined'){
+                stats.links[href] = 0
+            }
+            stats.links[href] += 1;
+        }
+        else if (element === 'P') {
+            const id = e.target.dataset.id;
+            if (typeof stats.paragraphs[id] === 'undefined') {
+                stats.paragraphs[id] = 0
+            }
+            stats.paragraphs[id] += 1;
+        }
+    })
 })
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
