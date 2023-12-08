@@ -8,13 +8,32 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
-
+const paragraphs = document.querySelectorAll('p')
+paragraphs.forEach((p) => {
+    p.addEventListener('click',counter)
+})
+function counter(e) {
+    e.preventDefault()
+    const p = stats.paragraphs
+    const a = stats.links
+    const classes = e.target.classList
+    if (classes.contains('link')) addCount(a, e.target.pathname)
+    if (classes.contains('text')) addCount(p, this.dataset.id)
+}
+function addCount(object, id) {
+    let numClicks = object[id]
+    if (typeof numClicks === 'undefined')
+        object[id] = 1
+    else {
+        numClicks++
+        object[id] = numClicks
+    }
+}
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
 const fireCustomEvent = function(element, name) {
-    console.log(element, '=>', name);
+    // console.log(element, '=>', name);
 
     const event = new CustomEvent(name, {
         bubbles: true,
