@@ -9,6 +9,45 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+// Funkcja obsługująca kliknięcia w linki
+function handleLinkClick(event) {
+    event.preventDefault(); 
+
+    const linkHref = event.target.getAttribute('href');
+
+    if (linkHref && stats.links.hasOwnProperty(linkHref)) {
+        stats.links[linkHref]++;
+        updateStats();
+    }
+}
+
+// Funkcja obsługująca kliknięcia w paragrafy
+function handleParagraphClick(event) {
+    const paragraphId = event.target.dataset.id;
+
+    if (paragraphId && stats.paragraphs.hasOwnProperty(paragraphId)) {
+        stats.paragraphs[paragraphId]++;
+        updateStats();
+    }
+}
+
+// Funkcja aktualizująca widok na stronie
+function updateStats() {
+   
+    console.log(stats);
+}
+
+// Nasłuchiwanie kliknięć w linki o klasie .link
+const linkElements = document.querySelectorAll('.link');
+linkElements.forEach(link => {
+    link.addEventListener('click', handleLinkClick);
+});
+
+// Nasłuchiwanie kliknięć w paragrafy o klasie .text
+const paragraphElements = document.querySelectorAll('.text');
+paragraphElements.forEach(paragraph => {
+    paragraph.addEventListener('click', handleParagraphClick);
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
