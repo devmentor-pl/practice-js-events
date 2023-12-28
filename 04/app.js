@@ -10,29 +10,25 @@ const bodyEl = document.querySelector("body");
 //funkcja dodająca klase clicked: pkt 01
 
 const addClassClicked = (e) => {
-	if (e.target.tagName === "div") {
-		e.currentTarget.classList.add("clicked");
-	}
+	const clickedElement = e.currentTarget 
+	const delayTime = parseInt(e.target.dataset.time, 10) || 0;
+
+	setTimeout(() => {
+		clickedElement.classList.add("clicked");
+	}, delayTime);
 };
 
 // funkcja usuwająca klasę clicked: pkt 02
 
 const removeClassClicked = (e) => {
-	if (e.target.tagName.toLowerCase() === "body") {
+	if (e.currentTarget.tagName === e.target.tagName) {
 		const divClicked = document.querySelectorAll("div.clicked");
 
 		divClicked.forEach((div) => {
 			div.classList.remove("clicked");
 		});
 		console.log(divClicked);
-	} else {
-		// //03 efekt odstępu czasowego:
-		const delayTime = parseInt(e.target.dataset.time, 10) || 0;
-
-		setTimeout(() => {
-			e.target.classList.add("clicked");
-		}, delayTime);
-	}
+	} 
 };
 
 // listenery:
