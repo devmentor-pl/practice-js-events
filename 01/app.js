@@ -1,5 +1,9 @@
 const buttonEl = document.querySelector("button");
 
-buttonEl.addEventListener("click", () => {
-	console.log("clicked");
-});
+
+if(buttonEl){
+
+	buttonEl.addEventListener("click", () => {
+		console.log("clicked");
+	});
+}
