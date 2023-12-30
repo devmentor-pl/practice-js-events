@@ -10,7 +10,7 @@ const init = function () {
             console.log(`Mouse is Far Away from Div`);
         });
     } else {
-        console.log(`Element DOM ${div} doesen't exist`);
+        console.log(`Element DOM ${div} doesen't exist!`);
     };
 
 };
