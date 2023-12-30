@@ -8,7 +8,13 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
+const pElements = document.querySelectorAll(".text");
+const {paragraphs, links} = stats;
+const countClick = function (e) {
+    e.preventDefault();
+    let id = this.dataset.id;
+    
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
