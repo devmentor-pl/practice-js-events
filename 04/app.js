@@ -11,3 +11,16 @@ const addCliClass = function () {
     }, time);
 };
 
+const removCliClass = function (e) {
+    if (bodyEl === e.currentTarget) {
+        divEl.forEach(function (divElement) {
+            divElement.classList.remove("clicked");
+        });
+    }
+};
+
+divEl.forEach(function (divElement) {
+    divElement.addEventListener("click", addCliClass);
+});
+
+bodyEl.addEventListener("click", removCliClass);
