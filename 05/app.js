@@ -13,8 +13,16 @@ const {paragraphs, links} = stats;
 const countClick = function (e) {
     e.preventDefault();
     let id = this.dataset.id;
-    
-}
+    let href = e.target.pathname;
+    typeof paragraphs[id] === 'undefined' ? paragraphs[id] = 1 : paragraphs[id]++;
+    if (e.target.classList.contains('link')) {
+        typeof links[href] === 'undefined' ? links[href] = 1 : links[href]++;
+    };
+};
+
+pElements.forEach(function (el) {
+    el.addEventListener('click', countClick);
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
