@@ -1,3 +1,4 @@
+// Wczytaj zawartość drzewa DOM.
 document.addEventListener('DOMContentLoaded', function() {
     // Wyszukaj element <div>.
     const divEl = document.querySelector('div');
