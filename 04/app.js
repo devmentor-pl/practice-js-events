@@ -39,9 +39,3 @@ bodyEl.addEventListener('click', function(event) {
         });
     }
 });
-
-
-
-
-
-
