@@ -12,11 +12,27 @@ const everyP = Array.from(document.querySelectorAll("p"));
 
 everyP.forEach(function (element) {
   element.addEventListener("click", function (e) {
-    if (e.target.getAttribute("data-id") === "p1") {
-      stats.paragraphs["p1"]++;
-    } else if (e.target.getAttribute("href") === "/dolor.html") {
-      e.preventDefault();
-      stats.links["/dolor.html"]++;
+    e.preventDefault(); //to stop <a>
+    const dataId = e.target.getAttribute("data-id");
+    const href = e.target.getAttribute("href");
+
+    if (dataId) {
+      countClicks(stats.paragraphs, dataId);
+    } else if (href) {
+      countClicks(stats.links, href);
+    }
+
+    function countClicks(object, key) {
+      if (!hasKey(object, key)) {
+        return (object[key] = 1);
+      } else {
+        return object[key]++;
+      }
+    }
+
+    function hasKey(object, key) {
+      const keysList = Object.keys(object);
+      return keysList.includes(key);
     }
   });
 });
