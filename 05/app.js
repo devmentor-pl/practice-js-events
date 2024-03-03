@@ -1,3 +1,5 @@
+//nie jjest zrobione
+
 const stats = {
     paragraphs: {
         'p1': 0,
@@ -8,6 +10,23 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+// function countClicks() {
+//     let counter = 0;
+//     //kiedy ma się dodawać o 1?
+//     if(???) {
+//         let sumOfClicks = counter ++;
+//     }
+//     return sumOfClicks;
+// }
+
+// wyszukuję link o klasie href
+const linkEl = document.querySelectorAll('a');
+console.log(linkEl);
+linkEl.forEach(function(el) {
+        const hrefList = el.hasAttribute('href');
+        console.log(hrefList); //6x true
+        return hrefList;
+});
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */

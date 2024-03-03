@@ -11,7 +11,7 @@ function addNewClass() {
 
 console.log(divElList);
 
-// #02 po refakturowaniu kodu jest błąd
+// #02 po refakturowaniu kodu jest błąd /s.54/
 const body = document.querySelector('body');
 body.addEventListener('click', removeNewClass);
 
