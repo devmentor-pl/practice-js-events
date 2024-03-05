@@ -1,4 +1,9 @@
-//#01 // 
+// KONSULTACJE:
+// zadanie 2 nie działa, nie mam pomysłu jak poprawić funkcję
+// zadanie 3 jak je rozgryźć?
+
+
+//#01 // DZIAŁA
 const divElList = document.querySelectorAll('div');
 
 divElList.forEach(function(item) {
@@ -9,35 +14,66 @@ function addNewClass() {
     this.classList.add('clicked');
 }
 
-console.log(divElList);
+console.log('przed kliknięciem w body => ', divElList); // 'clicked' na wszystkich
 
-// #02 po refakturowaniu kodu jest błąd /s.54/
-const body = document.querySelector('body');
-body.addEventListener('click', removeNewClass);
+// #02 NIE DZIAŁA COŚ W .addEventListener()
+const body = document.querySelectorAll('body');
+checkClick(body);
 
-divElList.forEach(removeNewClass);
-    // divParent.classList.remove('class', 'clicked');
-    // divChild.classList.remove('class', 'clicked');
-
-function removeNewClass(el) {
-    el.classList.remove('class', 'clicked');
-    console.log(el);
+function checkClick(el) {
+    el.addEventListener('click', removeClass);
 }
-// function removeNewClass() {
-//     this.classList.remove('class', 'clicked');
-//     // divParent.classList.remove('class', 'clicked');
-//     // divChild.classList.remove('class', 'clicked');
+
+function removeClass() {
+
+        divElList.forEach(function (item) {
+            item.classList.remove('clicked');
+        })
+        }
+        
+console.log('po kliknięciu w body => ', divElList); // nie usuwa klasy
+//rózne próby:
+//jeśli <body> zostało kliknięte
+// if(body.target){
+//     el.forEach(function (item) {
+//         item.classList.remove('clicked');
+//     });   
 // }
 
-// #03 BŁĄD
-// divGrandPa.addEventListener('click', setTimeForClassChange);
-// divParent.addEventListener('click', setTimeForClassChange);
-// divChild.addEventListener('click', setTimeForClassChange);
+// #03 NIE DZIAŁA
 
-// const setTimeForClassChange = function setTimeout(addNewClass, 3000);
+// A moze całość rozdzielić tj. 3x addEventListener?
+const divElList3 = document.querySelectorAll('div');
+const divChild3 = document.querySelectorAll('.child');
+const divParent3 = document.querySelectorAll('.parent');
+const divGrandpa3 = document.querySelectorAll('.grandparent');
+// NodeList
 
-// function addNewClass() {
-//     this.classList.add('clicked');
-// }
+
+// divChild3.addEventListener('click', init, true); // tu nie moe być NodeList (divChild3)
+
+function init() {
+    if(this.dataset === 1000) {
+        setTimeout(addNewClassChild)
+    }
+    if(this.dataset === 2000) {
+        setTimeout(addNewClassParent)
+    }
+    if(this.dataset === 3000) {
+        setTimeout(addNewClassGrandpa)
+    }
+}
+
+function addNewClassChild() {
+    divChild3.classList.add('clicked');
+}
+function addNewClassParent() {
+    divParent3.classList.add('clicked');
+}
+function addNewClassGrandpa() {
+   divGrandpa3.classList.add('clicked');
+}
+
+console.log('przed kliknięciem => ', divElList3);
 
 
