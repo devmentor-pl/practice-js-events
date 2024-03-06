@@ -1,8 +1,6 @@
 //KONSULTACJE: 
-//zlicza kliknięcia wewnątrz funkcji, ale ju poza nią nie ma dostępu do liczby kliknięć
-//liczbę kliknięć poza funkcją podaje jako 0 jeszcze zanim kliknę i nie dodaje kliknięć
-// stąd nie wiem, czy prawidłowo jest zrobione dodawanie do obiektu oraz do paragrafu?
-// nasłuchujemy pElementList, więc linkEl nie jest potrzebny?
+//1. Funkcja stats links - nie mogę przypisać kliknięcia w konkretny link
+// nie mogę wydzielić klikniętego linku; linia #39 wyświetla wszystkie 6 linków
 
 const stats = {
     paragraphs: {
@@ -15,53 +13,62 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-// sumowanie kliknięć w paragraf o klasie .text (identyfikowany po dataset).
-let clicks = 0;
-const countClicks = function(event) { 
-    if(event.target) {
-        //zatrzymuję domyślną akcję (przeładowanie strony)
-        event.preventDefault();
-        // zliczam kliknięcia
-        clicks ++;
+console.log(stats.links['/dolor.html']);
+//DZIAlA - STATS.PARAGRAPHS
+const countClicksInPar = function(event) { 
+    event.preventDefault();
+
+   const id = this.dataset.id;
+   console.log(this.dataset.id);
+   if(typeof stats.paragraphs[id] === 'undefined') {
+       stats.paragraphs[id] = 0;
     }
-    console.log('liczba kliknięć wewnątrz funkcji: ', clicks); // zlicza prawidłowo
-    return clicks;
+   
+    stats.paragraphs[id]++;
+    // stats.links['/dolor.html']++;
 }
-console.log('liczba kliknięć poza funkcją: ', clicks, countClicks); // 0 - nie ma dostępu do liczby kliknięć BŁĄD!! - dodatkowa zmienna clicksNumber nic nie poprawia
 
-for (const item in stats.paragraphs) {
-    //sprawdzam jak dostać się do wnętrza
-    console.log('właściwość => ', item, 'wartość => ', stats.paragraphs[item]); // p1 0
-    // aktualizuję strukturę danych po kazdym kliknięciu
-    stats.paragraphs[item] = clicks;
-    stats.links[item] = clicks;
-};
+// FUNKCJA stats.links
 
-// tworzę paragraf, w którym będę sumowała kliknięcia
-const newParagraph = document.createElement('p');
-newParagraph.classList.add('text');
-newParagraph.setAttribute('id', 'dataset');
-newParagraph.innerText = clicks;
-console.log(newParagraph);
-
+const countClicksInLinks = function(event) { 
+    event.preventDefault();
+    //atrybut href zawiera string o treści html '[href*="html"]':
+    const hrefLinkList = document.querySelectorAll('a[href]');
+    
+    hrefLinkList.forEach(function(link) {
+        // POBIERZ WARTOSC ATRYBUTU
+        const href = link.getAttribute('href'); // !!! powinny być tu linki
+        console.log(href); // linki all
+        if(href !== '[href*="consectetur"]') {
+            stats.links['/consectetur.html'] = 0; 
+        } else if(href !== '/adipisicing-elite.html') {
+            stats.links['/adipisicing-elite.html'] = 0; 
+        }
+        stats.links[href]++;
+    })
+}
 // wyszukuję listę elementów <p>
 const pElementList = document.querySelectorAll('p');
 
 // sprawdzam, który <p> został kliknięty
 pElementList.forEach(function(el) {
-el.addEventListener("click", countClicks)
+el.addEventListener("click", countClicksInPar)
 })
 
-// to chyba NIE JEST POTRZEBNE?, 
-// bo nasłuchujemy na <p> pElementList
-// wyszukuję link o klasie href 
-// const linkEl = document.querySelectorAll('a');
-// console.log(linkEl);
-// linkEl.forEach(function(el) {
-//         const hrefList = el.hasAttribute('href');
-//         console.log(hrefList); //6x true
-//         return hrefList;
-// });
+// wyszukuję linki po klasie .link
+// dodaję do nich nasłuchiwanie kliknięcia i wywołuję funkcję
+const linkList = document.querySelectorAll('.link'); //Node List
+linkList.forEach(function(link) {
+    link.addEventListener('click', countClicksInLinks);
+})
+
+
+
+
+
+
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
