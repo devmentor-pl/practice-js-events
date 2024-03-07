@@ -14,61 +14,34 @@ const stats = {
 /* tutaj umieść swój kod */
 
 console.log(stats.links['/dolor.html']);
-//DZIAlA - STATS.PARAGRAPHS
-const countClicksInPar = function(event) { 
+//DZIAlA 
+const countClicks = function(event) { 
     event.preventDefault();
 
-   const id = this.dataset.id;
-   console.log(this.dataset.id);
-   if(typeof stats.paragraphs[id] === 'undefined') {
-       stats.paragraphs[id] = 0;
-    }
-   
+    if(event.target.tagName === 'P') {
+    const id = this.dataset.id; //kliknięty p
+    console.log(this.dataset.id);
+    if(typeof stats.paragraphs[id] === 'undefined') {
+        stats.paragraphs[id] = 0;
+    } 
     stats.paragraphs[id]++;
-    // stats.links['/dolor.html']++;
-}
 
-// FUNKCJA stats.links
-
-const countClicksInLinks = function(event) { 
-    event.preventDefault();
-    //atrybut href zawiera string o treści html '[href*="html"]':
-    const hrefLinkList = document.querySelectorAll('a[href]');
-    
-    hrefLinkList.forEach(function(link) {
-        // POBIERZ WARTOSC ATRYBUTU
-        const href = link.getAttribute('href'); // !!! powinny być tu linki
-        console.log(href); // linki all
-        if(href !== '[href*="consectetur"]') {
-            stats.links['/consectetur.html'] = 0; 
-        } else if(href !== '/adipisicing-elite.html') {
-            stats.links['/adipisicing-elite.html'] = 0; 
+    } else if(event.target.tagName === 'A') {
+        const clickedElement = event.target; //event.target - to zawsze kliknięty element
+        const href = clickedElement.getAttribute('href'); // pobieramy wartość klikniętego linka
+        if(typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
         }
         stats.links[href]++;
-    })
+}
 }
 // wyszukuję listę elementów <p>
 const pElementList = document.querySelectorAll('p');
 
 // sprawdzam, który <p> został kliknięty
 pElementList.forEach(function(el) {
-el.addEventListener("click", countClicksInPar)
+el.addEventListener("click", countClicks);
 })
-
-// wyszukuję linki po klasie .link
-// dodaję do nich nasłuchiwanie kliknięcia i wywołuję funkcję
-const linkList = document.querySelectorAll('.link'); //Node List
-linkList.forEach(function(link) {
-    link.addEventListener('click', countClicksInLinks);
-})
-
-
-
-
-
-
-
-
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -109,4 +82,3 @@ document.addEventListener('click', function(e) {
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
-
