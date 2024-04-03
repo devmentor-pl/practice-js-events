@@ -10,7 +10,7 @@ divElList.forEach(function(item) {
 function addNewClass() {
     const time = this.dataset.time;
     const self = this;  
-    setTimeout(function() { // "normalna' funkcja, która zmienia konteksta dla this - nie przekazuje this, stąd tworzymy self
+    setTimeout(function() { // "normalna' funkcja, która zmienia kontekst dla this - nie przekazuje this, stąd tworzymy self
         self.classList.add('clicked');
     }, time);
 }
