@@ -1,6 +1,4 @@
-//KONSULTACJE: 
-//1. Funkcja stats links - nie mogę przypisać kliknięcia w konkretny link
-// nie mogę wydzielić klikniętego linku; linia #39 wyświetla wszystkie 6 linków
+//DZIAŁA
 
 const stats = {
     paragraphs: {
