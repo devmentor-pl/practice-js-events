@@ -11,8 +11,11 @@ bodyEl.addEventListener('click', function(){
 true)
 
 divElList.forEach(function(element){
-    element.addEventListener('click', function(){
-        this.classList.add('clicked');
+    const currDiv = element;
+    element.addEventListener('click', function() {
+        setTimeout(function() {
+            currDiv.classList.add('clicked');
+        }, currDiv.dataset.time);
     })
 }, 
 true)
