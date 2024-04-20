@@ -11,34 +11,29 @@ const stats = {
 
 const linkList = document.querySelectorAll('.link');
 const textList = document.querySelectorAll('.text');
-const testText = 'links';
 
 const getHref = function(e) {
     e.preventDefault();
-    if(typeof(stats.links[this.getAttribute('href')]) === 'number'){
-        stats.links[this.getAttribute('href')] += 1;
-    }
-    else {
-        stats.links[this.getAttribute('href')] = 0;
-        stats.links[this.getAttribute('href')] += 1;
-    }
+    stats.links[this.getAttribute('href')] += 1;
 }
 
 linkList.forEach(function(element){
+    addStat('links', element.getAttribute('href'));
     element.addEventListener('click', getHref);
 })
 
 textList.forEach(function(element) {
+    addStat('paragraphs', element.dataset.id);
     element.addEventListener('click', function() {
-        if(typeof(stats.paragraphs[this.dataset.id]) === 'number'){
-            stats.paragraphs[this.dataset.id] += 1;
-        }
-        else {
-            stats.paragraphs[this.dataset.id] = 0;
-            stats.paragraphs[this.dataset.id] += 1;
-        }
+        stats.paragraphs[this.dataset.id] += 1;
     })
 })
+
+function addStat(type,  name) {
+    if(typeof(stats[type][name]) !== 'number'){
+        stats[type][name] = 0;
+    }
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
