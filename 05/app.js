@@ -17,9 +17,7 @@ textList.forEach(function(element) {
         if(e.target.hasAttribute('href')) {
             countStat('links', e.target.getAttribute('href'))
         }
-        else {
-            countStat('paragraphs', e.target.dataset.id);
-        }
+        countStat('paragraphs', e.currentTarget.dataset.id);
     })
 })
 
