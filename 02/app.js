@@ -2,8 +2,13 @@ const divElement = document.querySelector('div')
 
 console.log(divElement);
 
-const  = () => {
-    console.log('clicked');
+const moveEvent  = () => {
+    console.log('Moveover event');
 }
 
-divElement.addEventListener('click', clicked)
+const leaveElementEvent = () => {
+    console.log('Leave element event');
+}
+
+divElement.addEventListener('mouseover', moveEvent)
+divElement.addEventListener('mouseleave', leaveElementEvent)
