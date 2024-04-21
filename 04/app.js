@@ -4,8 +4,8 @@ const divElements = document.querySelectorAll('div')
 // #04.01
 divElements.forEach(function(el){
     el.addEventListener('click', function(event) {
-        event.stopPropagation()
         this.classList.add('clicked')
+        event.stopPropagation()
     })
 })
 
@@ -18,6 +18,9 @@ document.body.addEventListener('click', function(){
         }
     })
 })
+
+// #04.04
+
 
 
 
