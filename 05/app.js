@@ -9,27 +9,27 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
-const linkList = document.querySelectorAll('.link');
-const textList = document.querySelectorAll('.text');
-
-const getHref = function(e) {
-    e.preventDefault();
-    stats.links[this.getAttribute('href')] += 1;
-}
-
-linkList.forEach(function(element){
-    addStat('links', element.getAttribute('href'));
-    element.addEventListener('click', getHref);
-})
+const textList = document.querySelectorAll('p');
 
 textList.forEach(function(element) {
-    addStat('paragraphs', element.dataset.id);
-    element.addEventListener('click', function() {
-        stats.paragraphs[this.dataset.id] += 1;
+    element.addEventListener('click', function(e) {
+        e.preventDefault();
+        if(e.target.hasAttribute('href')) {
+            addStat('links', e.target.getAttribute('href'))
+            countStat('links', e.target.getAttribute('href'))
+        }
+        else {
+            addStat('paragraphs', e.target.dataset.id);
+            countStat('paragraphs', e.target.dataset.id);
+        }
     })
 })
 
-function addStat(type,  name) {
+function countStat(type, name) {
+    stats[type][name] += 1;
+}
+
+function addStat(type, name) {
     if(typeof(stats[type][name]) !== 'number'){
         stats[type][name] = 0;
     }
