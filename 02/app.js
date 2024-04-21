@@ -3,12 +3,12 @@ const divElement = document.querySelector('div')
 console.log(divElement);
 
 const moveEvent  = () => {
-    console.log('Moveover event');
+    console.log('Mouse move event');
 }
 
 const leaveElementEvent = () => {
     console.log('Leave element event');
 }
 
-divElement.addEventListener('mouseover', moveEvent)
+divElement.addEventListener('mousemove', moveEvent)
 divElement.addEventListener('mouseleave', leaveElementEvent)
