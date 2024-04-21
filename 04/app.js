@@ -10,5 +10,15 @@ divElements.forEach(function(el){
 
 // #04.02
 
+document.body.addEventListener('click', function(){
+    if (divElements.forEach(function(el){
+        el.classList.contains('clicked')
+    })) {
+        el.classList.add =
+    }
+
+
+})
+
 
 
