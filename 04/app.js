@@ -1,8 +1,12 @@
 const divElements = document.querySelectorAll('div')
 
 
+
 // #04.01
 divElements.forEach(function(el){
+    // console.log(el.dataset.time);
+
+    const delayTime = el.dataset.time
 
     const adClassFunction = function(event) {
         this.classList.add('clicked')
@@ -16,7 +20,7 @@ divElements.forEach(function(el){
             adClassFunction.call(properThis, e)
         }
 
-       setTimeout(addClassCallFunction, 2000);
+       setTimeout(addClassCallFunction, delayTime);
     }
 
     el.addEventListener('click', timeOutfunction)
