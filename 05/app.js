@@ -9,6 +9,26 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+document.querySelectorAll("p.text").forEach((paragraph) => {
+  paragraph.addEventListener("click", function (e) {
+    if (e.target.tagName === "A" && e.target.classList.contains("link")) {
+      const href = e.target.getAttribute("href")
+      e.preventDefault()
+      if (!stats.links[href]) {
+        stats.links[href] = 0
+      }
+      stats.links[href]++
+    }
+    const dataId = this.getAttribute("data-id")
+    if (!stats.paragraphs[dataId]) {
+      stats.paragraphs[dataId] = 0
+    }
+    stats.paragraphs[dataId]++
+    renderStats(stats, statsElement)
+  })
+})
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
