@@ -18,8 +18,7 @@ const childDiv = document.querySelector(".child")
 childDiv.addEventListener("click", function () {
   //this odnosi się do klikniętego pojedynczego elementu div
   let presentDiv = this
-  while (presentDiv && presentDiv !== document.body) {
-    //while-nie jest znana z góry ilość iteracji.
+  if (presentDiv && presentDiv !== document.body) {
     let divToChange = presentDiv
     setTimeout(() => {
       divToChange.classList.add("clicked")
