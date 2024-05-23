@@ -9,6 +9,24 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const textList = document.querySelectorAll('p');
+
+textList.forEach(function(element) {
+    element.addEventListener('click', function(e) {
+        e.preventDefault();
+        if(e.target.hasAttribute('href')) {
+            countStat('links', e.target.getAttribute('href'))
+        }
+        countStat('paragraphs', e.currentTarget.dataset.id);
+    })
+})
+
+function countStat(type, name) {
+    if(typeof(stats[type][name]) !== 'number'){
+        stats[type][name] = 0;
+    }
+    stats[type][name] += 1;
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
