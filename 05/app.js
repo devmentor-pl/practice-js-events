@@ -1,3 +1,5 @@
+//DZIAŁA
+
 const stats = {
     paragraphs: {
         'p1': 0,
@@ -9,6 +11,35 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+console.log(stats.links['/dolor.html']);
+//DZIAlA 
+const countClicks = function(event) { 
+    event.preventDefault();
+
+    if(event.target.tagName === 'P') {
+    const id = this.dataset.id; //kliknięty p
+    console.log(this.dataset.id);
+    if(typeof stats.paragraphs[id] === 'undefined') {
+        stats.paragraphs[id] = 0;
+    } 
+    stats.paragraphs[id]++;
+
+    } else if(event.target.tagName === 'A') {
+        const clickedElement = event.target; //event.target - to zawsze kliknięty element
+        const href = clickedElement.getAttribute('href'); // pobieramy wartość klikniętego linka
+        if(typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
+        }
+        stats.links[href]++;
+}
+}
+// wyszukuję listę elementów <p>
+const pElementList = document.querySelectorAll('p');
+
+// sprawdzam, który <p> został kliknięty
+pElementList.forEach(function(el) {
+el.addEventListener("click", countClicks);
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -41,7 +72,6 @@ const renderStats = function(data, element) {
     element.innerHTML = html;
 }
 
-
 document.addEventListener('click', function(e) {
     const tagName = e.target.tagName;
     if(tagName.includes('P') || tagName.includes('A')) {
@@ -50,4 +80,3 @@ document.addEventListener('click', function(e) {
 });
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
-
