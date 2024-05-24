@@ -1,7 +1,7 @@
 const btnElement = document.querySelector('button');
 
-const btnClicked = function() {
-    console.log('clicked')
+if(btnElement) {
+    btnElement.addEventListener('click', function() {
+        console.log('clicked')
+    })
 }
-
-btnElement.addEventListener('click', btnClicked)
