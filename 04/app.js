@@ -24,7 +24,7 @@ const removeClass = function (e) {
 
 bodyElement.addEventListener('click', removeClass)
 
-// #03
+// #03 domyslam sie ze powinienem wykorzystac propagacje ale nie moglem sobie z tym poradzic
 
 const addClassTimeout = function(element, delay) {
     setTimeout(function(){
