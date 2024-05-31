@@ -33,22 +33,9 @@ const addClassTimeout = function(element, delay) {
 }
 
 const changeBgColor = function(e) {
-    e.stopPropagation();
+    thisVariable = this;
     const timeStamp = Number(this.dataset.time);
-
-    if (this.classList.contains('child')) {
-        let currentElement = this;
-        
-        while (currentElement) {
-            if (currentElement.tagName.toLowerCase() === 'div') {
-                const timeStamp = Number(currentElement.dataset.time);
-                addClassTimeout(currentElement, timeStamp);
-            }
-            currentElement = currentElement.parentElement;
-        }
-    } else {
-        addClassTimeout(this, timeStamp);
-    }
+    addClassTimeout(thisVariable, timeStamp);
 }
 
 divList.forEach(function(div){

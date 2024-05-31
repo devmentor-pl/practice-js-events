@@ -13,19 +13,18 @@ const pList = document.querySelectorAll('.text');
 const statsManage = function (e) {
     e.preventDefault()
 
-    if (e.target.tagName === 'A') {
-        const href = e.target.getAttribute('href')
+    if (e.target.tagName === 'P') {
         const para = e.currentTarget.dataset.id
-
         let paraCount = addValue(stats.paragraphs[para])
-        let hrefCount = addValue(stats.links[href])
-
         paraCount++
-        hrefCount++
-        
         stats.paragraphs[para] = paraCount
+        
+    } else if (e.target.tagName === 'A') {
+        const href = e.target.getAttribute('href')
+        let hrefCount = addValue(stats.links[href])
+        hrefCount++
         stats.links[href] = hrefCount
-    } 
+    }
 }
 
 function addValue(value) {
