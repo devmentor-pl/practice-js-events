@@ -9,6 +9,32 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElementList = document.querySelectorAll('p')
+
+pElementList.forEach(function(el){
+    el.addEventListener('click', function(e) {
+        e.preventDefault()
+        console.log('click', e.target);
+
+        if(e.target.tagName === 'P') {
+            const idOfPara = e.target.dataset.id
+            console.log(idOfPara);
+
+            if (typeof stats.paragraphs[idOfPara] === 'undefined') {
+                stats.paragraphs[idOfPara] = 0
+            }
+            stats.paragraphs[idOfPara]++
+
+        } else if (e.target.tagName === 'A'){
+            const hrefAttr = e.target.getAttribute('href')
+            if(typeof stats.links[hrefAttr] === 'undefined') {
+                stats.links[hrefAttr] = 0
+            }
+            stats.links[hrefAttr]++
+        }
+    })
+})
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
