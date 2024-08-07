@@ -2,10 +2,14 @@
 const divs = document.querySelectorAll("div");
 
 addClassToElement = function (event) {
-    event.stopPropagation();
-
+  // event.stopPropagation();
+  const div = this;
+  const time = div.dataset.time;
   const className = "clicked";
-  this.classList.add(className);
+
+  setTimeout(() => {
+    div.classList.add(className);
+  }, time);
 };
 
 divs.forEach((div) => {
@@ -14,18 +18,16 @@ divs.forEach((div) => {
   }
 });
 
-
-
 //04.02
-const body = document.querySelector('body')
+const body = document.querySelector("body");
 
 removeClassFromElement = function () {
-    const className = 'clicked'
-    divs.forEach(div => {
-        div.classList.remove(className)
-    });
-}
+  const className = "clicked";
+  divs.forEach((div) => {
+    div.classList.remove(className);
+  });
+};
 
 if (body) {
-    body.addEventListener('click', removeClassFromElement)
+  body.addEventListener("click", removeClassFromElement);
 }
