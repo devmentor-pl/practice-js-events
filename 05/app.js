@@ -1,14 +1,34 @@
 const stats = {
     paragraphs: {
         'p1': 0,
+        'p2': 0,
+        'p3': 0,
     },
     links: {
         '/dolor.html': 0,
+        '/adipisicing-elite.html': 0,
+        '/consectetur.html': 0,
     }
 };
 
-/* tutaj umieść swój kod */
+function updateStats(e) {
+    const tagName = e.target.tagName;
 
+    if (tagName === 'P') {
+        const paragraphId = e.target.dataset.id;
+        if (paragraphId) {
+            stats.paragraphs[paragraphId] = (stats.paragraphs[paragraphId] || 0) + 1;
+        }
+    } else if (tagName === 'A') {
+        const href = e.target.getAttribute('href');
+        if (href) {
+            stats.links[href] = (stats.links[href] || 0) + 1;
+        }
+    }
+    fireCustomEvent(statsElement, 'render');
+}
+
+document.addEventListener('click', updateStats);
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
