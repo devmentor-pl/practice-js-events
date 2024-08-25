@@ -4,3 +4,8 @@ div {
     margin: 0 auto;
     height: 50vh;
 }
+
+p{
+    display: flex;
+    justify-content: center;
+}
