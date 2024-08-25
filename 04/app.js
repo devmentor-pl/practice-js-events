@@ -18,11 +18,11 @@ document.body.addEventListener('click', (e) => {
 })
 
 const timeData = document.querySelectorAll('[data-time]');
-
-let timeoutData = 0;
-
 const childEl = document.querySelector('.child');
 
+
+
+let timeoutData = 0;
 // timeData.forEach(element => {
 //    timeoutData = element.dataset.time;
 //     childEl.addEventListener('click', (e) => {
