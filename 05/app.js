@@ -8,8 +8,30 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const CountClick = function(e) {
+    e.stopPropagation(); 
 
+    if (e.target.tagName === 'A') {
+        e.preventDefault(); 
+        const href = e.target.getAttribute('href'); 
+        if (href === '/dolor.html') {
+            stats.links[href]++; 
+        }
+    }
 
+    if (e.target.tagName === 'P') {
+        const pId = e.target.dataset.id; 
+        if (pId === 'p1') {
+            stats.paragraphs[pId]++; 
+        }
+    }
+};
+
+// Add event listener to all paragraphs
+const pList = document.querySelectorAll('p');
+pList.forEach((p) => {
+    p.addEventListener('click', CountClick);
+});
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
