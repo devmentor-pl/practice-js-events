@@ -9,6 +9,36 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const links=document.querySelectorAll('p')
+
+
+links.forEach(function(el){
+el.addEventListener('click',function(e){
+    e.preventDefault()
+    if(e.target === 'p'){
+const id =e.target.dataset.id
+if(typeof stats.paragraphs[id]==='undefined'){
+    stats.paragraphs[id]=0
+}
+stats.paragraphs[id]++
+    }else if(e.target==='a'){
+const target =e.target.getAttribute('href')
+if(typeof stats.links[href]==='undefined'){
+    stats.links[href]=0
+}
+
+stats.links[href]++;
+
+
+    }
+
+})
+})
+
+
+
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
