@@ -9,6 +9,29 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElements = document.querySelectorAll('p');
+
+const countClicks = function(e) {
+    e.preventDefault();
+    
+    if(e.target.tagName === 'P') {
+        const id = e.target.dataset.id;
+        if(typeof stats.paragraphs[id] === 'undefined') {
+            stats.paragraphs[id] = 0;
+        }
+        stats.paragraphs[id]++;
+    } else if (e.target.tagName === 'A') {
+        const href = e.target.getAttribute('href');
+        if(typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
+        }
+            stats.links[href]++;
+    }
+}
+
+pElements.forEach(function(item) {
+    item.addEventListener('click', countClicks)
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
