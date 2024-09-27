@@ -9,9 +9,33 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pList = document.querySelectorAll('p');
+
+function counterClicks(e){
+    e.preventDefault();
+    
+    if(e.target.tagName === 'A') {
+        const aId = e.target.getAttribute('href');
+        if(typeof stats.links[aId] === 'undefined'){
+            stats.links[aId] = 0;
+        } stats.links[aId]++;
+        
+    } else {
+        const pId = e.target.dataset.id;
+        if(typeof stats.paragraphs[pId] === 'undefined'){
+            stats.paragraphs[pId] = 0;
+        }
+        stats.paragraphs[pId]++
+    }
+}
+
+
+pList.forEach(function(item){
+    item.addEventListener('click', counterClicks)
+})
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
-
 const statsElement = document.querySelector('.stats');
 const fireCustomEvent = function(element, name) {
     console.log(element, '=>', name);
