@@ -8,7 +8,31 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const paragraphs = document.querySelectorAll('p');
 
+const countHandler = function(e){
+    e.preventDefault();
+    const keyParagraph = e.target.dataset.id;
+    const keyLink = e.target.getAttribute('href');
+
+    if(e.target.className === 'text'){
+        if(stats.paragraphs[keyParagraph]){
+            stats.paragraphs[keyParagraph]++;
+        }else{
+            stats.paragraphs[keyParagraph] = 1;
+        }
+    }
+    if(keyLink){
+        if(stats.links[keyLink]){
+            stats.links[keyLink]++
+        }else{
+            stats.links[keyLink] = 1;
+        }
+
+    }
+}
+paragraphs.forEach(function(p){
+    p.addEventListener('click', countHandler)});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -25,10 +49,13 @@ const fireCustomEvent = function(element, name) {
 
 const renderStats = function(data, element) {
     let html = '';
+    // console.log('data', data);
+    // console.log('element', element);
     for(let elementType in data) {
         html += '<ul>';
-
+        // console.log('data[elementType]', data[elementType]);
         for(let key in data[elementType]) {
+            // console.log('data[elementType][key]', data[elementType][key]);
             
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
