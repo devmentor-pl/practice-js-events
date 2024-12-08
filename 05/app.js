@@ -9,6 +9,27 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+let tagP = document.querySelectorAll('p');
+
+for (let i = 0; i < tagP.length; i++) {
+    const indexP = tagP[i].dataset.id;
+    stats.paragraphs[indexP] = 0;
+
+    let tagA = tagP[i].querySelectorAll('a');
+
+    for (let j = 0; j < tagA.length; j++) {
+        const indexA = tagA[j].getAttribute('href');
+        stats.links[indexA] = 0;
+        tagA[j].addEventListener('click', e => {
+            stats.links[indexA]++;
+        })
+    }
+
+    tagP[i].addEventListener('click', e => {
+        e.preventDefault();
+        stats.paragraphs[indexP]++;
+    })
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
