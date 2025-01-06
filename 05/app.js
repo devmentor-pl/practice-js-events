@@ -8,8 +8,29 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
-
+const updateStats = function(e) {
+    const target = e.target
+    if(target.tagName === 'A' && Array.from(target.classList).includes('link')) {
+        const href = target.getAttribute('href');
+        if (!stats.links[href]) {
+            stats.links[href] = 0; 
+        }
+        stats.links[href]++;
+    }
+    const paragraph = target.closest('p.text');
+    if(paragraph) {
+        const paragraphId = paragraph.dataset.id;
+        if (!stats.paragraphs[paragraphId]) {
+            stats.paragraphs[paragraphId] = 0
+        }
+        stats.paragraphs[paragraphId]++;
+    };
+   
+}
+const paragraphs = document.querySelectorAll('p.text');
+paragraphs.forEach(function(paragraph){
+    paragraph.addEventListener('click', updateStats);
+})
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
