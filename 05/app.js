@@ -16,9 +16,17 @@ const stats = {
 const allParagraphs = document.querySelectorAll('p');
 
 const handleClick = function(e){
+
     const paragraphId = e.currentTarget.dataset.id;
     console.log(paragraphId);
     stats.paragraphs[paragraphId]++;
+
+    if (e.target.tagName === 'A'){
+        
+        e.preventDefault();
+        const href = e.target.getAttribute('href');
+        stats.links[href]++
+    }
 }
 
 allParagraphs.forEach((p) => {
