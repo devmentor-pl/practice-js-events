@@ -1,14 +1,29 @@
 const stats = {
     paragraphs: {
         'p1': 0,
+        'p2': 0,
+        'p3': 0,
     },
     links: {
         '/dolor.html': 0,
+        '/adipisicing-elite.html': 0,
+        '/consectetur.html': 0,
     }
 };
 
 /* tutaj umieść swój kod */
 
+const allParagraphs = document.querySelectorAll('p');
+
+const handleClick = function(e){
+    const paragraphId = e.currentTarget.dataset.id;
+    console.log(paragraphId);
+    stats.paragraphs[paragraphId]++;
+}
+
+allParagraphs.forEach((p) => {
+    p.addEventListener('click', handleClick);
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
