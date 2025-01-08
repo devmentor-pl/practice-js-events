@@ -1,25 +1,18 @@
-//04.01
 
 const divList = document.querySelectorAll('div');
-const delay = 2000;
 
 const handleClick = function(e){
     // e.stopPropagation();
+
     setTimeout(() => {
         this.classList.add('clicked');
-    }, delay);
-    
+    }, e.currentTarget.dataset.time);    
 }
 
-divList.forEach((div) => {
-    div.dataset.delay = 2000;
+divList.forEach((div, e) => {
     div.addEventListener('click', handleClick);
-    
 })
 
-
-
-//04.02
 
 const body = document.querySelector('body');
 
@@ -33,5 +26,3 @@ const removeClass = function(e){
 }
 
 body.addEventListener('click', removeClass);
-
-
