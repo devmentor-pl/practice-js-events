@@ -9,6 +9,28 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+document.querySelectorAll('.text').forEach(paragraph => {
+    paragraph.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const paragraphId = this.dataset.id;
+        if (stats.paragraphs[paragraphId] === undefined) {
+            stats.paragraphs[paragraphId] = 0;
+        }
+        stats.paragraphs[paragraphId]++;
+
+
+        if (e.target.tagName === 'A') {
+            const href = e.target.getAttribute('href');
+            if (stats.links[href] === undefined) {
+                stats.links[href] = 0;
+            }
+            stats.links[href]++;
+        }
+
+        fireCustomEvent(statsElement, 'render');
+    });
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
