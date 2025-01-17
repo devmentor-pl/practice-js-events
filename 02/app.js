@@ -1,12 +1,16 @@
 const div = document.querySelector('div');
 
-const handleOver = function(){
-    console.log('You are on div element');
-}
+if (div){
 
-const handleLeave = function(){
-    console.log('You left div element');
-}
+    const handleOver = function(){
+        console.log('You are on div element');
+    }
 
-div.addEventListener('mousemove', handleOver);
-div.addEventListener('mouseleave', handleLeave);
+    const handleLeave = function(){
+        console.log('You left div element');
+    }
+
+    div.addEventListener('mousemove', handleOver);
+    div.addEventListener('mouseleave', handleLeave);
+    
+}
