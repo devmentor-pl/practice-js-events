@@ -8,7 +8,23 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const clickStatsHandler = {
+    updateParagraphStats: p => {
+        const id = p.dataset.id;
+        stats.paragraphs[id] = (stats.paragraphs[id] || 0) + 1;
+    },
+    updateLinkStats: (link, e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        stats.links[href] = (stats.links[href] || 0) + 1;
+    },
+    handleClick(e) {
+        e.target.tagName === "A" && clickStatsHandler.updateLinkStats(e.target, e);
+        clickStatsHandler.updateParagraphStats(e.currentTarget);
+    }
+};
 
+document.querySelectorAll("p.text").forEach(p => p.addEventListener("click", clickStatsHandler.handleClick));
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
