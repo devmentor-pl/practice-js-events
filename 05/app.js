@@ -8,7 +8,14 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const clickStatsHandler = {
+    incrementStat: (cat, key) => stats[cat][key] = (stats[cat][key] || 0) + 1,
+    updateParagraphStats: p => clickStatsHandler.incrementStat('paragraphs', p.dataset.id),
+    updateLinkStats: (l, e) => (e.preventDefault(), clickStatsHandler.incrementStat('links', l.getAttribute('href'))),
+    handleClick: e => (e.target.tagName === "A" && clickStatsHandler.updateLinkStats(e.target, e), clickStatsHandler.updateParagraphStats(e.currentTarget))
+};
 
+document.querySelectorAll("p.text").forEach(p => p.addEventListener("click", clickStatsHandler.handleClick));
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
