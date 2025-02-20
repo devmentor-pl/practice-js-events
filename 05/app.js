@@ -9,19 +9,10 @@ const stats = {
 
 /* tutaj umieść swój kod */
 const clickStatsHandler = {
-    updateParagraphStats: p => {
-        const id = p.dataset.id;
-        stats.paragraphs[id] = (stats.paragraphs[id] || 0) + 1;
-    },
-    updateLinkStats: (link, e) => {
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        stats.links[href] = (stats.links[href] || 0) + 1;
-    },
-    handleClick(e) {
-        e.target.tagName === "A" && clickStatsHandler.updateLinkStats(e.target, e);
-        clickStatsHandler.updateParagraphStats(e.currentTarget);
-    }
+    incrementStat: (cat, key) => stats[cat][key] = (stats[cat][key] || 0) + 1,
+    updateParagraphStats: p => clickStatsHandler.incrementStat('paragraphs', p.dataset.id),
+    updateLinkStats: (l, e) => (e.preventDefault(), clickStatsHandler.incrementStat('links', l.getAttribute('href'))),
+    handleClick: e => (e.target.tagName === "A" && clickStatsHandler.updateLinkStats(e.target, e), clickStatsHandler.updateParagraphStats(e.currentTarget))
 };
 
 document.querySelectorAll("p.text").forEach(p => p.addEventListener("click", clickStatsHandler.handleClick));

@@ -4,6 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleMouseMove = e => console.log("mousemove");
     const handleMouseLeave = e => console.log("mouseleave");
 
-    divElement.addEventListener("mousemove", handleMouseMove);
-    divElement.addEventListener("mouseleave", handleMouseLeave);
+    divElement && divElement.addEventListener("mousemove", handleMouseMove);
+    divElement && divElement.addEventListener("mouseleave", handleMouseLeave);
 });
