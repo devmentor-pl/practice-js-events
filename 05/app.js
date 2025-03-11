@@ -9,6 +9,11 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const paragraphs = document.querySelectorAll('p')
+
+
+
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
