@@ -43,8 +43,6 @@ paragraphs.forEach(function(paragraph) {
 })
 
 
-
-
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
 const statsElement = document.querySelector('.stats');
