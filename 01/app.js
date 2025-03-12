@@ -4,4 +4,4 @@ const handleClick = function () {
 const clickMeButton = document.querySelector('button')
     
     if(clickMeButton) {
-        clickMeButton.addEventListener('click', handleClick)}
+    clickMeButton.addEventListener('click', handleClick)}
