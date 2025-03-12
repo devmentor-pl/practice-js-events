@@ -11,32 +11,32 @@ const stats = {
 
 const paragraphs = document.querySelectorAll('p')
 
+function updateStats(type, key) {
+    if(!stats[type].hasOwnProperty(key)) {
+        stats[type][key] = 0
+    }
+    stats[type][key]++
+    }
+
 paragraphs.forEach(function(paragraph) {
     paragraph.addEventListener('click', function(event) {
         if(event.target.classList.contains('link')) {
             event.preventDefault()
             const linkHref  = event.target.getAttribute('href')
 
-
-            if(!stats.links.hasOwnProperty(linkHref)) {
-                stats.links[linkHref] = 0
-            }
-
-            stats.links[linkHref]++
+            updateStats('links', linkHref)
 
         } else if (event.target.classList.contains('text')) {
             const paragraphId = event.target.dataset.id 
             
-            if(!stats.paragraphs.hasOwnProperty(paragraphId)) {
-                stats.paragraphs[paragraphId] = 0;
-            }
+            updateStats('paragraphs', paragraphId)
 
-            stats.paragraphs[paragraphId]++ 
         } else {
             if(event.target.parentElement.classList.contains('text')) {
                 const paragraphId = event.target.parentElement.dataset.id 
                 
-                stats.paragraphs[paragraphId]++}
+                updateStats('paragraphs', paragraphId)
+            }
         }
 
     })
