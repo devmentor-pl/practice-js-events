@@ -3,23 +3,25 @@ const divList = document.querySelectorAll('div');
 const handleClick = function (e) {
   const datasetValue = e.currentTarget.dataset.time;
   console.log(datasetValue);
-  e.currentTarget.className = 'clicked';
-  let sum = 0;
+  // e.currentTarget.classList.add('clicked');
 
-  setTimeout(() => {
-    for (let i = 0; i >= sum; i++) {}
-  }, sum);
+  const clickItem = e.currentTarget;
+  console.log(e);
+  setTimeout(function () {
+    clickItem.classList.add('clicked');
+  }, datasetValue);
 };
 
 const handleBodyClick = function (e) {
+  console.log(e.target, e.currentTarget);
   if (e.target === document.body) {
-    const divEl = divList.forEach((el) => {
-      el.className = '';
+    divList.forEach((el) => {
+      el.classList.remove('clicked');
     });
   }
 };
 
-const divEl = divList.forEach((el) => {
+divList.forEach((el) => {
   el.addEventListener('click', handleClick);
   console.log(el.parentElement);
 });
