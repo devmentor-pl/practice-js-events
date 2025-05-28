@@ -1,9 +1,13 @@
 const stats = {
   paragraphs: {
     p1: 0,
+    p2: 0,
+    p3: 0,
   },
   links: {
     '/dolor.html': 0,
+    '/adipisicing-elite.html': 0,
+    '/consectetur.html': 0,
   },
 };
 
@@ -19,6 +23,7 @@ const handleClick = function (e) {
 
   if (href in stats.links) {
     stats.links[href]++;
+    console.log(href);
   }
 
   if (id in stats.paragraphs) {
