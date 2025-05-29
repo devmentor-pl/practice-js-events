@@ -1,13 +1,9 @@
 const stats = {
   paragraphs: {
     p1: 0,
-    p2: 0,
-    p3: 0,
   },
   links: {
     '/dolor.html': 0,
-    '/adipisicing-elite.html': 0,
-    '/consectetur.html': 0,
   },
 };
 
@@ -21,14 +17,18 @@ const handleClick = function (e) {
   const id = e.target.dataset.id;
   console.log(href);
 
-  if (href in stats.links) {
-    stats.links[href]++;
-    console.log(href);
+  if (typeof stats.links[href] === 'undefined') { // mozna też zrobic z operatorem in
+    stats.links[href] = 0;
+}
+
+stats.links[href]++;
+
+  if (typeof stats.paragraphs[id] === 'undefined') {
+    stats.paragraphs[id] = 0;
   }
 
-  if (id in stats.paragraphs) {
-    stats.paragraphs[id]++;
-  }
+  stats.paragraphs[id]++;
+
 };
 
 pList.forEach((el) => {
