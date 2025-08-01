@@ -30,27 +30,37 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-const aList = document.querySelectorAll('a');
-if (aList) {
-
-    console.log(aList)
-}
-const addLinkClicks = function (e) {
-    // console.log(this.className)
-    e.preventDefault();
-    if (this.className === 'link') {
-        e.stopPropagation();
-        const href = this.getAttribute('href');
-        console.log(stats.links)
-        console.log(href)
-    }
-
-}
+// const aList = document.querySelectorAll('p');
 
 const pList = document.querySelectorAll('p');
+
 if (pList) {
 
+    // console.log(pList)
 }
+const addLinkClicks = function (e) {
+    // console.log(e.target, e.currentTarget)
+    e.preventDefault();
+    if (e.target.tagName === 'A') {
+        const href = e.target.getAttribute('href');
+        if (typeof stats.links[href] === 'undefined') {
+            stats.links[href] = 0;
+        }
+        stats.links[href]++;
+
+        console.log(stats.links[href])
+    }
+    if (e.target.tagName === 'P') {
+        const pEl = e.target.getAttribute(['data-id']);
+        if (typeof stats.paragraphs[pEl] === 'undefined') {
+            stats.paragraphs[pEl] = 0;
+        }
+        stats.paragraphs[pEl]++;
+    }
+}
+
+
+
 const addParagraphClicks = function (e) {
     console.log('paragraph was clicked')
 }
@@ -97,11 +107,11 @@ document.addEventListener('click', function (e) {
 statsElement.addEventListener('render', renderStats.bind(this, stats, statsElement));
 document.addEventListener('DOMContentLoaded', fireCustomEvent.bind(null, statsElement, 'render'));
 
-aList.forEach(function (pEl) {
+pList.forEach(function (pEl) {
     pEl.addEventListener('click', addLinkClicks)
 })
 
-pList.forEach(function (pEl) {
-    pEl.addEventListener('click', addParagraphClicks)
-})
+// pList.forEach(function (pEl) {
+//     pEl.addEventListener('click', addParagraphClicks)
+// })
 
