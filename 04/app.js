@@ -2,7 +2,7 @@ const divsList = document.querySelectorAll('div');
 const bodyEl = document.querySelector('body');
 
 const addClassClicked = function (e) {
-    if (this.className === 'child' || 'parent') {
+    if (this.className === 'child' || this.className === 'parent' || this.className === 'grandparent') {
         // e.stopPropagation();
         // e.currentTarget.classList.add('clicked');
         const el = this;
