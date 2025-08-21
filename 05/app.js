@@ -9,6 +9,27 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pList = document.querySelectorAll('p');
+pList.forEach(function(element) {
+    element.addEventListener('click', function(el){
+        el.preventDefault();
+
+        if(el.target.tagName === 'P') {
+            const id = el.target.dataset.id;
+            if(typeof stats.paragraphs[id] === 'undefined') {
+                stats.paragraphs[id] = 0;
+            }
+            stats.paragraphs[id]++;
+            
+        } else if (el.target.tagName === 'A') {
+            const href = el.target.getAttribute('href');
+            if (typeof stats.links[href] === 'undefined') {
+                stats.links[href] = 0;
+            }
+            stats.links[href]++;
+        }
+    })
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
