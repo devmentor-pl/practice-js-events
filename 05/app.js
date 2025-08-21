@@ -8,7 +8,36 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const handleParagraphClick = function(e) {
+    const clickedLink = e.target.closest('a.link');
+    
+    if (clickedLink) {
 
+        const href = clickedLink.getAttribute('href');
+        
+        if (stats.links[href] !== undefined) {
+            stats.links[href]++;
+        } else {
+            stats.links[href] = 1;
+        }
+
+        e.preventDefault();
+    }
+    
+    const paragraphId = e.currentTarget.dataset.id;
+    
+    if (stats.paragraphs[paragraphId] !== undefined) {
+        stats.paragraphs[paragraphId]++;
+    } else {
+        stats.paragraphs[paragraphId] = 1;
+    }
+    fireCustomEvent(statsElement, 'render');
+};
+
+const paragraphs = document.querySelectorAll('p.text');
+paragraphs.forEach(paragraph => {
+    paragraph.addEventListener('click', handleParagraphClick);
+});
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
