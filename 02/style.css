@@ -4,3 +4,8 @@ div {
     margin: 0 auto;
     height: 50vh;
 }
+
+.red {
+    background-color: red;
+    color: white;
+}
