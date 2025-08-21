@@ -8,7 +8,27 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
-
+const paragraphs = document.querySelectorAll('p')
+paragraphs.forEach((p) => {
+    p.addEventListener('click',counter)
+})
+function counter(e) {
+    e.preventDefault()
+    const paragraph = stats.paragraphs
+    const links = stats.links
+    const classes = e.target.classList
+    if (classes.contains('link')) addCount(links, e.target.pathname)
+    if (classes.contains('text')) addCount(paragraph, this.dataset.id)
+}
+function addCount(object, id) {
+    let numClicks = object[id]
+    if (typeof numClicks === 'undefined')
+        object[id] = 1
+    else {
+        numClicks++
+        object[id] = numClicks
+    }
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
