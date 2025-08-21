@@ -9,6 +9,39 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const paragraphs = document.querySelectorAll('p')
+
+function updateStats(type, key) {
+    if(!stats[type].hasOwnProperty(key)) {
+        stats[type][key] = 0
+    }
+    stats[type][key]++
+    }
+
+paragraphs.forEach(function(paragraph) {
+    paragraph.addEventListener('click', function(event) {
+        if(event.target.classList.contains('link')) {
+            event.preventDefault()
+            const linkHref  = event.target.getAttribute('href')
+
+            updateStats('links', linkHref)
+
+        } else if (event.target.classList.contains('text')) {
+            const paragraphId = event.target.dataset.id 
+            
+            updateStats('paragraphs', paragraphId)
+
+        } else {
+            if(event.target.parentElement.classList.contains('text')) {
+                const paragraphId = event.target.parentElement.dataset.id 
+                
+                updateStats('paragraphs', paragraphId)
+            }
+        }
+
+    })
+})
+
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
