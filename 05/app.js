@@ -8,6 +8,39 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const paragraphAll = document.querySelectorAll('[data-id]');
+const linksAll = document.querySelectorAll('.link');
+
+paragraphAll.forEach(item => {
+    stats.paragraphs[item.dataset.id] = 0;
+})
+
+linksAll.forEach(item => {
+  let attr = item.getAttribute('href');
+  stats.links[`${attr}`] = 0;
+})
+
+function sumClickHandler (e) {
+    e.preventDefault();
+    
+    let clickedItem = e.currentTarget;
+    let objKey = clickedItem.dataset.id;
+    if(clickedItem) {
+        stats.paragraphs[objKey]++
+    }
+
+    for (let keyName in stats.links) {
+        if(e.target.getAttribute('href') === keyName) {
+        stats.links[`${keyName}`]++;
+        }
+    }
+}
+
+
+
+paragraphAll.forEach(item => {
+    item.addEventListener('click', sumClickHandler);
+})
 
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
