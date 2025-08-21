@@ -8,7 +8,33 @@ const stats = {
 };
 
 /* tutaj umieść swój kod */
+const paragraphs = document.querySelectorAll("p");
 
+paragraphs.forEach(function(paragraph){
+    paragraph.addEventListener("click",function(e){
+        e.preventDefault();
+        const target = e.target;
+        const currentTarget = e.currentTarget;
+        // console.log("e.target: ",e.target)
+        // console.log("e.currentTarget: ",e.currentTarget)
+        
+        if(target.tagName === "A"){
+            if(!stats.paragraphs[currentTarget.dataset.id]){
+                stats.paragraphs[currentTarget.dataset.id] = 0;
+            } 
+            if(!stats.links[target.getAttribute("href")]) {
+                stats.links[target.getAttribute("href")] = 0;
+            }
+            stats.paragraphs[currentTarget.dataset.id] ++;
+            stats.links[target.getAttribute("href")] ++;
+        } else{
+            if(!stats.paragraphs[currentTarget.dataset.id]){
+                stats.paragraphs[currentTarget.dataset.id] = 0;
+            }
+            stats.paragraphs[currentTarget.dataset.id] ++;
+        }
+    })
+})
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -24,6 +50,7 @@ const fireCustomEvent = function(element, name) {
 }
 
 const renderStats = function(data, element) {
+    // console.log(this)
     let html = '';
     for(let elementType in data) {
         html += '<ul>';
