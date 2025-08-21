@@ -9,6 +9,43 @@ const stats = {
 
 /* tutaj umieść swój kod */
 
+const pElements = document.querySelectorAll('p')
+
+if(pElements){
+    pElements.forEach(function(pEl){
+        pEl.addEventListener('click',handleBoth)
+    })
+}
+
+function handleBoth(e){
+    const clickEvent = e;
+    if(clickEvent.currentTarget.tagName==='P'){
+        handleParagraph(clickEvent.currentTarget);
+    }
+    handleAnchor(clickEvent);
+}
+
+function handleParagraph (clickedParagraph) {
+    const idOfClicked = clickedParagraph.dataset.id;
+    checkAndAdd(idOfClicked, 'paragraphs');
+}
+
+function handleAnchor(e) {
+    const clickedAnchor = e.target;
+    if(clickedAnchor.tagName==='A') {
+        e.preventDefault();
+        const address= clickedAnchor.getAttribute('href');
+        checkAndAdd(address, 'links');
+    }
+}
+
+function checkAndAdd(attribute, subObject) {
+    if(typeof stats[subObject][attribute]!== 'undefined'){
+        stats[subObject][attribute]+=1; 
+    } else {
+        stats[subObject][attribute]=1; 
+    }
+}
 
 /* nie modyfikuj kodu poniżej, ale przeanalizuj go */
 
@@ -29,7 +66,7 @@ const renderStats = function(data, element) {
         html += '<ul>';
 
         for(let key in data[elementType]) {
-            
+
             html += '<li>';
             html += key + ' -> ' + data[elementType][key];
             html += '</li>';
